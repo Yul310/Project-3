@@ -9,8 +9,8 @@ export default function HomePage() {
   return (
     <>
       <h1>HomePage</h1>
-      <div>Note List</div>
-      <div>Todo List</div>
+      <div>Note List Test</div>
+      <div>Todo List Test</div>
       {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
     </>
   );
