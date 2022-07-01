@@ -10,7 +10,7 @@ const todoSchema = new Schema({
   category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
 
   urgency: String,
-});
+}, { timestamps: true });
 
 const Todo = model("Todo", todoSchema);
 
@@ -20,4 +20,5 @@ const Category = model("Category", categorySchema);
 ///////////////////////////////////////////////////
 // Export Model
 ///////////////////////////////////////////////////
+// Adding Notes
 module.exports = Todo;
