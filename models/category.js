@@ -7,7 +7,7 @@ const categorySchema = new Schema({
         type: String,
         required: true
     },
-    date: {
+    dueDate: {
         type: Date,
         required: true
     },
