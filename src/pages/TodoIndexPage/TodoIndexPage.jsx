@@ -1,4 +1,4 @@
-import TodoList from '../../components/TodoList/TodoList'
+import TodoList from "../../components/TodoList/TodoList";
 
 export default function TodoIndexPage() {
   return (
@@ -6,5 +6,5 @@ export default function TodoIndexPage() {
       <h1>TodoIndexPage</h1>
       <TodoList />
     </>
-  )
+  );
 }
