@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const {Schema, model} = mongoose;
+require('./category.js')
 
 //-- Model ---------------------------------------------//
 
