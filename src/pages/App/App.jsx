@@ -19,19 +19,14 @@ export default function App() {
             <Route path="/notes" element={<NoteIndexPage />} />
             <Route path="/todos" element={<TodoIndexPage />} />
 
-
-          <Route path="/" element={<HomePage />} />
-        {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
-        {/* <Route path="/*" element={<Navigate to="/" />} /> */}
-        </Routes>
-      </>
-    ) : (
-      <AuthPage setUser={setUser} />
-    )}
-  </main>
-    
-
-
-      
+            <Route path="/" element={<HomePage />} />
+            {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
+            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
+          </Routes>
+        </>
+      ) : (
+        <AuthPage setUser={setUser} />
+      )}
+    </main>
   );
 }
