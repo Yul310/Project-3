@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <>
-      <div className="w-64" aria-label="Sidebar" aria-selected="false">
+      <div className="flex w-64" aria-label="Sidebar">
         <div className="overflow-y-auto h-screen bg-[#7b7e63]">
           <div>
             <div className="bg-[#1f1f1f]">
@@ -31,46 +31,49 @@ export default function NavBar({ user, setUser }) {
               </p>
             </div>
             {/* Begin NavBar */}
-            <div className="space-y-2">
-              <Link
-                to="/"
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight active"
-                aria-selected="true"
-              >
-                <i className="fa-solid fa-house mt-1"></i>&nbsp;&nbsp;&nbsp;Home
-              </Link>
-            </div>
-            <div>
-              <Link
-                to="/notes"
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                aria-selected="false"
-              >
-                <i class="fa-solid fa-pen-to-square mt-1.5"></i>
-                &nbsp;&nbsp;&nbsp;Notes
-              </Link>
-            </div>
-            <div>
-              <Link
-                to="/todos"
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                aria-selected="false"
-              >
-                <i class="fa-solid fa-list-check mt-1.5"></i>
-                &nbsp;&nbsp;&nbsp;To-Do Lists
-              </Link>
-            </div>
+            <div id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+              <div>
+                <Link
+                  to="/"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight active"
+                  aria-selected="true"
+                >
+                  <i className="fa-solid fa-house mt-1"></i>
+                  &nbsp;&nbsp;&nbsp;Home
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/notes"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                  aria-selected="false"
+                >
+                  <i class="fa-solid fa-pen-to-square mt-1.5"></i>
+                  &nbsp;&nbsp;&nbsp;Notes
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/todos"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                  aria-selected="false"
+                >
+                  <i class="fa-solid fa-list-check mt-1.5"></i>
+                  &nbsp;&nbsp;&nbsp;To-Do Lists
+                </Link>
+              </div>
 
-            <div>
-              <Link
-                to=""
-                onClick={handleLogOut}
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] active: transition-colors duration-300 text-lg font-extralight"
-                aria-selected="false"
-              >
-                <i class="fa-solid fa-arrow-right-from-bracket mt-1.5"></i>
-                &nbsp;&nbsp;&nbsp;Log Out
-              </Link>
+              <div>
+                <Link
+                  to=""
+                  onClick={handleLogOut}
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] active: transition-colors duration-300 text-lg font-extralight"
+                  aria-selected="false"
+                >
+                  <i class="fa-solid fa-arrow-right-from-bracket mt-1.5"></i>
+                  &nbsp;&nbsp;&nbsp;Log Out
+                </Link>
+              </div>
             </div>
           </div>
         </div>
