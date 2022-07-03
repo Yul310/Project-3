@@ -4,7 +4,7 @@ import AuthPage from "../AuthPage/AuthPage";
 import NoteIndexPage from "../NoteIndexPage/NoteIndexPage";
 import TodoIndexPage from "../TodoIndexPage/TodoIndexPage";
 import HomePage from "../HomePage/HomePage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 
@@ -19,12 +19,19 @@ export default function App() {
             <Route path="/notes" element={<NoteIndexPage />} />
             <Route path="/todos" element={<TodoIndexPage />} />
 
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </>
-      ) : (
-        <AuthPage setUser={setUser} />
-      )}
-    </main>
+
+          <Route path="/" element={<HomePage />} />
+        {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
+        {/* <Route path="/*" element={<Navigate to="/" />} /> */}
+        </Routes>
+      </>
+    ) : (
+      <AuthPage setUser={setUser} />
+    )}
+  </main>
+    
+
+
+      
   );
 }
