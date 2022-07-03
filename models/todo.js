@@ -7,7 +7,9 @@ const todoSchema = new Schema({
   name: { type: String, required: true },
   date: Date,
   time: String,
-  category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
+  isCompleted: boolean,
+  // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM
+  // category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
 
   urgency: String,
 }, { timestamps: true });
