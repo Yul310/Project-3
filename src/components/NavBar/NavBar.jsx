@@ -26,8 +26,8 @@ export default function NavBar({ user, setUser }) {
             </div>
             <div>
               <p className="text-black flex justify-end p-3 mb-0 pb-1 text-base font-extralight bg-[#e4e6c3]">
-                {" "}
-                Welcome, {user.name}!
+                {/* {" "}
+                Welcome, {user.name}! */}
               </p>
             </div>
             {/* Begin NavBar */}

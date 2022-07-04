@@ -1,10 +1,14 @@
-import './Logo.css';
+import "./Logo.css";
 
 export default function Logo() {
   return (
-    <div className="Logo">
-      <div>Clear</div>
-      <div>Sight</div>
+    <div>
+      <div
+        className="text-white flex justify-center font-bold tracking-tighter"
+        id="clearsight"
+      >
+        clearsight
+      </div>
     </div>
   );
 }
