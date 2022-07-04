@@ -28,11 +28,7 @@ export default function TodoListForm() {
                     <label >Description</label>
                     <input type="text" placeholder="write here..." />
                    
-<<<<<<< HEAD
-                    <button type="submit" >Save</button>
-=======
                     <button type="submit">Create new to-do</button>
->>>>>>> main
                 </form>
             </div>
 
