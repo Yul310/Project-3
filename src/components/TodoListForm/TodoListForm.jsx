@@ -8,26 +8,27 @@ export default function TodoListForm() {
                     <label >Title</label>
                     <input type="text" placeholder="write here..." />
                     <label >Date</label>
-                    <input type="text" placeholder="write here..." />
+                    <input type="date" placeholder="write here..." />
 
-                    <label >Category</label>
+                    {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
+                    {/* <label >Category</label>
                     <select name="Category">
                     <option value="A">a</option>
                     <option value="B">b</option>
                     <option value="C">c</option>
-                    </select>
+                    </select> */}
 
                     <label >Urgency</label>
                     <select name="urgency">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
                     </select>
 
                     <label >Description</label>
                     <input type="text" placeholder="write here..." />
                    
-                    <button type="submit" >Save</button>
+                    <button type="submit">Create new to-do</button>
                 </form>
             </div>
 
