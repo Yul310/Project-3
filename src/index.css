@@ -32,3 +32,13 @@
 #clearsight {
   text-shadow: 3px 3px 0px rgba(31, 31, 31, 1);
 }
+
+#diagonal {
+  background-image: #1f1f1f;
+  transform: skewY(-5deg);
+}
+
+#revdiagonal {
+  max-width: 50em;
+  transform: skewY(5deg);
+}
