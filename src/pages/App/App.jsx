@@ -4,14 +4,14 @@ import AuthPage from "../AuthPage/AuthPage";
 import NoteIndexPage from "../NoteIndexPage/NoteIndexPage";
 import TodoIndexPage from "../TodoIndexPage/TodoIndexPage";
 import HomePage from "../HomePage/HomePage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   return (
-    <main className="App">
+    <main className="App flex flex-row">
       {user ? (
         <>
           <NavBar user={user} setUser={setUser} />
@@ -20,6 +20,8 @@ export default function App() {
             <Route path="/todos" element={<TodoIndexPage />} />
 
             <Route path="/" element={<HomePage />} />
+            {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
+            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
           </Routes>
         </>
       ) : (
