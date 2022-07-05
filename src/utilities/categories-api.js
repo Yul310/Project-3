@@ -16,7 +16,7 @@ export function getById(id) {
 // Add an cat to the cat list
 export function newCat(catData) {
   // Just send itemId for best security (no pricing)
-  console.log("reach newcat")
+  // console.log(catData)
   return sendRequest(`${BASE_URL}/newCat`, 'POST', catData);
   
 }
@@ -25,10 +25,13 @@ export function newCat(catData) {
 
 async function sendRequest(url, method = 'GET', payload = null) {
   const options = { method }
-
+  if (payload) {
+    options.headers = { 'Content-Type': 'application/json' };
+    options.body = JSON.stringify(payload);
+  }
   const res = await fetch(url, options)
   // res.ok will be false if the status code set to 4xx in the controller action
-  console.log('cat-api')
+  console.log(options)
   if (res.ok) return res.json()
   console.log(res.json)
   throw new Error('Bad Request')

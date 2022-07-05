@@ -7,7 +7,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-
+  console.log("reach index")
     try {
         const catList = await Category.find({})
         res.json(catList)
@@ -18,12 +18,14 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.body)
     try {
-      console.log("reach create")
-      const category = await Category.create(req.body);
-      // token will be a string
-   
-      res.json(category);
+      
+      const newCategory = await Category.create(req.body)
+      const catList = await Category.find({})
+      catList.push(newCategory)
+      await catList.save()
+      res.json(catList)
     } catch (e) {
       res.status(400).json(e);
     }

@@ -25,14 +25,14 @@ export default function CategoryList({ }) {
     }, []);
 
     // for loop to display all categories
-    // const cats = allCats.map(cat =>
-    //     <li
-    //         key={cat}
-    //         onClick={() => setActiveCat(cat)}
-    //     >
-    //         {cat.title}
-    //     </li>
-    // );
+    const cats = allCats.map(cat =>
+        <li
+            key={cat}
+            onClick={() => setActiveCat(cat)}
+        >
+            {cat.title}
+        </li>
+    );
 
     //creating new category
     async function handleSubmit(evt) {
@@ -91,7 +91,7 @@ export default function CategoryList({ }) {
             <ul className="pl-3 text-white flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false" >
 
-                {/* {cats} */}
+                {cats}
 
             </ul>
             <form action="">
