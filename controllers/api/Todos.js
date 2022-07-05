@@ -62,6 +62,8 @@ async function findAllTodos(userId) {
 // to delete a todo
 async function deleteTodo (req, res) {
   // console.log(req.body)
+  console.log("step 3 delete")
+
   try {
     console.log(req.params.id)
     const one = await Todo.findByIdAndDelete(req.params.id)
