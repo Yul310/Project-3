@@ -3,8 +3,8 @@ const router = express.Router();
 const todosCtrl = require('../../controllers/api/Todos');
 
 // GET /api/todos
-router.get('/', todosCtrl.index);
+router.get('/todos', todosCtrl.index);
 // GET /api/todos/:id
-router.get('/:id', todosCtrl.show);
+router.get('/todos/:id', todosCtrl.show);
 
 module.exports = router;
