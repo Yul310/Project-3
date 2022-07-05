@@ -8,7 +8,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  console.log("reach index")
+  
   try {
     const catList = await Category.find({})
     res.json(catList)
@@ -23,9 +23,11 @@ async function create(req, res) {
   try {
     const newCategory = await Category.create(req.body)
     const catList = await Category.find({})
-    catList.push(newCategory)
+    catList.push(newCategory).then((catList) => {console.log(catList)})
     await catList.save()
+    console.log(catList)
     res.json(catList)
+    
   } catch (e) {
     res.status(400).json(e);
   }
@@ -34,7 +36,10 @@ async function create(req, res) {
 async function deleteCat (req, res) {
   // console.log(req.body)
   try {
-    const one = await Category.findOneAndRemove({ _Id: req.params.id })
+    console.log(req.params.id)
+    // const one = await Category.findById(req.params.id)
+    const one = await Category.findByIdAndDelete(req.params.id)
+    // const one = await Category.findOneAndRemove({ _Id: req.params.id } )
     const catList = await Category.find({})
     await catList.save()
     res.json(catList)
