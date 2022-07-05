@@ -38,3 +38,9 @@ async function create(req, res) {
 // async function create(req, res) {
 //   try {
 //     const user = await User.create(req.body);
+
+
+// need to find all todos for a specific user
+async function findAllTodos(userId) {
+  return await this.find({ user: userId });
+}
