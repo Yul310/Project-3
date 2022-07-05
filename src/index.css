@@ -37,6 +37,10 @@
   background-image: #1f1f1f;
   transform: skewY(-5deg);
 }
+#diagonal2 {
+  background-image: #1f1f1f;
+  transform: skewY(-5deg);
+}
 
 #revdiagonal {
   max-width: 50em;
