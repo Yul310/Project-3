@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const catCtrl = require('../../controllers/api/categories');
 
-// GET /api/categories////
+// GET /api/categories
 router.get('/', catCtrl.index);
-// POST /api/categories////
+// POST /api/categories
 router.post('/newCat',catCtrl.create);
-// GET /api/categories/:id
-// router.get('/:id', catCtrl.show);
+// DELETE /api/categories/:id
+router.delete('/deleteCat/:id', catCtrl.deleteCat);
 
 module.exports = router;
