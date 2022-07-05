@@ -1,10 +1,10 @@
 export default function TodoListForm() {
   return (
     <>
+      <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
       <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
         <h3>Create a new to-do</h3>
       </div>
-      <div className="flex flex-col form max-w-xs mx-auto">
         <form action="">
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
