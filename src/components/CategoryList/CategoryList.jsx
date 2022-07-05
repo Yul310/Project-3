@@ -20,22 +20,8 @@ export default function CategoryList({}) {
     getCats();
   }, []);
 
-  //*** function = for loop to display all categories ***//
-  // const cats = allCats.map(cat =>
-  //     <>
-  //         <li
-  //             key={cat}
-  //             onClick={() => setActiveCat(cat)}
-  //         >
-  //             {cat.title}
-  //         </li>
-  //         <button type="submit" value={cat._id} onClick={deleteCat}> delete</button>
-  //     </>
-  // );
-
   //*** fucntion = creating new category ***//
   async function deleteCat(evt) {
-    console.log("evt.target.value");
     console.log(evt.target.value);
     //sending new data to backend
     const addCat = await catAPI.deleteCat(evt.target.value);
@@ -96,4 +82,5 @@ export default function CategoryList({}) {
       </form>
     </div>
   );
+
 }
