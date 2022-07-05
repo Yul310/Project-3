@@ -15,7 +15,7 @@ export default function CategoryList({}) {
     async function getCats() {
       const cats = await catAPI.getAll();
       setAllCats(cats);
-      console.log(allCats);
+    //   console.log(allCats);
     }
     getCats();
   }, []);
@@ -55,15 +55,15 @@ export default function CategoryList({}) {
         className="pl-3 text-white flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
         aria-selected="false"
       >
-        {allCats.map((cat) => (
+        {allCats.map((cat,idx) => (
           <>
-            <li key={cat._id} onClick={() => setActiveCat(cat)}>
+            <li key={idx} onClick={() => setActiveCat(cat)}>
               <Link to={`/categories/${cat.title}`}>{cat.title}</Link>
-            </li>
+           
             <button type="submit" value={cat._id} onClick={deleteCat}>
-              {" "}
               delete
             </button>
+            </li>
           </>
         ))}
         {/* {cats} */}

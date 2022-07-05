@@ -8,7 +8,7 @@ const categorySchema = new Schema({
     //     type: Date,
     //     required: true
     // },
-    sortOrder: Number
+    sortOrder: {type:Number, default:0},
 },  {
         timestamps: true,
 
