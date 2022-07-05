@@ -2,11 +2,12 @@ const Category = require('../../models/category');
 
 module.exports = {
     index,
+    create,
     show
 };
 
 async function index(req, res) {
-
+  console.log("reach index")
     try {
         const catList = await Category.find({})
         res.json(catList)
@@ -15,6 +16,23 @@ async function index(req, res) {
     }
  
 }
+
+async function create(req, res) {
+  console.log(req.body)
+    try {
+      
+      const newCategory = await Category.create(req.body)
+      const catList = await Category.find({})
+      catList.push(newCategory)
+      await catList.save()
+      res.json(catList)
+    } catch (e) {
+      res.status(400).json(e);
+    }
+  }
+  
+
+
 
 async function show(req, res) {
     const catList = await Category.findById(req.params.id);
