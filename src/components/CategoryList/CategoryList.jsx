@@ -19,51 +19,40 @@ export default function CategoryList({ }) {
         async function getCats() {
             const cats = await catAPI.getAll();
             setAllCats(cats);
-            console.log(allCats)
         }
         getCats();
     }, []);
 
-    //*** function = for loop to display all categories ***//
-    // const cats = allCats.map(cat =>
-    //     <>
-    //         <li
-    //             key={cat}
-    //             onClick={() => setActiveCat(cat)}
-    //         >
-    //             {cat.title}
-    //         </li>
-    //         <button type="submit" value={cat._id} onClick={deleteCat}> delete</button>
-    //     </>
-    // );
 
     //*** fucntion = creating new category ***//
+
     async function deleteCat(evt) {
-        console.log("evt.target.value")
         console.log(evt.target.value)
         //sending new data to backend
         const addCat = await catAPI.deleteCat(evt.target.value);
-       
+        
         // get data again from the backend
         // const cats = await catAPI.getAll();
-        // return setAllCats(cats);
+        console.log(addCat)
+        setAllCats(addCat);
     }
 
     //*** fucntion = creating new category ***//
     async function handleSubmit(evt) {
-        evt.preventDefault();
+        // evt.preventDefault();
         //sending new data to backend
         const addCat = await catAPI.newCat(formData);
+        console.log(addCat)
         // get data again from the backend
-        const cats = await catAPI.getAll();
-        return setAllCats(cats);
+        // const cats = await catAPI.getAll();
+        return setAllCats(addCat);
     }
 
     //*** function = form data ***//
     function handleChange(evt) {
         const updatedCat = { [evt.target.name]: evt.target.value };
         setFormData(updatedCat)
-        console.log(formData)
+        // console.log(formData)
         // setNewCat(evt.target.value);
     }
 
@@ -75,7 +64,7 @@ export default function CategoryList({ }) {
                 aria-selected="false" >
 
                 {allCats.map((cat) => (
-                        <>
+                    <>
                         <li
                             key={cat._id}
                             onClick={() => setActiveCat(cat)}
