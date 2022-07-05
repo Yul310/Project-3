@@ -4,13 +4,10 @@ const Schema = mongoose.Schema
 
 const categorySchema = new Schema({
     title: { type: String, required: true },
-    dueDate: {
-        type: Date,
-        required: true
-    },
-    description: {
-        type: String
-    },
+    // dueDate: {
+    //     type: Date,
+    //     required: true
+    // },
     sortOrder: Number
 },  {
         timestamps: true,
