@@ -23,11 +23,12 @@ async function create(req, res) {
   try {
     const newCategory = await Category.create(req.body)
     const catList = await Category.find({})
-    catList.push(newCategory).then((catList) => {console.log(catList)})
+    catList.push(newCategory)
     await catList.save()
     console.log(catList)
-    res.json(catList)
-    
+    // res.json()
+    response.json()
+ 
   } catch (e) {
     res.status(400).json(e);
   }
@@ -40,9 +41,9 @@ async function deleteCat (req, res) {
     // const one = await Category.findById(req.params.id)
     const one = await Category.findByIdAndDelete(req.params.id)
     // const one = await Category.findOneAndRemove({ _Id: req.params.id } )
-    const catList = await Category.find({})
-    await catList.save()
-    res.json(catList)
+    // const catList = await Category.find({})
+    // await catList.save()
+    // res.json(catList)
   } catch (e) {
     res.status(400).json(e);
   }
