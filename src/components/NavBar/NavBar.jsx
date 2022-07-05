@@ -2,7 +2,7 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 import CategoryList from "../CategoryList/CategoryList";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { findAllByTestId } from "@testing-library/react";
 
 export default function NavBar({ user, setUser }) {
@@ -15,7 +15,6 @@ export default function NavBar({ user, setUser }) {
     // Update state will also cause a re-render
     setUser(null);
   }
-
 
   return (
     <>
@@ -62,14 +61,22 @@ export default function NavBar({ user, setUser }) {
                 <Link
                   to="/todos"
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                  aria-selected="false" 
+                  aria-selected="false"
                 >
                   <i class="fa-solid fa-list-check mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;To-Do Lists
-                </Link >
-                <CategoryList/>
-                
+                </Link>
+                <CategoryList />
               </div>
+
+              <Link
+                to="/categories"
+                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                aria-selected="false"
+              >
+                <i class="fa-solid fa-tags mt-1.5"></i>
+                &nbsp;&nbsp;&nbsp;Categories
+              </Link>
 
               <div>
                 <Link
