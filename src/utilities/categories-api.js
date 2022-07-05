@@ -14,20 +14,22 @@ export function getById(id) {
 }
 
 // Add an cat to the cat list
-export function addCat() {
-    // Just send itemId for best security (no pricing)
-    return sendRequest(`${BASE_URL}/addCat`, 'POST');
-  }
+export function newCat(catData) {
+  // Just send itemId for best security (no pricing)
+  console.log("reach newcat")
+  return sendRequest(`${BASE_URL}/newCat`, 'POST', catData);
+  
+}
 
 /*--- Helper Functions ---*/
 
 async function sendRequest(url, method = 'GET', payload = null) {
-    const options = { method }
- 
-    const res = await fetch(url, options)
-    // res.ok will be false if the status code set to 4xx in the controller action
-    console.log('cat-api')
-    if (res.ok) return res.json()
-    console.log(res.json)
-    throw new Error('Bad Request')
+  const options = { method }
+
+  const res = await fetch(url, options)
+  // res.ok will be false if the status code set to 4xx in the controller action
+  console.log('cat-api')
+  if (res.ok) return res.json()
+  console.log(res.json)
+  throw new Error('Bad Request')
 }

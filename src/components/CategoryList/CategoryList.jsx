@@ -7,11 +7,14 @@ import { useState, useEffect, useRef } from 'react';
 // categories, activeCat, setActiveCat
 export default function CategoryList({ }) {
     const [allCats, setAllCats] = useState([]);
-    const [newCat, setNewCat] = useState([]);
+    // const [newCat, setNewCat] = useState([]);
     const [activeCat, setActiveCat] = useState([]);
+    const [formData, setFormData] = useState({
+        title: ""
+      });
 
 
-
+    //Getting Data From Backend
     useEffect(function () {
         async function getCats() {
             const cats = await catAPI.getAll();
@@ -20,32 +23,36 @@ export default function CategoryList({ }) {
         }
         getCats();
     }, []);
-    //
 
-    const cats = allCats.map(cat =>
-        <li
-            key={cat}
-            onClick={() => setActiveCat(cat)}
-        >
-            {cat.title}
+    // for loop to display all categories
+    // const cats = allCats.map(cat =>
+    //     <li
+    //         key={cat}
+    //         onClick={() => setActiveCat(cat)}
+    //     >
+    //         {cat.title}
+    //     </li>
+    // );
 
-        </li>
-    );
-
-    async function addCat(evt) {
+    //creating new category
+    async function handleSubmit(evt) {
         evt.preventDefault();
         // 1. Call the addItemToCat function in ordersAPI, passing to it the itemId, and assign the resolved promise to a variable named cat.
         // const updatedCat = await catAPI.addCat();
         // 2. Update the cat state with the updated cat received from the server
-       ;
-       setAllCats(...allCats,newCat)
-       console.log(allCats)
+        // try {
+        //     const formData
+        // }
+        const addCat = await catAPI.newCat(formData);
+    //    setAllCats(formData)
+        // console.log(allCats)
         // setNewCat("")
-      }
-    function handleChange(evt){
-        const updatedCat = {[evt.target.name]: evt.target.value};
-        setNewCat(updatedCat)
-       console.log(setNewCat)
+
+    }
+    function handleChange(evt) {
+        const updatedCat = { [evt.target.name]: evt.target.value };
+        setFormData(updatedCat)
+        console.log(formData)
         // setNewCat(evt.target.value);
     }
 
@@ -84,12 +91,12 @@ export default function CategoryList({ }) {
             <ul className="pl-3 text-white flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false" >
 
-                {cats}
+                {/* {cats} */}
 
             </ul>
             <form action="">
-                <input  name="title" value={newCat.title}  type="text" placeholder="New Category.." onChange={handleChange}/>
-                <button type="submit" onClick={addCat}>Add new </button>
+                <input name="title" value={formData.title} type="text" placeholder="New Category.." onChange={handleChange} />
+                <button type="submit" onClick={handleSubmit}>Add new </button>
             </form>
 
         </div>
