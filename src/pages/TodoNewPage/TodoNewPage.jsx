@@ -7,7 +7,7 @@ export default function TodoIndexPage() {
       <div>
         <h1>TodoIndexPage</h1>
         <TodoList />
-        {/* <TodoListForm /> */}
+        <TodoListForm />
       </div>
     </>
   );
