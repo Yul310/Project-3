@@ -46,3 +46,10 @@
   max-width: 50em;
   transform: skewY(5deg);
 }
+
+.form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
