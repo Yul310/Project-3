@@ -1,6 +1,57 @@
+import * as todoAPI from "../../utilities/todos-api";
 import TodoListItem from "../TodoListItem/TodoListItem";
+import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+
+
 
 export default function TodoList() {
+    const [allTodos, setAllTodos] = useState([]);
+    const [activeTodo, setActiveTodo] = useState([]);
+    const [formData, setFormData] = useState({
+      title: "",
+    });
+  
+    //*** function = Getting Data From Backend  ***//
+    useEffect(function () {
+      async function getTodos() {
+        const todos = await todoAPI.getAll();
+        setAllTodos(todos);
+        console.log(allTodos);
+      }
+      getTodos();
+    }, []);
+    
+    
+    //*** fucntion = creating new category ***//
+    async function handleSubmit(evt) {
+      evt.preventDefault();
+      //sending new data to backend
+      const addTodo = await todoAPI.newTodo(formData);
+      // get data again from the backend
+      const todos = await todoAPI.getAll();
+      return setAllTodos(todos);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    console.log("step 1 of delete function")
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="flex-col px-10 flex mt-24 bg-blue-500">
