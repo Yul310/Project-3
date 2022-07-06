@@ -41,7 +41,7 @@ async function create(req, res) {
 }
 
 
-// need to find all todos for a specific user
+// need to find all todos for a specific user - this might not be necessary -K
 async function findAllTodos(userId) {
   return await this.find({ user: userId });
 }
