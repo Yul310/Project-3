@@ -50,7 +50,6 @@ export default function TodoListForm() {
   //   return setAllTodos(todos);
   // }
 
-
   async function handleSubmit(evt) {
     evt.preventDefault();
     // console.log(formData);
@@ -68,7 +67,6 @@ export default function TodoListForm() {
     });
   }
 
-
   //*** function = form data ***//
   function handleChange(evt) {
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
@@ -81,14 +79,12 @@ export default function TodoListForm() {
     <>
       <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
-       
-
           <h3>Create a new to-do</h3>
         </div>
-          <form 
-            action="" 
-            // onClick={handleSubmit}
-          >
+        <form
+          action=""
+          // onClick={handleSubmit}
+        >
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
@@ -123,7 +119,11 @@ export default function TodoListForm() {
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Urgency
           </label>
-          <select name="urgency" value={formData.urgency} onChange={handleChange}>
+          <select
+            name="urgency"
+            value={formData.urgency}
+            onChange={handleChange}
+          >
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>

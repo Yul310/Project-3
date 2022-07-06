@@ -26,10 +26,10 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/categories", require("./routes/api/categories"));
 
 // Notes API Routes
-app.use("/api/notes", require("./routes/api/notes"));
+// app.use("/api/notes", require("./routes/api/notes"));
 
 // Todos API Routes
-app.use('/api/todos', require('./routes/api/todos'))
+app.use("/api/todos", require("./routes/api/todos"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

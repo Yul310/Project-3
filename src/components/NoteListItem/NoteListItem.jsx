@@ -33,14 +33,10 @@ export default function NoteListItem() {
     const addNote = await noteAPI.deleteNote(evt.target.value);
   }
 
-  //*** fucntion = creating new category ***//
+  //*** fucntion = creating new note ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    // console.log(formData);
-    // console.log(allCats)
-    // updating frontend
     setAllNotes([...allNotes, formData]);
-    // sending new data to backend
     noteAPI.newNote(formData);
     setFormData({
       title: "",
@@ -51,10 +47,9 @@ export default function NoteListItem() {
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedNote = { [evt.target.name]: evt.target.value };
+    const updatedNote = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedNote);
     console.log(formData);
-    // setNewCat(evt.target.value);
   }
 
   return (
@@ -86,7 +81,7 @@ export default function NoteListItem() {
           <br />
           <br />
           <input
-            name="note"
+            name="body"
             value={formData.body}
             type="text"
             placeholder="Write here"
@@ -98,7 +93,7 @@ export default function NoteListItem() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="bg-[#1f1f1f] flex font-light text-sm text-white py-2 px-3 rounded-lg hover:ring hover:ring-orange-400"
+            className="bg-[#1f1f1f] flex justify-end font-light text-sm text-white py-2 px-3 rounded-lg hover:ring hover:ring-orange-400"
           >
             Add New Note{" "}
           </button>
