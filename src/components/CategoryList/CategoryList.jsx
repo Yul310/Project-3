@@ -37,11 +37,14 @@ export default function CategoryList({}) {
   //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(formData);
+    console.log(allCats)
+    //updating frontend
+    setAllCats([...allCats,formData])
     //sending new data to backend
     const addCat = await catAPI.newCat(formData);
-    // get data again from the backend
-    const cats = await catAPI.getAll();
-    return setAllCats(cats);
+  
+   ;
   }
 
   //*** function = form data ***//
