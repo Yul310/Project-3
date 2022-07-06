@@ -66,7 +66,6 @@ export default function NavBar({ user, setUser }) {
                   <i class="fa-solid fa-list-check mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;To-Do Lists
                 </Link>
-                <CategoryList />
               </div>
 
               <Link
