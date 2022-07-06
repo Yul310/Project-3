@@ -8,7 +8,7 @@ router.get('/', todosCtrl.index);
 //POST /api/todos/new
 router.post('/newTodo', todosCtrl.create);
 
-// DELETE /api/categories/:id
+// DELETE /api/todos/:id
 router.delete('/deleteTodos/:id', todosCtrl.deleteTodo);
 
 // GET /api/todos/:id
