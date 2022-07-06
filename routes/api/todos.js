@@ -3,7 +3,7 @@ const router = express.Router();
 const todosCtrl = require('../../controllers/api/Todos');
 
 // GET /api/todos
-router.get('/todos', todosCtrl.index);
+router.get('/', todosCtrl.index);
 
 //GET /api/todos/new
 router.get('/todos/new', todosCtrl.new);
