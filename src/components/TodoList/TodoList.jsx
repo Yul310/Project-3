@@ -62,6 +62,15 @@ export default function TodoList() {
     setEdit(!edit);
   }
 
+  let viewMode = {}
+  let editMode = {}
+
+  if (edit) {
+      viewMode.display = "none"
+  } else {
+      editMode.display = "none"
+  }
+
   console.log("step 1 of delete function");
 
   return (
@@ -77,16 +86,23 @@ export default function TodoList() {
               className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
               aria-selected="false"
             >
-              {allTodos.map((todo, idx) => (
+              {allTodos.map((todo, idx, { setEdit }) => (
                 <>
                   <li key={idx} onClick={() => setActiveTodo(todo)}>
-                    <Link to={`/todos/${todo.title}`}>{todo.title}</Link>
+                    <Link to={`/todos/${todo.title}`} style={viewMode}>{todo.title}
+                    </Link>
+                    <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />
                     <button
                       className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                       onClick={handleEditing}
                     >
                       Edit
                     </button>
+
+                    <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleEditing}>
+                               Save
+                            </button>
+
                     {/* <br></br> */}
                     <button
                       type="submit"
