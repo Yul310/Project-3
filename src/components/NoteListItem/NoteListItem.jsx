@@ -7,6 +7,7 @@ export default function NoteListItem() {
   const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
+    category: "",
     body: "",
   });
 
@@ -26,7 +27,6 @@ export default function NoteListItem() {
 
     // get data again from the backend
     // const cats = await catAPI.getAll();
-    // setAllCats(cats);
     const notes = allNotes.filter((note) => note._id !== evt.target.value);
     console.log(notes);
     setAllNotes(notes);
@@ -36,11 +36,17 @@ export default function NoteListItem() {
   //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    //sending new data to backend
-    const addNote = await noteAPI.newNote(formData);
-    // get data again from the backend
-    const notes = await noteAPI.getAll();
-    return setAllNotes(notes);
+    // console.log(formData);
+    // console.log(allCats)
+    // updating frontend
+    setAllNotes([...allNotes, formData]);
+    // sending new data to backend
+    noteAPI.newNote(formData);
+    setFormData({
+      title: "",
+      category: "",
+      body: "",
+    });
   }
 
   //*** function = form data ***//
@@ -53,8 +59,6 @@ export default function NoteListItem() {
 
   return (
     <>
-      <h5>NoteListItem</h5>
-      <br />
       <div className="p-2 rounded-lg">
         <form
           action=""
@@ -65,36 +69,36 @@ export default function NoteListItem() {
             name="title"
             value={formData.title}
             type="text"
-            placeholder="Note Title"
+            placeholder="Title"
             onChange={handleChange}
-            className="bg-[#f7f7f2] text-lg border-b-2 border-black"
+            className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
           />
           <br />
-          <br />
+          <i class="fa-solid fa-tag"></i> &nbsp;
           <input
-            name="Category"
+            name="category"
             value={formData.category}
             type="text"
             placeholder="Category"
             onChange={handleChange}
-            className="bg-[#f7f7f2] border-b-[1px] border-black"
+            className="bg-[#f7f7f2] text-sm outline-0"
           />
           <br />
           <br />
           <input
-            name="Note"
+            name="note"
             value={formData.body}
             type="text"
             placeholder="Write here"
             onChange={handleChange}
-            className="bg-[#f7f7f2]"
+            className="bg-[#f7f7f2] outline-0"
           />
           <br />
           <br />
           <button
             type="submit"
             onClick={handleSubmit}
-            className="bg-[#1f1f1f] font-light text-white py-2 px-3 rounded-lg hover:ring hover:ring-orange-400"
+            className="bg-[#1f1f1f] flex font-light text-sm text-white py-2 px-3 rounded-lg hover:ring hover:ring-orange-400"
           >
             Add New Note{" "}
           </button>
