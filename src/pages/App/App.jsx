@@ -9,6 +9,7 @@ import HomePage from "../HomePage/HomePage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
+import TodoListItem from "../../components/TodoListItem/TodoListItem";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -21,6 +22,8 @@ export default function App() {
             <Routes>
               <Route path="/notes" element={<NoteIndexPage />} />
               <Route path="/todos" element={<TodoIndexPage />} />
+              <Route path="/todos/:id" element={<TodoListItem />} />
+
               <Route path="/todos/new" element={<TodoNewPage />} />
               <Route path="/categories" element={<CategoryIndexPage />} />
               <Route path="/" element={<HomePage user={user} />} />

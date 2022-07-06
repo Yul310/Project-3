@@ -92,7 +92,7 @@ export default function TodoList() {
               {allTodos.map((todo, idx, { setEdit }) => (
                 <>
                   <li key={idx} onClick={() => setActiveTodo(todo)}>
-                    <Link to={`/todos/${todo.title}`} style={viewMode}>{todo.title}
+                    <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
                     </Link>
                     <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />
                     <button
