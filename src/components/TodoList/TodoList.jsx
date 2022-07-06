@@ -6,8 +6,8 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 
 
-export default function TodoList() {
-  const [allTodos, setAllTodos] = useState([]);
+export default function TodoList({allTodos}) {
+  // const [allTodos, setAllTodos] = useState([]);
   const [activeTodo, setActiveTodo] = useState([]);
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
@@ -19,14 +19,14 @@ export default function TodoList() {
   });
 
   //*** function = Getting Data From Backend  ***//
-  useEffect(function () {
-    async function getTodos() {
-      const todos = await todoAPI.getAll();
-      setAllTodos(todos);
-      //   console.log(allTodos);
-    }
-    getTodos();
-  }, []);
+  // useEffect(function () {
+  //   async function getTodos() {
+  //     const todos = await todoAPI.getAll();
+  //     setAllTodos(todos);
+  //     //   console.log(allTodos);
+  //   }
+  //   getTodos();
+  // }, []);
 
   //*** fucntion = creating new category ***//
   async function deleteTodo(evt) {
@@ -37,7 +37,7 @@ export default function TodoList() {
     // setAllTodos(todos);
     const todos = allTodos.filter((todo) => todo._id !== evt.target.value);
     console.log(todos);
-    setAllTodos(todos);
+    // setAllTodos(todos);
     const addTodo = await todoAPI.deleteTodo(evt.target.value);
   }
 
@@ -48,7 +48,7 @@ export default function TodoList() {
     const addTodos = await todoAPI.newTodo(formData);
     // get data again from the backend
     const todos = await todoAPI.getAll();
-    return setAllTodos(todos);
+    // return setAllTodos(todos);
   }
 
   //*** function = form data ***//
@@ -78,13 +78,16 @@ export default function TodoList() {
 
   return (
     <>
+    {allTodos?
       <div className="flex-col px-10 flex mt-24">
         <div
         // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
         >
           <h3>Todo List</h3>
           {/* <TodoListItem /> */}
+          
           <div>
+
             <ul
               className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
               aria-selected="false"
@@ -92,7 +95,7 @@ export default function TodoList() {
               {allTodos.map((todo, idx, { setEdit }) => (
                 <>
                   <li key={idx} onClick={() => setActiveTodo(todo)}>
-                    <Link to={`/todos/${todo.title}`} style={viewMode}>{todo.title}
+                    <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
                     </Link>
                     <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />
                     <button
@@ -133,6 +136,7 @@ export default function TodoList() {
           </Link>
         </div> */}
       </div>
+      :<h5>loading</h5>}
     </>
   );
 }
