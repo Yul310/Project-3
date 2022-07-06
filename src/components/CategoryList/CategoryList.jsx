@@ -34,16 +34,16 @@ export default function CategoryList({ }) {
     // *** fucntion = editing a category ***//
     async function editCat(evt) {
         console.log(evt.target.value);
-        
+
         // FrontEnd updating
         const cats = allCats.filter((cat) => cat._id === evt.target.value);
         cats[0].title = formData.title
         setEdit(!edit)
         // console.log(cats[0].title);
         // console.log(formData)
-        
+
         //Backend updating
-        catAPI.editCat(evt.target.value,formData);
+        catAPI.editCat(evt.target.value, formData);
         setFormData({
             title: ""
         })
@@ -70,7 +70,7 @@ export default function CategoryList({ }) {
         const updatedCat = { [evt.target.name]: evt.target.value };
         setFormData(updatedCat);
         console.log(formData);
-        
+
         // setNewCat(evt.target.value);
     }
     //*** function = Edit data ***//
@@ -80,6 +80,8 @@ export default function CategoryList({ }) {
 
     }
 
+    //*** function = below function is making edit(input) or show(link-text) changes ***//
+    //reference => https://ibaslogic.com/how-to-edit-todos-items-in-react/
     let viewMode = {}
     let editMode = {}
 
@@ -88,7 +90,7 @@ export default function CategoryList({ }) {
     } else {
         editMode.display = "none"
     }
-
+    //
     return (
         <div>
             <ul
@@ -101,11 +103,11 @@ export default function CategoryList({ }) {
                             <Link to={`/categories/${cat.title}`} style={viewMode} >{cat.title}</Link>
                             <input name="title" type="text" className='textInput' style={editMode} placeholder={cat.title} onChange={handleChange} />
 
-                            <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} onClick={deleteCat}>
+                            <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id}  style={editMode} onClick={deleteCat}>
                                 Delete
                             </button>
                             <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} style={editMode} onClick={editCat}>
-                               Save
+                                Save
                             </button>
                         </li>
                     </>
