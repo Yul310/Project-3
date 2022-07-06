@@ -8,7 +8,7 @@ const todoSchema = new Schema({
   // user: { type: Schema.Types.ObjectId, ref: 'User' },
   title: { type: String, required: true },
   date: Date,
-  time: String,
+  // time: String,
   sortOrder: Number,
   description: String,
 
