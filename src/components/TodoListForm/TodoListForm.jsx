@@ -9,7 +9,7 @@ export default function TodoListForm() {
     // add in all the other fields
     title: "",
     date: "",
-    // time: "",
+    time: "",
     description: "",
     urgency: "",
   });
@@ -24,7 +24,7 @@ export default function TodoListForm() {
     getTodos();
   }, []);
 
-  //*** fucntion = deleting new todo ***//
+  //*** fucntion = creating new category ***//
   async function deleteTodo(evt) {
     console.log(evt.target.value);
     //sending new data to backend
@@ -37,41 +37,19 @@ export default function TodoListForm() {
     const addTodo = await todoAPI.deleteTodo(evt.target.value);
   }
 
-  // this is a comment to test
-
-  //*** fucntion = creating new todo ***//
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   //sending new data to backend
-  //   // the new info is not getting added to the backend
-  //   const addTodos = await todoAPI.newTodo(formData);
-  //   // get data again from the backend
-  //   const todos = await todoAPI.getAll();
-  //   return setAllTodos(todos);
-  // }
-
-
+  //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    // console.log(formData);
-
-    // updating frontend
-    setAllTodos([...allTodos, formData]);
-    // sending new data to backend
-    todoAPI.newTodo(formData);
-    setFormData({
-      title: "",
-      date: "",
-      // time: "",
-      description: "",
-      urgency: "",
-    });
+    //sending new data to backend
+    const addTodos = await todoAPI.newTodo(formData);
+    // get data again from the backend
+    const todos = await todoAPI.getAll();
+    return setAllTodos(todos);
   }
-
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
+    const updatedTodo = { [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
@@ -81,21 +59,36 @@ export default function TodoListForm() {
     <>
       <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
-       
+          {/* // don't think I actually want all todos to show on the form */}
+          {/* <div>
+            {allTodos.map((todo, idx) => (
+              <>
+                <li key={idx} onClick={() => setActiveTodo(todo)}>
+                  <Link to={`/todos/${todo.title}`}>{todo.title}</Link>
+
+                  <button
+                    type="submit"
+                    value={todo._id}
+                    // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
+                    onClick={deleteTodo}
+                  >
+                    delete
+                  </button>
+                </li>
+              </>
+            ))}
+            //  {todos}
+          </div> */}
 
           <h3>Create a new to-do</h3>
         </div>
-          <form 
-            action="" 
-            // onClick={handleSubmit}
-          >
+        <form action="" onChange={handleChange}>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
           <input
             type="text"
             name="title"
-            onChange={handleChange}
             value={formData.title}
             placeholder="write here..."
           />
@@ -106,7 +99,6 @@ export default function TodoListForm() {
           <input
             type="date"
             name="date"
-            onChange={handleChange}
             value={formData.date}
             placeholder="write here..."
           />
@@ -123,7 +115,7 @@ export default function TodoListForm() {
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Urgency
           </label>
-          <select name="urgency" value={formData.urgency} onChange={handleChange}>
+          <select name="urgency" value={formData.urgency}>
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>
@@ -136,7 +128,6 @@ export default function TodoListForm() {
           <input
             type="text"
             name="description"
-            onChange={handleChange}
             value={formData.description}
             placeholder="write here..."
           />
