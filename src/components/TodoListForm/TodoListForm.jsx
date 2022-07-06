@@ -2,9 +2,9 @@ import * as todoAPI from "../../utilities/todos-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function TodoListForm() {
-  const [allTodos, setAllTodos] = useState([]);
-  const [activeTodo, setActiveTodo] = useState([]);
+export default function TodoListForm({setUpdated} ) {
+  // const [allTodos, setAllTodos] = useState([]);
+  // const [activeTodo, setActiveTodo] = useState([]);
   const [formData, setFormData] = useState({
     // add in all the other fields
     title: "",
@@ -14,30 +14,32 @@ export default function TodoListForm() {
     urgency: "",
   });
 
-  //*** function = Getting Data From Backend  ***//
-  useEffect(function () {
-    async function getTodos() {
-      const todos = await todoAPI.getAll();
-      setAllTodos(todos);
-      //   console.log(allTodos);
-    }
-    getTodos();
-  }, []);
+  // //*** function = Getting Data From Backend  ***//
+  // useEffect(function () {
+  //   async function getTodos() {
+  //     const todos = await todoAPI.getAll();
+  //     setAllTodos(todos);
+  //     //   console.log(allTodos);
+  //   }
+  //   getTodos();
+  // }, []);
 
 
 
   //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(allTodos)
-    console.log(formData)
-    setAllTodos([...allTodos,formData]);
-    console.log(allTodos)
+    // console.log(allTodos)
+    // console.log(formData)
+    // setAllTodos([...allTodos,formData]);
+    // addTodos(formData);
+    // console.log(allTodos)
     //sending new data to backend
     todoAPI.newTodo(formData);
+    setUpdated(true)
     // get data again from the backend
-    const todos = todoAPI.getAll();
-    console.log(todos);
+    // const todos = todoAPI.getAll();
+    // console.log(todos);
 
   }
 
