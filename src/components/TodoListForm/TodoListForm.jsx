@@ -9,9 +9,9 @@ export default function TodoListForm() {
     // add in all the other fields
     title: "",
     date: "",
-    time: "",
-    description: "",
+    // time: "",
     urgency: "",
+    description: "",
   });
 
   //*** function = Getting Data From Backend  ***//
