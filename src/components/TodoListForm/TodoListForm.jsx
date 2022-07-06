@@ -49,7 +49,7 @@ export default function TodoListForm() {
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { [evt.target.name]: evt.target.value };
+    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
