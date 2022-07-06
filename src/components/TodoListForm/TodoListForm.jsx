@@ -1,6 +1,6 @@
 import * as todoAPI from "../../utilities/todos-api";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function TodoListForm() {
   const [allTodos, setAllTodos] = useState([]);
@@ -9,7 +9,7 @@ export default function TodoListForm() {
     // add in all the other fields
     title: "",
     date: "",
-    time: "",
+    // time: "",
     description: "",
     urgency: "",
   });
@@ -24,27 +24,21 @@ export default function TodoListForm() {
     getTodos();
   }, []);
 
-  //*** fucntion = creating new category ***//
-  async function deleteTodo(evt) {
-    console.log(evt.target.value);
-    //sending new data to backend
-    // get data again from the backend
-    // const todos = await todoAPI.getAll();
-    // setAllTodos(todos);
-    const todos = allTodos.filter((todo) => todo._id !== evt.target.value);
-    console.log(todos);
-    setAllTodos(todos);
-    const addTodo = await todoAPI.deleteTodo(evt.target.value);
-  }
+
 
   //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(allTodos)
+    console.log(formData)
+    setAllTodos([...allTodos,formData]);
+    console.log(allTodos)
     //sending new data to backend
-    const addTodos = await todoAPI.newTodo(formData);
+    todoAPI.newTodo(formData);
     // get data again from the backend
-    const todos = await todoAPI.getAll();
-    return setAllTodos(todos);
+    const todos = todoAPI.getAll();
+    console.log(todos);
+
   }
 
   //*** function = form data ***//
@@ -116,9 +110,9 @@ export default function TodoListForm() {
             Urgency
           </label>
           <select name="urgency" value={formData.urgency}>
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
+            <option value="low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
 
           <p>&nbsp;</p>
