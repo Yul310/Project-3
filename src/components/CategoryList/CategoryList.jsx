@@ -75,10 +75,10 @@ export default function CategoryList({}) {
             <li key={idx} onClick={() => setActiveCat(cat)}>
               <Link to={`/categories/${cat.title}`}>{cat.title}</Link>
 
-              <button type="submit" value={cat._id} onClick={deleteCat}>
+              <button className ="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} onClick={deleteCat}>
                 Delete
               </button>
-              <button type="submit" value={cat._id} onClick={editCat}>
+              <button className ="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} onClick={editCat}>
                 Edit
               </button>
             </li>
@@ -94,7 +94,7 @@ export default function CategoryList({}) {
           placeholder="New Category.."
           onChange={handleChange}
         />
-        <button type="submit" onClick={handleSubmit}>
+        <button className ="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2" type="submit" onClick={handleSubmit}>
           Add new{" "}
         </button>
       </form>
