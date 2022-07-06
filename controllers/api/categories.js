@@ -4,6 +4,7 @@ module.exports = {
   index,
   create,
   deleteCat,
+  editCat,
   show,
 };
 
@@ -43,6 +44,16 @@ async function deleteCat(req, res) {
     res.status(400).json(e);
   }
 }
+
+async function editCat(req, res) {
+  const catList = await Category.findByIdAndUpdate({_id:req.params.id},{title:req.body.title});
+  console.log(catList)
+  // catList.title = req.body.title;
+  // console.log(catList)
+  // console.log(req.body)
+  // res.json(catList);
+}
+
 
 async function show(req, res) {
   const catList = await Category.findById(req.params.id);

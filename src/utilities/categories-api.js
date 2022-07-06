@@ -11,8 +11,8 @@ export function deleteCat(id) {
   return sendRequest(`${BASE_URL}/deleteCat/${id}`, "DELETE");
 }
 
-export function editCat(id) {
-  return sendRequest(`${BASE_URL}/editCat/${id}`, 'PUT');
+export function editCat(id,catData) {
+  return sendRequest(`${BASE_URL}/editCat/${id}`, 'PUT',catData);
 }
 
 // Add an cat to the cat list
