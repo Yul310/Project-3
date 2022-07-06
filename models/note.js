@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
+require("./category");
 
 //-- Model ---------------------------------------------//
 
@@ -28,3 +29,4 @@ const Note = model("Note", noteSchema);
 
 //-- Export Model ---------------------------------------------//
 module.exports = Note;
+// module.exports = mongoose.model("Note", noteSchema);

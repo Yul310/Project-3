@@ -37,7 +37,20 @@ export default function TodoListForm() {
     const addTodo = await todoAPI.deleteTodo(evt.target.value);
   }
 
-  //*** fucntion = creating new category ***//
+
+  // this is a comment to test
+
+  //*** fucntion = creating new todo ***//
+  // async function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   //sending new data to backend
+  //   // the new info is not getting added to the backend
+  //   const addTodos = await todoAPI.newTodo(formData);
+  //   // get data again from the backend
+  //   const todos = await todoAPI.getAll();
+  //   return setAllTodos(todos);
+  // }
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     //sending new data to backend
@@ -59,6 +72,7 @@ export default function TodoListForm() {
     <>
       <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
+
           {/* // don't think I actually want all todos to show on the form */}
           {/* <div>
             {allTodos.map((todo, idx) => (
