@@ -31,5 +31,5 @@ async function sendRequest(url, method = "GET", payload = null) {
   console.log(options);
   if (res.ok) return res.json();
   console.log(res.json);
-  throw new Error("Bad Request");
+  throw new Error("Not so good. Come on man, you're better than this.");
 }
