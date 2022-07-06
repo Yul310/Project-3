@@ -10,6 +10,7 @@ const todoSchema = new Schema({
   date: Date,
   time: String,
   sortOrder: Number,
+  description: String,
 
   // isCompleted: boolean,
   // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -K

@@ -10,31 +10,35 @@ const Todo = require('./models/todo');
     const todos = await Todo.create([
   
         {
-            title: 'today todo',
+            title: 'never todo',
             date: '2022-05-01',
             time: '12:00',
             sortOrder: 0,
+            description: "this is a tester",
             urgency: 'low',
         },
         {
-            title: 'default 20',
+            title: 'silly willy 20',
             date: '2020-01-01',
             time: '12:00',
             sortOrder: 0,
+            description: "this is a test",
             urgency: 'low',
         },
         {
-            title: 'default 21',
+            title: 'kiera forrest 21',
             date: '2020-01-01',
             time: '12:00',
             sortOrder: 0,
-            urgency: 'low',
+            description: "this is a NOT a test",
+            urgency: 'high',
         },
         {
-            title: 'default 22',
+            title: 'james bond 22',
             date: '2020-01-01',
             time: '12:00',
             sortOrder: 0,
+            description: "this is stupid",
             urgency: 'low',
         },
 
