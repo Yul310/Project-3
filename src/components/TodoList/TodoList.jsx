@@ -2,6 +2,9 @@ import * as todoAPI from "../../utilities/todos-api";
 import TodoListItem from "../TodoListItem/TodoListItem";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+// how to pull data from database?
+// import { todos } from "../../data";
+
 
 export default function TodoList() {
   const [allTodos, setAllTodos] = useState([]);
