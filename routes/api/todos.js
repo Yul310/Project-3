@@ -6,12 +6,12 @@ const todosCtrl = require('../../controllers/api/Todos');
 router.get('/', todosCtrl.index);
 
 //POST /api/todos/new
-router.post('/todos/new', todosCtrl.create);
+router.post('/newTodo', todosCtrl.create);
 
 // DELETE /api/categories/:id
 router.delete('/deleteTodos/:id', todosCtrl.deleteTodo);
 
 // GET /api/todos/:id
-router.get('/todos/:id', todosCtrl.show);
+router.get('/:id', todosCtrl.show);
 
 module.exports = router;
