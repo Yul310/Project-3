@@ -1,4 +1,4 @@
-import NoteListItem from "../NoteListItem/NoteListItem";
+import NoteListItem from "../NoteListForm/NoteListForm";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
