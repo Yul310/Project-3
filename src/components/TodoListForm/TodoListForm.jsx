@@ -7,7 +7,11 @@ export default function TodoListForm() {
   const [allTodos, setAllTodos] = useState([]);
   const [activeTodo, setActiveTodo] = useState([]);
   const [formData, setFormData] = useState({
+    // add in all the other fields
       title: "",
+      date: "",
+      time: "",
+      urgency: "",
   });
 
   //*** function = Getting Data From Backend  ***//
@@ -79,14 +83,14 @@ export default function TodoListForm() {
 
         <h3>Create a new to-do</h3>
       </div>
-        <form action="">
+        <form action="" onChange={handleChange}>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
-          <input type="text" placeholder="write here..." />
+          <input type="text" value={formData.title} placeholder="write here..." />
           <p>&nbsp;</p>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">Date</label>
-          <input type="date" placeholder="write here..." />
+          <input type="date" value={formData.date} placeholder="write here..." />
           <p>&nbsp;</p>
 
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
@@ -98,7 +102,7 @@ export default function TodoListForm() {
                     </select> */}
 
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">Urgency</label>
-          <select name="urgency">
+          <select name="urgency" value={formData.urgency}>
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>
@@ -106,9 +110,9 @@ export default function TodoListForm() {
 
           <p>&nbsp;</p>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">Description</label>
-          <input type="text" placeholder="write here..." />
+          <input type="text" value={formData.description} placeholder="write here..." />
           <p>&nbsp;</p>
-          <button type="submit" className="bg-[#1f1f1f] text-white font-medium py-2 px-4 rounded hover:ring hover:ring-orange-400">
+          <button type="submit" onClick={handleSubmit} className="bg-[#1f1f1f] text-white font-medium py-2 px-4 rounded hover:ring hover:ring-orange-400">
             Create new to-do
           </button>
         </form>

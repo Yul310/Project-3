@@ -19,13 +19,11 @@ async function index(req, res) {
 async function create(req, res) {
   // console.log(req.body)
   try {
-    const newCategory = await Category.create(req.body);
-    const catList = await Category.find({});
-    catList.push(newCategory);
-    await catList.save();
-    console.log(catList);
-    // res.json()
-    response.json();
+    const newCategory = await Category.create(req.body)
+    const catList = await Category.find({})
+    catList.push(newCategory)
+    await catList.save()
+    
   } catch (e) {
     res.status(400).json(e);
   }
