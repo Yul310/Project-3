@@ -20,29 +20,41 @@ export default function CategoryList({}) {
     getCats();
   }, []);
 
-  //*** fucntion = creating new category ***//
+  //*** fucntion = deleting a category ***//
   async function deleteCat(evt) {
-    console.log(evt.target.value);
-    //sending new data to backend
-
-    // get data again from the backend
-    // const cats = await catAPI.getAll();
-    // setAllCats(cats);
+    // console.log(evt.target.value);
     const cats = allCats.filter((cat) => cat._id !== evt.target.value);
     console.log(cats);
     setAllCats(cats);
+    //sending new data to backend
     const addCat = await catAPI.deleteCat(evt.target.value);
   }
+
+    //*** fucntion = editing a category ***//
+    async function editCat(evt) {
+        console.log(evt.target.value);
+      
+        const cats = allCats.filter((cat) => cat._id !== evt.target.value);
+        console.log(cats);
+        setAllCats(cats);
+        const addCat = await catAPI.deleteCat(evt.target.value);
+      }
 
   //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    //sending new data to backend
-    const addCat = await catAPI.newCat(formData);
-    // get data again from the backend
-    const cats = await catAPI.getAll();
-    return setAllCats(cats);
+    // console.log(formData);
+    // console.log(allCats)
+    // updating frontend
+    setAllCats([...allCats,formData])
+    // sending new data to backend
+    catAPI.newCat(formData)
+    setFormData({
+        title: ""
+      })
   }
+
+
 
   //*** function = form data ***//
   function handleChange(evt) {
@@ -64,7 +76,10 @@ export default function CategoryList({}) {
               <Link to={`/categories/${cat.title}`}>{cat.title}</Link>
 
               <button type="submit" value={cat._id} onClick={deleteCat}>
-                delete
+                Delete
+              </button>
+              <button type="submit" value={cat._id} onClick={editCat}>
+                Edit
               </button>
             </li>
           </>

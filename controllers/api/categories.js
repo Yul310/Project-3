@@ -25,10 +25,7 @@ async function create(req, res) {
     const catList = await Category.find({})
     catList.push(newCategory)
     await catList.save()
-    console.log(catList)
-    // res.json()
-    response.json()
- 
+    
   } catch (e) {
     res.status(400).json(e);
   }

@@ -55,38 +55,51 @@ export default function NoteListItem() {
     <>
       <h5>NoteListItem</h5>
       <br />
-      <form action="">
-        <input
-          name="title"
-          value={formData.title}
-          type="text"
-          placeholder="Note Title"
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <input
-          name="Category"
-          value={formData.category}
-          type="text"
-          placeholder="Category"
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <input
-          name="Note"
-          value={formData.body}
-          type="text"
-          placeholder="Begin writing note"
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <button type="submit" onClick={handleSubmit}>
-          Add New Note{" "}
-        </button>
-      </form>
+      <div className="p-2 rounded-lg">
+        <form
+          action=""
+          className="border-black border-[1px] rounded-md py-4 px-4"
+          id="hardshadow"
+        >
+          <input
+            name="title"
+            value={formData.title}
+            type="text"
+            placeholder="Note Title"
+            onChange={handleChange}
+            className="bg-[#f7f7f2] text-lg border-b-2 border-black"
+          />
+          <br />
+          <br />
+          <input
+            name="Category"
+            value={formData.category}
+            type="text"
+            placeholder="Category"
+            onChange={handleChange}
+            className="bg-[#f7f7f2] border-b-[1px] border-black"
+          />
+          <br />
+          <br />
+          <input
+            name="Note"
+            value={formData.body}
+            type="text"
+            placeholder="Write here"
+            onChange={handleChange}
+            className="bg-[#f7f7f2]"
+          />
+          <br />
+          <br />
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-[#1f1f1f] font-light text-white py-2 px-3 rounded-lg hover:ring hover:ring-orange-400"
+          >
+            Add New Note{" "}
+          </button>
+        </form>
+      </div>
     </>
   );
 }
