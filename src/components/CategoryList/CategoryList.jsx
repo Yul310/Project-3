@@ -43,7 +43,10 @@ export default function CategoryList({ }) {
         // console.log(formData)
         
         //Backend updating
-        await catAPI.editCat(evt.target.value,formData);
+        catAPI.editCat(evt.target.value,formData);
+        setFormData({
+            title: ""
+        })
     }
 
     //*** fucntion = creating new category ***//
