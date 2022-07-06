@@ -37,20 +37,7 @@ export default function TodoListForm() {
     const addTodo = await todoAPI.deleteTodo(evt.target.value);
   }
 
-  // this is a comment to test
-
-  //*** fucntion = creating new todo ***//
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   //sending new data to backend
-  //   // the new info is not getting added to the backend
-  //   const addTodos = await todoAPI.newTodo(formData);
-  //   // get data again from the backend
-  //   const todos = await todoAPI.getAll();
-  //   return setAllTodos(todos);
-  // }
-
-
+  //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
     //sending new data to backend
@@ -62,7 +49,7 @@ export default function TodoListForm() {
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
+    const updatedTodo = { [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
