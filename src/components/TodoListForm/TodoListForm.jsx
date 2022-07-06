@@ -82,7 +82,10 @@ export default function TodoListForm() {
 
           <h3>Create a new to-do</h3>
         </div>
-        <form action="" onChange={handleChange}>
+          <form 
+            action="" 
+            onChange={handleChange}
+          >
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
