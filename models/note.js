@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const {Schema, model} = mongoose;
-require('./category')
+const { Schema, model } = mongoose;
+require("./category");
 
 //-- Model ---------------------------------------------//
 
@@ -24,7 +24,7 @@ const noteSchema = new Schema(
 );
 
 // make category model
-const Category = model("Category", categorySchema);
+const Note = model("Note", noteSchema);
 
 //-- Export Model ---------------------------------------------//
 module.exports = mongoose.model("Note", noteSchema);

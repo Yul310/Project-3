@@ -1,4 +1,4 @@
-//to edit and delete category schema, it seems like we need to build api,routes,controller files for the categories. - Sam
+// // to edit and delete category schema, it seems like we need to build api,routes,controller files for the categories. - Sam
 import { getToken } from "./users-service";
 
 const BASE_URL = "/api/notes";
@@ -7,15 +7,15 @@ export function getAll() {
   return sendRequest(BASE_URL);
 }
 
-export function deleteCat(id) {
-  return sendRequest(`${BASE_URL}/deleteCat/${id}`, "DELETE");
+export function deleteNote(id) {
+  return sendRequest(`${BASE_URL}/deleteNote/${id}`, "DELETE");
 }
 
 // Add an cat to the cat list
-export function newCat(catData) {
+export function newNote(noteData) {
   // Just send itemId for best security (no pricing)
   // console.log(catData)
-  return sendRequest(`${BASE_URL}/newCat`, "POST", catData);
+  return sendRequest(`${BASE_URL}/newNote`, "POST", noteData);
 }
 
 /*--- Helper Functions ---*/
