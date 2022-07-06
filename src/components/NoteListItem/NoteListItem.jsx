@@ -3,24 +3,50 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
 export default function NoteListItem() {
+  const [allNotes, setAllNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
   });
 
+  useEffect(function () {
+    async function getNotes() {
+      const notes = await noteAPI.getAll();
+      setAllNotes(notes);
+      //   console.log(allCats);
+    }
+    getNotes();
+  }, []);
+
+  //*** fucntion = creating new category ***//
+  async function deleteNote(evt) {
+    console.log(evt.target.value);
+    //sending new data to backend
+
+    // get data again from the backend
+    // const cats = await catAPI.getAll();
+    // setAllCats(cats);
+    const notes = allNotes.filter((note) => note._id !== evt.target.value);
+    console.log(notes);
+    setAllNotes(notes);
+    const addNote = await noteAPI.deleteNote(evt.target.value);
+  }
+
+  //*** fucntion = creating new category ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
     //sending new data to backend
-    const addCat = await noteAPI.newCat(formData);
+    const addNote = await noteAPI.newNote(formData);
     // get data again from the backend
-    const cats = await noteAPI.getAll();
-    // return setAllCats(cats);
+    const notes = await noteAPI.getAll();
+    return setAllNotes(notes);
   }
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedCat = { [evt.target.name]: evt.target.value };
-    setFormData(updatedCat);
+    const updatedNote = { [evt.target.name]: evt.target.value };
+    setFormData(updatedNote);
     console.log(formData);
     // setNewCat(evt.target.value);
   }
