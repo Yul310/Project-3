@@ -13,6 +13,10 @@ export function deleteCat(id) {
   return sendRequest(`${BASE_URL}/deleteCat/${id}`, 'DELETE');
 }
 
+export function editCat(id) {
+  return sendRequest(`${BASE_URL}/editCat/${id}`, 'PUT');
+}
+
 // Add an cat to the cat list
 export function newCat(catData) {
   // Just send itemId for best security (no pricing)

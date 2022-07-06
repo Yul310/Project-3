@@ -26,10 +26,6 @@ async function create(req, res) {
     catList.push(newCategory)
     await catList.save()
     
-    // console.log(catList)
-    // // res.json()
-    // response.json()
- 
   } catch (e) {
     res.status(400).json(e);
   }
