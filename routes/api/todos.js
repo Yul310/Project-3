@@ -8,6 +8,9 @@ router.get('/', todosCtrl.index);
 //POST /api/todos/new
 router.post('/newTodo', todosCtrl.create);
 
+// POST /api/todos
+router.put("/editTodo/:id", todosCtrl.editTodo);
+
 // DELETE /api/todos/:id
 router.delete('/deleteTodo/:id', todosCtrl.deleteTodo);
 

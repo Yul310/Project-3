@@ -5,6 +5,7 @@ module.exports = {
   create,
   findAllTodos,
   deleteTodo,
+  editTodo,
   show
 };
 
@@ -62,6 +63,11 @@ async function deleteTodo (req, res) {
   }
 }
 
+// to edit a todo
+async function editTodo(req, res) {
+  const todoList = await Todo.findByIdAndUpdate({_id:req.params.id},{title:req.body.title});
+  console.log(todoList)
+}
 
 async function show(req, res) {
   const todoList = await Todo.findById(req.params.id);
