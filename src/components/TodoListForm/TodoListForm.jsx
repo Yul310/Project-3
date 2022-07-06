@@ -21,7 +21,7 @@ export default function TodoListForm() {
   }, []);
 
   //*** fucntion = creating new category ***//
-  async function deleteTodos(evt) {
+  async function deleteTodo(evt) {
       console.log(evt.target.value);
       //sending new data to backend
       // get data again from the backend
@@ -49,7 +49,7 @@ export default function TodoListForm() {
       const updatedTodo = { [evt.target.name]: evt.target.value };
       setFormData(updatedTodo);
       console.log(formData);
-      // setNewCat(evt.target.value);
+      // setNewTodo(evt.target.value);
   }
 
 
@@ -58,6 +58,25 @@ export default function TodoListForm() {
     <>
       <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
       <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
+
+<div>
+{allTodos.map((todo, idx) => (
+                    <>
+                        <li key={idx} onClick={() => setActiveTodo(todo)}>
+                            <Link to={`/todos/${todo.title}`}>{todo.title}</Link>
+
+                            <button type="submit" value={todo._id} 
+                            // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
+                            onClick={deleteTodo}>
+                                delete
+                            </button>
+                        </li>
+                    </>
+                ))}
+                {/* {todos} */}
+</div>
+
+
         <h3>Create a new to-do</h3>
       </div>
         <form action="">
