@@ -10,19 +10,23 @@ export default function TodoListForm({ setUpdated, allCats }) {
     title: "",
     date: "",
     // time: "",
+    category: "",
     description: "",
     urgency: "",
   });
 
-  const magic = setUpdated();
+
+  const magic = setUpdated()
+
 
   async function handleSubmit(evt) {
     evt.preventDefault();
 
     // setAllTodos([...allTodos,formData]);
-    // addTodos(formData);
-    //send new form data to app
-    // setAllTodos(todos);
+
+    //
+
+
     //sending new data to backend
     todoAPI.newTodo(formData);
     setUpdated(!magic);
@@ -38,7 +42,12 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
+
+    // evt.target.idProp ?
+      const updatedTodo = { ...formData, [evt.target.idProp]: evt.target.value }
+      //  :
+      // const updatedTodo = { ...formData, [evt.target.name]: evt.target.value }
+
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
@@ -46,7 +55,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
   return (
     <>
-      <div className="p-2 rounded-lg font-light">
+      <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
           {/* // don't think I actually want all todos to show on the form */}
           {/* <div>
@@ -71,12 +80,14 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
           <h3>Create a new to-do</h3>
         </div>
+
         <form
           action=""
           onChange={handleChange}
           className="border-black border-[1px] rounded-md py-4 px-4 font-light"
           id="hardshadow"
         >
+
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
@@ -85,7 +96,6 @@ export default function TodoListForm({ setUpdated, allCats }) {
             name="title"
             value={formData.title}
             placeholder="write here..."
-            className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
           />
           <p>&nbsp;</p>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
@@ -102,9 +112,9 @@ export default function TodoListForm({ setUpdated, allCats }) {
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
           <label>Category</label>
           <select name="Category">
-            {allCats.map((cat, idx) => (
-              <option value={cat.title}>{cat.title}</option>
-            ))}
+
+            {allCats.map((cat) => (<option idProp={cat._id} value={formData.category}>{cat.title}</option>))}
+
 
             {/* <option value="A">a</option>
             <option value="B">b</option>
