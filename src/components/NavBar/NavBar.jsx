@@ -4,8 +4,9 @@ import * as userService from "../../utilities/users-service";
 import CategoryList from "../CategoryList/CategoryList";
 import { useState, useEffect } from "react";
 import { findAllByTestId } from "@testing-library/react";
+import CategoryTodo from "../../components/CategoryTodo/CategoryTodo";
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser,categories, setActiveCat }) {
   const [dropdown, setDropdown] = useState(false);
 
   // Add the following function
@@ -53,7 +54,7 @@ export default function NavBar({ user, setUser }) {
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                 >
-                  <i class="fa-solid fa-pen-to-square mt-1.5"></i>
+                  <i className="fa-solid fa-pen-to-square mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;Notes
                 </Link>
               </div>
@@ -63,9 +64,10 @@ export default function NavBar({ user, setUser }) {
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                 >
-                  <i class="fa-solid fa-list-check mt-1.5"></i>
+                  <i className="fa-solid fa-list-check mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;To-Do Lists
                 </Link>
+                <CategoryTodo categories={categories} setActiveCat={setActiveCat}/>
               </div>
 
               <Link
@@ -73,7 +75,7 @@ export default function NavBar({ user, setUser }) {
                 className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
-                <i class="fa-solid fa-tags mt-1.5"></i>
+                <i className="fa-solid fa-tags mt-1.5"></i>
                 &nbsp;&nbsp;&nbsp;Categories
               </Link>
 
@@ -84,7 +86,7 @@ export default function NavBar({ user, setUser }) {
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] active: transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                 >
-                  <i class="fa-solid fa-arrow-right-from-bracket mt-1.5"></i>
+                  <i className="fa-solid fa-arrow-right-from-bracket mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;Log Out
                 </Link>
               </div>

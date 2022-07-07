@@ -17,8 +17,10 @@ import * as noteAPI from "../../utilities/notes-api";
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [allTodos, setAllTodos] = useState([]);
+  const [catTodos, setCatTodos] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [allCats, setAllCats] = useState([]);
+  const [activeCat, setActiveCat] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
   const categoriesRef = useRef([]);
 
@@ -104,6 +106,7 @@ export default function App() {
     },
     [updated]
   );
+
   // todos
   useEffect(
     function () {
@@ -116,6 +119,7 @@ export default function App() {
     },
     [updated]
   );
+
   // categories
   useEffect(
     function () {
@@ -138,7 +142,8 @@ export default function App() {
         console.log(cat);
         return cats.includes(cat) ? cats : [...cats, cat];
       }, []);
-      // setMenuItems(items);
+      setCatTodos(todos)
+      setActiveCat(todos[0].category.title);
     }
     getCatTodos();
   }, []);
@@ -149,7 +154,7 @@ export default function App() {
         <>
           <button onClick={handleClick}>Add Event</button>
           <div className="App flex flex-row">
-            <NavBar user={user} setUser={setUser} />
+            <NavBar user={user} setUser={setUser} setUpdated={setUpdated} categories={categoriesRef.current}/>
             <Routes>
               {allNotes ? (
                 <Route
@@ -203,6 +208,8 @@ export default function App() {
                     allCats={allCats}
                     setAllCats={setAllCats}
                     setUpdated={setUpdated}
+                    activeCat={activeCat}
+                    setActiveCat={setActiveCat}
                   />
                 }
               />
