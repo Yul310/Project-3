@@ -1,4 +1,6 @@
 const Todo = require('../../models/todo');
+const Category = require("../../models/category");
+
 
 module.exports = {
   index,
@@ -29,6 +31,10 @@ async function index(req, res) {
 async function create(req, res) {
   // console.log(req.body) // this is the body of the request
   try {
+
+// const one = Category.findOne({title:req.body.category})
+// console.log(one)
+
   const newTodo = await Todo.create(req.body);
   const todoList = await Todo.find({});
   todoList.push(newTodo)
