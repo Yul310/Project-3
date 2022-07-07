@@ -52,7 +52,7 @@ export default function App() {
                 : "loading"}
               <Route path="/todos/new" element={<TodoNewPage allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated} allCats={allCats} />} />
               <Route path="/todos/:id" element={<TodoListItem allTodos={allTodos} />} />
-              <Route path="/categories" element={<CategoryIndexPage allCats={allCats} setAllCats={setAllCats} />} />
+              <Route path="/categories" element={<CategoryIndexPage allCats={allCats} setAllCats={setAllCats} setUpdated={setUpdated}/>} />
               <Route path="/" element={<HomePage user={user} />} />
               {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
               {/* <Route path="/*" element={<Navigate to="/" />} /> */}
