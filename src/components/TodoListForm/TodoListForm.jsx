@@ -14,50 +14,28 @@ export default function TodoListForm({setUpdated} ) {
     urgency: "",
   });
 
-  // //*** function = Getting Data From Backend  ***//
-  // useEffect(function () {
-  //   async function getTodos() {
-  //     const todos = await todoAPI.getAll();
-  //     setAllTodos(todos);
-  //     //   console.log(allTodos);
-  //   }
-  //   getTodos();
-  // }, []);
 
 
+  const magic =setUpdated()
 
-
-  // this is a comment to test
-
-  //*** fucntion = creating new todo ***//
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   //sending new data to backend
-  //   // the new info is not getting added to the backend
-  //   const addTodos = await todoAPI.newTodo(formData);
-  //   // get data again from the backend
-  //   const todos = await todoAPI.getAll();
-  //   return setAllTodos(todos);
-  // }
-  const a=setUpdated()
-  
   async function handleSubmit(evt) {
     evt.preventDefault();
-    // console.log(allTodos)
-    // console.log(formData)
+    
     // setAllTodos([...allTodos,formData]);
     // addTodos(formData);
-    // console.log(allTodos)
-
     //send new form data to app
     // setAllTodos(todos);
     //sending new data to backend
     todoAPI.newTodo(formData);
-     
-    setUpdated(!a)
+    setUpdated(!magic)
     // get data again from the backend
     // const todos = todoAPI.getAll();
-    // console.log(todos);
+    setFormData({
+      title: "",
+      date: "",
+      description: "",
+      urgency: ""
+    });
 
   }
 
