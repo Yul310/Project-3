@@ -16,7 +16,7 @@ const todoSchema = new Schema({
   // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -K
   // category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
 
-  urgency: String,
+  urgency:String
 }, { timestamps: true });
 
 
