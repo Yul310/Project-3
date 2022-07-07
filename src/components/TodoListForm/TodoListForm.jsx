@@ -22,9 +22,10 @@ export default function TodoListForm({ setUpdated, allCats }) {
     evt.preventDefault();
 
     // setAllTodos([...allTodos,formData]);
-    // addTodos(formData);
-    //send new form data to app
-    // setAllTodos(todos);
+
+    //
+  
+
     //sending new data to backend
     todoAPI.newTodo(formData);
     setUpdated(!magic)
@@ -100,7 +101,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
           <label >Category</label>
           <select name="Category">
-            {allCats.map((cat, idx) => (<option value={cat.title}>{cat.title}</option>))}
+            {allCats.map((cat) => (<option key={cat._id} value={cat.title}>{cat.title}</option>))}
 
             {/* <option value="A">a</option>
             <option value="B">b</option>
