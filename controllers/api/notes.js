@@ -9,7 +9,8 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const noteList = await Note.find({});
+    console.log("reaching backend");
+    const noteList =await Note.find({});
     res.json(noteList);
   } catch {
     res.status(400).json("Bad Serverside");
