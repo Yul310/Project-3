@@ -37,13 +37,13 @@ export default function NoteListItem() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     setAllNotes([...allNotes, formData]);
+    console.log(allNotes);
     noteAPI.newNote(formData);
     setFormData({
       title: "",
       category: "",
       body: "",
     });
-    console.log(allNotes);
   }
 
   //*** function = form data ***//
