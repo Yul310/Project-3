@@ -11,4 +11,7 @@ router.put("/editNote/:id", noteCtrl.editNote);
 // DELETE /api/notes/:id
 router.delete("/deleteNote/:id", noteCtrl.deleteNote);
 
+// GET /api/notes/:id
+router.get('/:id', noteCtrl.show);
+
 module.exports = router;
