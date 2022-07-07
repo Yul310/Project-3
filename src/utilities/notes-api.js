@@ -11,6 +11,10 @@ export function deleteNote(id) {
   return sendRequest(`${BASE_URL}/deleteNote/${id}`, "DELETE");
 }
 
+export function editNote(id) {
+  return sendRequest(`${BASE_URL}/editTodo/${id}`, "PUT");
+}
+
 // Add an cat to the cat list
 export function newNote(noteData) {
   // Just send itemId for best security (no pricing)

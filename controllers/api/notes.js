@@ -4,13 +4,14 @@ module.exports = {
   index,
   create,
   deleteNote,
+  editNote,
   show,
 };
 
 async function index(req, res) {
   try {
     console.log("reaching backend");
-    const noteList =await Note.find({});
+    const noteList = await Note.find({});
     res.json(noteList);
   } catch {
     res.status(400).json("Bad Serverside");
@@ -45,6 +46,14 @@ async function deleteNote(req, res) {
   } catch (e) {
     res.status(400).json(e);
   }
+}
+
+async function editNote(req, res) {
+  const noteList = await Note.findByIdAndUpdate(
+    { _id: req.params.id },
+    { title: req.body.title }
+  );
+  console.log(noteList);
 }
 
 async function show(req, res) {
