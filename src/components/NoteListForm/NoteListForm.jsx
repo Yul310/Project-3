@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function NoteListItem() {
   const [allNotes, setAllNotes] = useState([]);
-  const [activeNote, setActiveNote] = useState([]);
+  // const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -36,14 +36,16 @@ export default function NoteListItem() {
   //*** fucntion = creating new note ***//
   async function handleSubmit(evt) {
     evt.preventDefault();
-    setAllNotes([...allNotes, formData]);
+    console.log(allNotes)
+    setAllNotes([...allNotes,formData]);
     noteAPI.newNote(formData);
+   
+    console.log(allNotes);
     setFormData({
       title: "",
       category: "",
       body: "",
     });
-    console.log(allNotes);
   }
 
   //*** function = form data ***//
