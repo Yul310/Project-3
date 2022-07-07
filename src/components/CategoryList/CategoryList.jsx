@@ -3,9 +3,9 @@ import * as catAPI from "../../utilities/categories-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function CategoryList({ allCats, setAllCats, setUpdated,categories }) {
+export default function CategoryList({ allCats, setAllCats, setUpdated }) {
     // const [allCats, setAllCats] = useState([]);
-    const [activeCat, setActiveCat] = useState([]);
+    // const [activeCat, setActiveCat] = useState([]);
     const [formData, setFormData] = useState({
         title: "",
     });
@@ -57,7 +57,7 @@ export default function CategoryList({ allCats, setAllCats, setUpdated,categorie
     //*** fucntion = creating new category ***//
     async function handleSubmit(evt) {
         evt.preventDefault();
-        console.log(categories);
+        // console.log(categories);
         // console.log(allCats)
         // updating frontend
         setAllCats([...allCats, formData])
@@ -103,9 +103,9 @@ export default function CategoryList({ allCats, setAllCats, setUpdated,categorie
                 className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
             >
-                {allCats.map((cat, idx, { setEdit }) => (
+                {allCats.map((cat, { setEdit }) => (
                     <>
-                        <li key={idx} onClick={() => setActiveCat(cat)}>
+                        <li key={cat._id} /*onClick={() => setActiveCat(cat)}*/>
                             <Link to={`/categories/${cat.title}`} style={viewMode} >{cat.title}</Link>
                             <input name="title" type="text" className='textInput' style={editMode} key={cat._id} placeholder={cat.title} onChange={handleChange} />
 
