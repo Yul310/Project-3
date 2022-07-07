@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 // how to pull data from database?
 // import { todos } from "../../data";
-
+// adding something to fix merge conflict
 
 export default function TodoList({ allTodos, setAllTodos }) {
 
