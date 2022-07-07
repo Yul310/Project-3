@@ -47,7 +47,7 @@ export default function App() {
               <Route path="/todos" element={<TodoIndexPage allTodos={allTodos} setAllTodos={setAllTodos}/>} />
               :"loading"}
               <Route path="/todos/new" element={<TodoNewPage allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated}/>} />
-              <Route path="/todos/:id "element={<TodoListItem />} />
+              <Route path="/todos/:id"element={<TodoListItem allTodos={allTodos} />} />
               <Route path="/categories" element={<CategoryIndexPage />} />
               <Route path="/" element={<HomePage user={user} />} />
               {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}

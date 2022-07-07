@@ -56,6 +56,7 @@ async function editCat(req, res) {
 
 
 async function show(req, res) {
+  console.log("show")
   const catList = await Category.findById(req.params.id);
   res.json(catList);
 }

@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 
 
-export default function TodoList({allTodos, setAllTodos}) {
+export default function TodoList({ allTodos, setAllTodos }) {
 
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
@@ -27,10 +27,29 @@ export default function TodoList({allTodos, setAllTodos}) {
     await todoAPI.deleteTodo(evt.target.value);
   }
 
+  // *** fucntion = editing a category ***//
+  async function editTodo(evt) {
+    console.log(evt.target.value);
+
+    // FrontEnd updating
+    const todos = allTodos.filter((todo) => todo._id === evt.target.value);
+    console.log(todos)
+    // todos[0].title = formData.title
+    // setEdit(!edit)
+    // console.log(cats[0].title);
+    // console.log(formData)
+
+    //Backend updating
+    todoAPI.editTodo(evt.target.value, formData);
+    // setFormData({
+    //   title: ""
+    // })
+  }
+
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { [evt.target.name]: evt.target.value };
+    const updatedTodo = { ...formData,[evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
@@ -46,65 +65,66 @@ export default function TodoList({allTodos, setAllTodos}) {
   let editMode = {}
 
   if (edit) {
-      viewMode.display = "none"
+    viewMode.display = "none"
   } else {
-      editMode.display = "none"
+    editMode.display = "none"
   }
 
   console.log("step 1 of delete function");
 
   return (
     <>
-    {allTodos?
-      <div className="flex-col px-10 flex mt-24">
-        <div
-        // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
-        >
-          <h3>Todo List</h3>
-          {/* <TodoListItem /> */}
-          
-          <div>
+      {allTodos ?
+        <div className="flex-col px-10 flex mt-24">
+          <div
+          // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
+          >
+            <h3>Todo List</h3>
+            {/* <TodoListItem /> */}
 
-            <ul
-              className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-              aria-selected="false"
-            >
-              {allTodos.map((todo, idx, { setEdit }) => (
-                <>
-                  <li key={idx} >
-                    <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
-                    </Link>
-                    <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />
-                    <button
-                      className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                      onClick={handleEditing}
-                    >
-                      Edit
-                    </button>
+            <div>
 
-                    <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleEditing}>
-                               Save
-                            </button>
+              <ul
+                className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                aria-selected="false"
+              >
+                {allTodos.map((todo, idx, { setEdit }) => (
+                  <>
+                    <li key={idx} >
+                      <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
+                      </Link>
+                      <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />
 
-                    {/* <br></br> */}
-                    <button
-                      type="submit"
-                      value={todo._id}
-                      className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                      // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
-                      onClick={deleteTodo}
-                    >
-                      delete
-                    </button>
-                  </li>
-                </>
-              ))}
-              {/* {todos} */}
-            </ul>
+
+                      <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
+                        Save
+                      </button>
+
+                      {/* <br></br> */}
+                      <button
+                        type="submit"
+                        value={todo._id}
+                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
+                        onClick={deleteTodo} style={editMode}
+                      >
+                        delete
+                      </button>
+                    </li>
+                  </>
+                ))}
+                <button
+                  className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
+                  onClick={handleEditing}
+                >
+                  Edit
+                </button>
+                {/* {todos} */}
+              </ul>
+            </div>
           </div>
-        </div>
 
-        {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
+          {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
           // create new todo
           <Link to={`/todos/new`}>
             <button className="border-1 border-black bg-black  rounded text-white text-medium px-1 mx-2">
@@ -112,8 +132,8 @@ export default function TodoList({allTodos, setAllTodos}) {
             </button>
           </Link>
         </div> */}
-      </div>
-      :<h5>loading</h5>}
+        </div>
+        : <h5>loading</h5>}
     </>
   );
 }
