@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AuthPage from "../AuthPage/AuthPage";
 import NoteIndexPage from "../NoteIndexPage/NoteIndexPage";
 import TodoIndexPage from "../TodoIndexPage/TodoIndexPage";
@@ -20,6 +20,7 @@ export default function App() {
   const [updated, setUpdated] = useState(false);
   const [allCats, setAllCats] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
+  const categoriesRef = useRef([]);
 
   const gapi = window.gapi;
   const CLIENT_ID =
@@ -28,6 +29,12 @@ export default function App() {
   const DISCOVERY_DOC =
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+
+
+  //////////////////////////////////////////////////
+  //*** function = Google Calendar API  ***//
+  //////////////////////////////////////////////////
+
 
   const handleClick = () => {
     gapi.load("client:auth2", () => {
@@ -83,7 +90,11 @@ export default function App() {
     });
   };
 
+
+  //////////////////////////////////////////////////
   //*** function = Getting Data From Backend  ***//
+  //////////////////////////////////////////////////
+
   // notes
   useEffect(
     function () {
@@ -96,7 +107,7 @@ export default function App() {
     },
     [updated]
   );
-
+  // todos
   useEffect(
     function () {
       async function getTodos() {
@@ -108,7 +119,7 @@ export default function App() {
     },
     [updated]
   );
-
+  // categories
   useEffect(
     function () {
       async function getCats() {
@@ -120,6 +131,25 @@ export default function App() {
     },
     [updated]
   );
+
+
+  //categories + todos
+  useEffect(function () {
+    async function getCatTodos() {
+      const todos = await todoAPI.getAll();
+      categoriesRef.current = todos.reduce((cats, todo) => {
+        const cat = todo.category.title;
+        console.log(cat)
+        return cats.includes(cat) ? cats : [...cats, cat];
+      }, []);
+      // setMenuItems(items);
+    }
+    getCatTodos();
+  }, []);
+
+
+
+
 
   return (
     <main>
@@ -177,6 +207,7 @@ export default function App() {
                 path="/categories"
                 element={
                   <CategoryIndexPage
+                    categories={categoriesRef.current}
                     allCats={allCats}
                     setAllCats={setAllCats}
                     setUpdated={setUpdated}

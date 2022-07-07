@@ -12,7 +12,8 @@ module.exports = {
 // Sorting all the todos by catetory. Might want to change this later -K
 async function index(req, res) {
   try {
-  const todoList = await Todo.find({})
+    
+  const todoList = await Todo.find({}).populate('category').exec();
   // .populate('category').exec();
   // re-sort based upon the sortOrder of the categories
   // todos.sort((a, b) => a.category.sortOrder - b.category.sortOrder);

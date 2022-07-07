@@ -3,7 +3,7 @@ import * as catAPI from "../../utilities/categories-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function CategoryList({ allCats, setAllCats, setUpdated }) {
+export default function CategoryList({ allCats, setAllCats, setUpdated,categories }) {
     // const [allCats, setAllCats] = useState([]);
     const [activeCat, setActiveCat] = useState([]);
     const [formData, setFormData] = useState({
@@ -57,7 +57,7 @@ export default function CategoryList({ allCats, setAllCats, setUpdated }) {
     //*** fucntion = creating new category ***//
     async function handleSubmit(evt) {
         evt.preventDefault();
-        // console.log(formData);
+        console.log(categories);
         // console.log(allCats)
         // updating frontend
         setAllCats([...allCats, formData])
