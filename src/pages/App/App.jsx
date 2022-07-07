@@ -25,13 +25,14 @@ export default function App() {
       const todos = await todoAPI.getAll();
       setAllTodos(todos);
       //   console.log(allTodos);
+      
     }
     getTodos();
   }, [updated]);
 
-  function addTodos(todo) {
-    setAllTodos([...allTodos, todo]);
-  }
+  // function addTodos(todo) {
+  //   setAllTodos([...allTodos, todo]);
+  // }
 
 
   return (
@@ -43,7 +44,7 @@ export default function App() {
             <Routes>
               <Route path="/notes" element={<NoteIndexPage />} />
               {allTodos?
-              <Route path="/todos" element={<TodoIndexPage allTodos={allTodos} setAllTodos={setAllTodos} addTodos={addTodos}/>} />
+              <Route path="/todos" element={<TodoIndexPage allTodos={allTodos} setAllTodos={setAllTodos}/>} />
               :"loading"}
               <Route path="/todos/new" element={<TodoNewPage allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated}/>} />
               <Route path="/todos/:id "element={<TodoListItem />} />
