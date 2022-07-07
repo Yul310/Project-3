@@ -44,8 +44,8 @@ export default function App() {
         .getAuthInstance()
         .signIn()
         .then(() => {
-          var event = {
-            summary: "Google I/O 2015",
+          const event = {
+            summary: "Google I/O 2022",
             location: "800 Howard St., San Francisco, CA 94103",
             description:
               "A chance to hear more about Google's developer products.",
@@ -54,7 +54,7 @@ export default function App() {
               timeZone: "America/Los_Angeles",
             },
             end: {
-              dateTime: "2022-07-08T17:00:00-07:00",
+              dateTime: "2015-07-09T17:00:00-07:00",
               timeZone: "America/Los_Angeles",
             },
             recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
