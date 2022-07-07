@@ -23,7 +23,7 @@ export default function TodoListItem({ allTodos }) {
   // //  const data = katyTodo.getTodos()
   // //  console.log(data)
 
-  let {id} = useParams();
+  let { id } = useParams();
 
   useEffect(function () {
     async function getSingleTodos() {
@@ -33,6 +33,11 @@ export default function TodoListItem({ allTodos }) {
     getSingleTodos(id);
     // important to have the brackets below, otherwise infinate loop
   }, []);
+
+
+
+  let date = new Date(todo.date)
+  const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
 
   // function clickedTodo(todo) {
@@ -70,11 +75,21 @@ export default function TodoListItem({ allTodos }) {
   // }
 
 
+
+
+
   return (
-    <>
+    <div>
       <h5>TodoListItem</h5>
 
       <p>{todo.title}</p>
+
+      <p>{dateRecord}</p>
+
+      <p>{todo.description}</p>
+
+      <p>{todo.urgency}</p>
+
       {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
 
     <p>{props.allTodos[chosenTodo].title}</p>
@@ -85,6 +100,6 @@ export default function TodoListItem({ allTodos }) {
 
 
       </div> */}
-    </>
+    </div>
   );
 }
