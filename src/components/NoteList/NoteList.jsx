@@ -18,7 +18,7 @@ export default function NoteList() {
     async function getNotes() {
       const notes = await noteAPI.getAll();
       setAllNotes(notes);
-      console.log(allNotes)
+      console.log(allNotes);
     }
     getNotes();
   }, []);
@@ -32,6 +32,26 @@ export default function NoteList() {
     console.log(notes);
     setAllNotes(notes);
     const addNote = await noteAPI.deleteNote(evt.target.value);
+  }
+
+  // *** fucntion = editing a category ***//
+  async function editNote(evt) {
+    console.log(evt.target.value);
+
+    // FrontEnd updating
+    const notes = allNotes.filter((note) => note._id === evt.target.value);
+    notes[0].title = formData.title;
+    setEdit(!edit);
+    // console.log(cats[0].title);
+    // console.log(formData)
+
+    //Backend updating
+    noteAPI.editNote(evt.target.value, formData);
+    setFormData({
+      title: "",
+      category: "",
+      body: "",
+    });
   }
 
   //*** fucntion = creating new category ***//
@@ -69,11 +89,9 @@ export default function NoteList() {
   return (
     <>
       <div>
-        <h3>Note List</h3>
         <NoteListItem />
         <ul>
-          
-          {allNotes.map((note, idx) => (   
+          {allNotes.map((note, idx, { setEdit }) => (
             <li key={idx} onClick={() => setActiveNote(note)}>
               <Link to={`/notes/${note.title}`} style={viewMode}>
                 {note.title}
