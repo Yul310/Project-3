@@ -3,13 +3,14 @@ import * as catAPI from "../../utilities/categories-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function CategoryList({ allCats, setAllCats }) {
+export default function CategoryList({ allCats, setAllCats, setUpdated }) {
     // const [allCats, setAllCats] = useState([]);
     const [activeCat, setActiveCat] = useState([]);
     const [formData, setFormData] = useState({
         title: "",
     });
     const [edit, setEdit] = useState(false);
+    const magic = setUpdated()
 
     //*** function = Getting Data From Backend  ***//
     // useEffect(function () {
@@ -36,17 +37,21 @@ export default function CategoryList({ allCats, setAllCats }) {
         console.log(evt.target.value);
         console.log(allCats)
         // FrontEnd updating
+      
         const cats = allCats.filter((cat) => cat._id === evt.target.value);
+        
         cats[0].title = formData.title
-        setEdit(!edit)
-        // console.log(cats[0].title);
-        // console.log(formData)
-
+        console.log(cats[0])
+       console.log(cats[0].title )
         //Backend updating
         catAPI.editCat(evt.target.value, formData);
+        setEdit(!edit)
+        setUpdated(!magic)
+        
         setFormData({
             title: ""
         })
+        
     }
 
     //*** fucntion = creating new category ***//
@@ -58,6 +63,7 @@ export default function CategoryList({ allCats, setAllCats }) {
         setAllCats([...allCats, formData])
         // sending new data to backend
         catAPI.newCat(formData)
+        setUpdated(!magic)
         setFormData({
             title: ""
         })
@@ -101,7 +107,7 @@ export default function CategoryList({ allCats, setAllCats }) {
                     <>
                         <li key={idx} onClick={() => setActiveCat(cat)}>
                             <Link to={`/categories/${cat.title}`} style={viewMode} >{cat.title}</Link>
-                            <input name="title" type="text" className='textInput' style={editMode} placeholder={cat.title} onChange={handleChange} />
+                            <input name="title" type="text" className='textInput' style={editMode} key={cat._id} placeholder={cat.title} onChange={handleChange} />
 
                             <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} style={editMode} onClick={deleteCat}>
                                 Delete
