@@ -12,12 +12,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import * as todoAPI from "../../utilities/todos-api";
 import * as catAPI from "../../utilities/categories-api";
+import * as noteAPI from "../../utilities/notes-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [allTodos, setAllTodos] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [allCats, setAllCats] = useState([]);
+  const [allNotes, setAllNotes] = useState([]);
 
   const gapi = window.gapi;
   const CLIENT_ID =
@@ -82,6 +84,19 @@ export default function App() {
   };
 
   //*** function = Getting Data From Backend  ***//
+  // notes
+  useEffect(
+    function () {
+      async function getNotes() {
+        const notes = await noteAPI.getAll();
+        setAllTodos(notes);
+        //   console.log(allTodos);
+      }
+      getNotes();
+    },
+    [updated]
+  );
+
   useEffect(
     function () {
       async function getTodos() {
@@ -114,7 +129,22 @@ export default function App() {
           <div className="App flex flex-row">
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/notes" element={<NoteIndexPage />} />
+              {allNotes ? (
+                <Route
+                  path="/notes"
+                  element={
+                    <NoteIndexPage
+                      allNotes={allNotes}
+                      setAllNotes={setAllNotes}
+                      setUpdated={setUpdated}
+                      allCats={allCats}
+                    />
+                  }
+                />
+              ) : (
+                "loading"
+              )}
+
               {allTodos ? (
                 <Route
                   path="/todos"
