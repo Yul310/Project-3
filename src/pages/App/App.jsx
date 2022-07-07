@@ -26,16 +26,13 @@ export default function App() {
   const CLIENT_ID =
     "272986187803-i6090pm51v34oito1cpg0le75qiq5132.apps.googleusercontent.com";
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
   const DISCOVERY_DOC =
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
-
   //////////////////////////////////////////////////
   //*** function = Google Calendar API  ***//
   //////////////////////////////////////////////////
-
 
   const handleClick = () => {
     gapi.load("client:auth2", () => {
@@ -91,7 +88,6 @@ export default function App() {
     });
   };
 
-
   //////////////////////////////////////////////////
   //*** function = Getting Data From Backend  ***//
   //////////////////////////////////////////////////
@@ -133,24 +129,19 @@ export default function App() {
     [updated]
   );
 
-
   //categories + todos
   useEffect(function () {
     async function getCatTodos() {
       const todos = await todoAPI.getAll();
       categoriesRef.current = todos.reduce((cats, todo) => {
         const cat = todo.category.title;
-        console.log(cat)
+        console.log(cat);
         return cats.includes(cat) ? cats : [...cats, cat];
       }, []);
       // setMenuItems(items);
     }
     getCatTodos();
   }, []);
-
-
-
-
 
   return (
     <main>
