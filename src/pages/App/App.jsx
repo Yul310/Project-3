@@ -25,7 +25,8 @@ export default function App() {
   const gapi = window.gapi;
   const CLIENT_ID =
     "272986187803-i6090pm51v34oito1cpg0le75qiq5132.apps.googleusercontent.com";
-  const API_KEY = "AIzaSyAMYQ9LO9hYPp8tOvoANAuyxB-JheNtjLk";
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(API_KEY);
   const DISCOVERY_DOC =
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
@@ -53,8 +54,8 @@ export default function App() {
         .getAuthInstance()
         .signIn()
         .then(() => {
-          var event = {
-            summary: "Google I/O 2015",
+          const event = {
+            summary: "Google I/O 2022",
             location: "800 Howard St., San Francisco, CA 94103",
             description:
               "A chance to hear more about Google's developer products.",
@@ -63,7 +64,7 @@ export default function App() {
               timeZone: "America/Los_Angeles",
             },
             end: {
-              dateTime: "2022-07-08T17:00:00-07:00",
+              dateTime: "2015-07-09T17:00:00-07:00",
               timeZone: "America/Los_Angeles",
             },
             recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
