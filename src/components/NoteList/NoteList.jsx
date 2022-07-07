@@ -18,6 +18,7 @@ export default function NoteList() {
     async function getNotes() {
       const notes = await noteAPI.getAll();
       setAllNotes(notes);
+      console.log(allNotes)
     }
     getNotes();
   }, []);
@@ -71,7 +72,8 @@ export default function NoteList() {
         <h3>Note List</h3>
         <NoteListItem />
         <ul>
-          {allNotes.map((note, idx, { setEdit }) => (
+          
+          {allNotes.map((note, idx) => (   
             <li key={idx} onClick={() => setActiveNote(note)}>
               <Link to={`/notes/${note.title}`} style={viewMode}>
                 {note.title}
