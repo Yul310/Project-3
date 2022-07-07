@@ -39,7 +39,8 @@ export default function TodoListForm({setUpdated} ) {
   //   const todos = await todoAPI.getAll();
   //   return setAllTodos(todos);
   // }
-
+  const a=setUpdated()
+  
   async function handleSubmit(evt) {
     evt.preventDefault();
     // console.log(allTodos)
@@ -47,9 +48,13 @@ export default function TodoListForm({setUpdated} ) {
     // setAllTodos([...allTodos,formData]);
     // addTodos(formData);
     // console.log(allTodos)
+
+    //send new form data to app
+    // setAllTodos(todos);
     //sending new data to backend
     todoAPI.newTodo(formData);
-    setUpdated(true)
+     
+    setUpdated(!a)
     // get data again from the backend
     // const todos = todoAPI.getAll();
     // console.log(todos);
