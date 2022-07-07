@@ -26,7 +26,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/categories", require("./routes/api/categories"));
 
 // Notes API Routes
-// app.use("/api/notes", require("./routes/api/notes"));
+app.use("/api/notes", require("./routes/api/notes"));
 
 // Todos API Routes
 app.use("/api/todos", require("./routes/api/todos"));
