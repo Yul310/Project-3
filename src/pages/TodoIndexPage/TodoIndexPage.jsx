@@ -5,29 +5,16 @@ import * as todoAPI from "../../utilities/todos-api";
 import { useState, useEffect } from "react";
 
 
-export default function TodoIndexPage({allTodos}) {
+export default function TodoIndexPage({allTodos, setAllTodos,setUpdated}) {
 
-  // const [allTodos, setAllTodos] = useState([]);
-
-
-  // //*** function = Getting Data From Backend  ***//
-  // useEffect(function () {
-  //   async function getTodos() {
-  //     const todos = await todoAPI.getAll();
-  //     setAllTodos(todos);
-  //     //   console.log(allTodos);
-  //   }
-  //   getTodos();
-  // }, []);
-
-
+ 
   return (
     <>
 
       <div>
         <h1>TodoIndexPage</h1>
         {allTodos?
-        <TodoList allTodos={allTodos}/>:"loading"
+        <TodoList allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated}/>:"loading"
       }
         
         {/* <TodoListForm allTodos={allTodos} setAllTodos={setAllTodos}/> */}

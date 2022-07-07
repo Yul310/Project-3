@@ -6,9 +6,8 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 
 
-export default function TodoList({allTodos}) {
-  // const [allTodos, setAllTodos] = useState([]);
-  const [activeTodo, setActiveTodo] = useState([]);
+export default function TodoList({allTodos, setAllTodos}) {
+
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -18,38 +17,16 @@ export default function TodoList({allTodos}) {
     urgency: "",
   });
 
-  //*** function = Getting Data From Backend  ***//
-  // useEffect(function () {
-  //   async function getTodos() {
-  //     const todos = await todoAPI.getAll();
-  //     setAllTodos(todos);
-  //     //   console.log(allTodos);
-  //   }
-  //   getTodos();
-  // }, []);
 
   //*** fucntion = creating new category ***//
   async function deleteTodo(evt) {
     console.log(evt.target.value);
-    //sending new data to backend
-    // get data again from the backend
-    // const todos = await todoAPI.getAll();
-    // setAllTodos(todos);
     const todos = allTodos.filter((todo) => todo._id !== evt.target.value);
-    console.log(todos);
-    // setAllTodos(todos);
-    const addTodo = await todoAPI.deleteTodo(evt.target.value);
+    // console.log(todos);
+    setAllTodos(todos);
+    await todoAPI.deleteTodo(evt.target.value);
   }
 
-  //*** fucntion = creating new category ***//
-  async function handleSubmit(evt) {
-    evt.preventDefault();
-    //sending new data to backend
-    const addTodos = await todoAPI.newTodo(formData);
-    // get data again from the backend
-    const todos = await todoAPI.getAll();
-    // return setAllTodos(todos);
-  }
 
   //*** function = form data ***//
   function handleChange(evt) {
@@ -94,7 +71,7 @@ export default function TodoList({allTodos}) {
             >
               {allTodos.map((todo, idx, { setEdit }) => (
                 <>
-                  <li key={idx} onClick={() => setActiveTodo(todo)}>
+                  <li key={idx} >
                     <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
                     </Link>
                     <input type="text" className='textInput' style={editMode} placeholder={todo.title} onChange={handleChange} />

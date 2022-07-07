@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function NoteListItem() {
   const [allNotes, setAllNotes] = useState([]);
-  // const [activeNote, setActiveNote] = useState([]);
+  const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
