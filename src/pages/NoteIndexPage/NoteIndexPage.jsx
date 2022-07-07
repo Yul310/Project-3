@@ -4,7 +4,7 @@ export default function NoteIndexPage() {
   return (
     <>
       <div>
-        <h1>Notes</h1>
+        <h1>Notes test</h1>
         <NoteList />
       </div>
     </>

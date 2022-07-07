@@ -3,9 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
 
-export default function NoteList() {
-  const [allNotes, setAllNotes] = useState([]);
-  const [activeNote, setActiveNote] = useState([]);
+export default function NoteList({allNotes, setAllNotes}) {
+  // const [allNotes, setAllNotes] = useState([]);
+  // const [activeNote, setActiveNote] = useState([]);
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -13,6 +13,7 @@ export default function NoteList() {
     body: "",
   });
 
+  // not sure if this is needed anymore
   //*** function = Getting Data From Backend  ***//
   useEffect(function () {
     async function getNotes() {
@@ -31,7 +32,8 @@ export default function NoteList() {
     const notes = allNotes.filter((note) => note._id !== evt.target.value);
     console.log(notes);
     setAllNotes(notes);
-    const addNote = await noteAPI.deleteNote(evt.target.value);
+    await noteAPI.deleteNote(evt.target.value);
+    // const addNote = await noteAPI.deleteNote(evt.target.value);
   }
 
   // *** fucntion = editing a category ***//
@@ -40,8 +42,8 @@ export default function NoteList() {
 
     // FrontEnd updating
     const notes = allNotes.filter((note) => note._id === evt.target.value);
-    notes[0].title = formData.title;
-    setEdit(!edit);
+    // notes[0].title = formData.title;
+    // setEdit(!edit);
     // console.log(cats[0].title);
     // console.log(formData)
 
@@ -54,19 +56,19 @@ export default function NoteList() {
     });
   }
 
-  //*** fucntion = creating new category ***//
-  async function handleSubmit(evt) {
-    evt.preventDefault();
-    //sending new data to backend
-    const addNotes = await noteAPI.newNote(formData);
-    // get data again from the backend
-    const notes = await noteAPI.getAll();
-    return setAllNotes(notes);
-  }
+  // //*** fucntion = creating new category ***//
+  // async function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   //sending new data to backend
+  //   const addNotes = await noteAPI.newNote(formData);
+  //   // get data again from the backend
+  //   const notes = await noteAPI.getAll();
+  //   return setAllNotes(notes);
+  // }
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedNote = { [evt.target.name]: evt.target.value };
+    const updatedNote = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedNote);
     console.log(formData);
   }
@@ -88,12 +90,20 @@ export default function NoteList() {
 
   return (
     <>
+    {allNotes ?
       <div>
         <NoteListItem />
-        <ul>
+        <ul
+         className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+         aria-selected="false"
+         >
           {allNotes.map((note, idx, { setEdit }) => (
-            <li key={idx} onClick={() => setActiveNote(note)}>
-              <Link to={`/notes/${note.title}`} style={viewMode}>
+            <>
+            <li key={idx} 
+            // don't have this in todoList 
+            // onClick={() => setActiveNote(note)}
+            >
+              <Link to={`/notes/${note._id}`} style={viewMode}>
                 {note.title}
               </Link>
               <input
@@ -105,7 +115,7 @@ export default function NoteList() {
               />
               <button
                 className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                onClick={handleEditing}
+                onClick={editNote}
               >
                 Edit
               </button>
@@ -126,14 +136,17 @@ export default function NoteList() {
                 value={note._id}
                 className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                 // do we want the note to be deleted when the button is clicked? Like marking it complete... -K
+                style={editMode}
                 onClick={deleteNote}
               >
                 delete
               </button>
             </li>
+            </>
           ))}
         </ul>
       </div>
+      : <h5>loading</h5>}
     </>
   );
 }
