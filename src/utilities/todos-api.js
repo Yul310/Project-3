@@ -15,14 +15,10 @@ export function deleteTodo(id) {
   return sendRequest(`${BASE_URL}/deleteTodo/${id}`, "DELETE");
 }
 
-export function editTodo(id) {
-  return sendRequest(`${BASE_URL}/editTodo/${id}`, "PUT");
+export function editTodo(id,data) {
+  return sendRequest(`${BASE_URL}/editTodo/${id}`, "PUT",data);
 }
 
-// get a todo by id
-export function getById(id) {
-  return sendRequest(`${BASE_URL}/${id}`, "GET");
-}
 
 // create a new todo
 export function newTodo(todoData) {
@@ -30,6 +26,12 @@ export function newTodo(todoData) {
   // console.log(catData)
   return sendRequest(`${BASE_URL}/newTodo`, "POST", todoData);
 }
+
+// get a todo by id
+export function getById(id) {
+  return sendRequest(`${BASE_URL}/${id}`, "GET");
+}
+
 
 /*--- Helper Functions ---*/
 

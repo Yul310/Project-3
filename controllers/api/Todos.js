@@ -70,6 +70,7 @@ async function editTodo(req, res) {
 }
 
 async function show(req, res) {
+  console.log("req.params.id")
   const todoList = await Todo.findById(req.params.id);
   res.json(todoList);
 }

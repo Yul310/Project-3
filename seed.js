@@ -9,7 +9,10 @@ const Category = require('./models/category');
     await Category.deleteMany({});
     const categories = await Category.create([
         { title: 'GA SEI', sortOrder: 0 },
-        { title: 'readings', sortOrder: 0 }
+        { title: 'workout', sortOrder: 0 },
+        { title: 'tennis', sortOrder: 0 },
+        { title: 'shopping', sortOrder: 0 },
+        { title: 'grocery', sortOrder: 0 }
     ]);
 
     console.log(categories)
