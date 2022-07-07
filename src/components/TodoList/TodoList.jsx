@@ -122,6 +122,7 @@ export default function TodoList({ allTodos, setAllTodos }) {
                 {/* {todos} */}
               </ul>
             </div>
+
           </div>
 
           {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">

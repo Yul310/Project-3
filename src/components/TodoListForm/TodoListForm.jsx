@@ -50,7 +50,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
   return (
     <>
-      <div className="flex flex-col form max-w-xs mx-auto bg-orange-400">
+      <div className="p-2 rounded-lg font-light">
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
 
           {/* // don't think I actually want all todos to show on the form */}
@@ -76,7 +76,8 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
           <h3>Create a new to-do</h3>
         </div>
-        <form action="" onChange={handleChange}>
+        <form action="" onChange={handleChange} className="border-black border-[1px] rounded-md py-4 px-4 font-light"
+          id="hardshadow">
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
@@ -85,6 +86,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
             name="title"
             value={formData.title}
             placeholder="write here..."
+            className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
           />
           <p>&nbsp;</p>
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">

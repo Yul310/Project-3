@@ -20,8 +20,8 @@ export default function TodoListItem({ allTodos }) {
 
   // let { todoName } = useParams();
   // // construct data
-  // //  const data = katyTodo.getTodos()
-  // //  console.log(data)
+  //  const data = katyTodo.getTodos()
+  //  console.log(data)
 
   let { id } = useParams();
 
@@ -56,7 +56,7 @@ console.log(todo.date)
   // const chosenTodo = clickedTodo(todoName);
 
 
-  // //*** fucntion = creating new category ***//
+  // //*** function = creating new category ***//
   // async function handleSubmit(evt) {
   //   evt.preventDefault();
   //   //sending new data to backend
