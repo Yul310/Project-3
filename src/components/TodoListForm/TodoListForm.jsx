@@ -2,7 +2,7 @@ import * as todoAPI from "../../utilities/todos-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function TodoListForm({setUpdated} ) {
+export default function TodoListForm({ setUpdated, allCats }) {
   // const [allTodos, setAllTodos] = useState([]);
   // const [activeTodo, setActiveTodo] = useState([]);
   const [formData, setFormData] = useState({
@@ -16,11 +16,11 @@ export default function TodoListForm({setUpdated} ) {
 
 
 
-  const magic =setUpdated()
+  const magic = setUpdated()
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    
+
     // setAllTodos([...allTodos,formData]);
     // addTodos(formData);
     //send new form data to app
@@ -98,17 +98,20 @@ export default function TodoListForm({setUpdated} ) {
           <p>&nbsp;</p>
 
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
-          {/* <label >Category</label>
-                    <select name="Category">
-                    <option value="A">a</option>
-                    <option value="B">b</option>
-                    <option value="C">c</option>
-                    </select> */}
+          <label >Category</label>
+          <select name="Category">
+            {allCats.map((cat, idx) => (<option value={cat.title}>{cat.title}</option>))}
+
+            {/* <option value="A">a</option>
+            <option value="B">b</option>
+            <option value="C">c</option> */}
+          </select>
 
           <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             Urgency
           </label>
           <select name="urgency" value={formData.urgency}>
+
             <option value="low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>

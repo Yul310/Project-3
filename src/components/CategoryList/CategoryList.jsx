@@ -3,8 +3,8 @@ import * as catAPI from "../../utilities/categories-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function CategoryList({ }) {
-    const [allCats, setAllCats] = useState([]);
+export default function CategoryList({ allCats, setAllCats }) {
+    // const [allCats, setAllCats] = useState([]);
     const [activeCat, setActiveCat] = useState([]);
     const [formData, setFormData] = useState({
         title: "",
@@ -12,14 +12,14 @@ export default function CategoryList({ }) {
     const [edit, setEdit] = useState(false);
 
     //*** function = Getting Data From Backend  ***//
-    useEffect(function () {
-        async function getCats() {
-            const cats = await catAPI.getAll();
-            setAllCats(cats);
-            //   console.log(allCats);
-        }
-        getCats();
-    }, []);
+    // useEffect(function () {
+    //     async function getCats() {
+    //         const cats = await catAPI.getAll();
+    //         setAllCats(cats);
+    //         //   console.log(allCats);
+    //     }
+    //     getCats();
+    // }, []);
 
     //*** fucntion = deleting a category ***//
     async function deleteCat(evt) {
@@ -34,7 +34,7 @@ export default function CategoryList({ }) {
     // *** fucntion = editing a category ***//
     async function editCat(evt) {
         console.log(evt.target.value);
-
+        console.log(allCats)
         // FrontEnd updating
         const cats = allCats.filter((cat) => cat._id === evt.target.value);
         cats[0].title = formData.title
@@ -103,7 +103,7 @@ export default function CategoryList({ }) {
                             <Link to={`/categories/${cat.title}`} style={viewMode} >{cat.title}</Link>
                             <input name="title" type="text" className='textInput' style={editMode} placeholder={cat.title} onChange={handleChange} />
 
-                            <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id}  style={editMode} onClick={deleteCat}>
+                            <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} style={editMode} onClick={deleteCat}>
                                 Delete
                             </button>
                             <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={cat._id} style={editMode} onClick={editCat}>

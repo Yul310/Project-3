@@ -35,7 +35,7 @@ export default function TodoListItem({ allTodos }) {
   }, []);
 
 
-
+console.log(todo.date)
   let date = new Date(todo.date)
   const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
