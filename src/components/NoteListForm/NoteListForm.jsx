@@ -38,6 +38,7 @@ export default function NoteListItem() {
     evt.preventDefault();
     console.log(allNotes)
     setAllNotes([...allNotes,formData]);
+
     noteAPI.newNote(formData);
    
     console.log(allNotes);
