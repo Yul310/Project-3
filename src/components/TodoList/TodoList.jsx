@@ -106,7 +106,7 @@ export default function TodoList({allTodos, setAllTodos}) {
             </ul>
           </div>
         </div>
-
+{/* // i think we can delete the code below -K */}
         {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
           // create new todo
           <Link to={`/todos/new`}>
