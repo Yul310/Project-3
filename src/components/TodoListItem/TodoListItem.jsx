@@ -13,10 +13,13 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
   const [formData, setFormData] = useState({
     title: "",
     date: "",
-    time: "",
+    // time: "",
+    category: "",
     description: "",
     urgency: ""
   });
+
+  const magic = setUpdated()
   // const [activeTodo, setActiveTodo] = useState([]);
   // const [formData, setFormData] = useState({
   //   // add in all the other fields
@@ -85,6 +88,31 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
   //   console.log(formData);
   //   // setNewTodo(evt.target.value);
   // }
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    console.log(formData)
+
+    todoAPI.editTodo(formData);
+    setUpdated(!magic)
+
+    setFormData({
+      title: "",
+      date: "",
+      description: "",
+      urgency: "",
+      category: ""
+
+    });
+
+  }
+
+  // async function deleteTodo(evt) {
+  //   console.log(evt.target.value);
+  //   const todos = allTodos.filter((todo) => todo._id !== evt.target.value);
+  //   // console.log(todos);
+  //   setAllTodos(todos);
+  //   await todoAPI.deleteTodo(evt.target.value);
+  // }
 
   function handleChange(evt) {
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
@@ -92,33 +120,30 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     console.log(formData);
   }
 
-  async function editTodo(evt) {
-    console.log(evt.target.value);
+  // async function editTodo(evt) {
+  //   console.log(evt.target.value);
 
-    // FrontEnd updating
-    const todos = allTodos.filter((todo) => todo._id === evt.target.value);
-    console.log(todos)
-    // todos[0].title = formData.title
-    // setEdit(!edit)
-    // console.log(cats[0].title);
-    // console.log(formData)
+  //   // FrontEnd updating
+  //   const todos = allTodos.filter((todo) => todo._id === evt.target.value);
+  //   console.log(todos)
+  //   // todos[0].title = formData.title
+  //   // setEdit(!edit)
+  //   // console.log(cats[0].title);
+  //   // console.log(formData)
 
-    //Backend updating
-    todoAPI.editTodo(evt.target.value, formData);
-    // setFormData({
-    //   title: ""
-    // })
-  }
+  //   //Backend updating
+  //   todoAPI.editTodo(evt.target.value, formData);
+  //   // setFormData({
+  //   //   title: ""
+  //   // })
+  // }
 
 
   //*** function = Edit data ***//
   function handleEditing(evt) {
-    console.log("edit mode activated");
+
     setEdit(!edit);
   }
-
-
-
 
   let viewMode = {}
   let editMode = {}
@@ -129,36 +154,46 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     editMode.display = "none"
   }
 
-  return (
 
-    <div className="flex-col px-10 flex mt-24">
-      <TodoList
-        allTodos={allTodos}
-        setAllTodos={setAllTodos}
-        setUpdated={setUpdated}
-        activeCat={activeCat}
-      />
+
+
+  return (
+    <>
+      <div className="flex-col px-10 flex mt-24">
+        <TodoList
+          allTodos={allTodos}
+          setAllTodos={setAllTodos}
+          setUpdated={setUpdated}
+          activeCat={activeCat}
+        />
+      </div>
 
       <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] ">
+
         <h5>TodoListItem</h5>
+
         <div
           className="border-black border-[1px] rounded-md py-4 px-4 font-light"
           id="hardshadow"
         >
-
+          {/* <form action="" onChange={handleChange}> */}
           {/* title */}
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
-          <h5 style={viewMode}>{todo.title}</h5>
+          <h5 style={viewMode}>{todo.title} </h5>
           <input
             type="text"
-            className='textInput'
+            name="title"
+
+            value={formData.title}
             style={editMode}
             placeholder={todo.title}
-            onChange={handleChange}
+            default
+          onChange={handleChange}
           />
 
+          <p>&nbsp;</p>
           {/* Date */}
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Date
@@ -169,16 +204,18 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
             name="date"
             style={editMode}
             value={formData.date}
-
+            onChange={handleChange}
           />
 
-
+          <p>&nbsp;</p>
 
           {/* Category */}
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Category
+
           </label>
-          <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <p style={viewMode}>{todo.title}</p>
+          <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
 
@@ -195,34 +232,28 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           <p style={viewMode}>{todo.description}</p>
           <input
             type="text"
+            name="description"
             className='textInput'
             style={editMode}
             placeholder={todo.description}
+            value={formData.description}
             onChange={handleChange}
           />
+          <p>&nbsp;</p>
 
           {/* Urgency */}
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Urgency
           </label>
           <p style={viewMode}>{todo.urgency}</p>
-          <input
-            type="text"
-            className='textInput'
-            style={editMode}
-            placeholder={todo.urgency}
-            onChange={handleChange}
-          />
+          <select name="urgency" value={formData.urgency} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
+            <option value="low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
 
-          {/* Category */}
-          {/* <p style={viewMode}>{todo.category}</p>
-          <input
-            type="text"
-            className='textInput'
-            style={editMode}
-            placeholder={todo.category}
-            onChange={handleChange}
-          /> */}
+
+          <p>&nbsp;</p>
 
           <button
             className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
@@ -230,15 +261,17 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           >
             Edit
           </button>
-          <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
+          <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleSubmit}>
+            
             Save
           </button>
 
+          {/* </form> */}
         </div>
 
         {/* /* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"> */}
       </div>
 
-    </div>
+    </>
   );
 }

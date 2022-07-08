@@ -14,12 +14,12 @@ module.exports = {
 // Sorting all the todos by catetory. Might want to change this later -K
 async function index(req, res) {
   try {
-    
-  const todoList = await Todo.find({}).populate('category').exec();
-  // .populate('category').exec();
-  // re-sort based upon the sortOrder of the categories
-  // todos.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
-  res.json(todoList);
+
+    const todoList = await Todo.find({}).populate('category').exec();
+    // .populate('category').exec();
+    // re-sort based upon the sortOrder of the categories
+    // todos.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
+    res.json(todoList);
   } catch {
     res.status(400).json('Bad Serverside')
   }
@@ -32,17 +32,17 @@ async function create(req, res) {
   // console.log(req.body) // this is the body of the request
   try {
 
-// const one = Category.findOne({title:req.body.category})
-// console.log(one)
+    // const one = Category.findOne({title:req.body.category})
+    // console.log(one)
 
-  const newTodo = await Todo.create(req.body);
-  const todoList = await Todo.find({});
-  todoList.push(newTodo)
-  //.then((todoList) => {console.log(todoList)})
-  await todoList.save();
-  console.log(todoList);
-  //res.json(todoList);
-  response.json();
+    const newTodo = await Todo.create(req.body);
+    const todoList = await Todo.find({});
+    todoList.push(newTodo)
+    //.then((todoList) => {console.log(todoList)})
+    await todoList.save();
+    console.log(todoList);
+    //res.json(todoList);
+    response.json();
   } catch (e) {
     res.status(400).json(e)
   }
@@ -55,7 +55,7 @@ async function findAllTodos(userId) {
 }
 
 // to delete a todo
-async function deleteTodo (req, res) {
+async function deleteTodo(req, res) {
   // console.log(req.body)
   console.log("step 3 delete")
 
@@ -73,10 +73,17 @@ async function deleteTodo (req, res) {
 // to edit a todo
 async function editTodo(req, res) {
   const todoList = await Todo.findByIdAndUpdate(
-    {_id:req.params.id},
-    {title:req.body.title}
+    req.params.id,
+    {
+      title: req.body.title,
+      // date: req.body.date,
+      // // category: req.body.category,
+      // description: req.body.description,
+      // urgency: req.body.urgency,
+    }
   );
   console.log(todoList)
+  console.log("edit starated")
 }
 
 async function show(req, res) {

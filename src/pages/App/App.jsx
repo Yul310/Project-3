@@ -228,6 +228,7 @@ export default function App() {
                   allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
                   allCats={allCats}
                   activeCat={activeCat}
+                  setUpdated={setUpdated}
                 // allTodos={allTodos} 
                 />}
 
