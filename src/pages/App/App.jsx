@@ -280,6 +280,7 @@ export default function App() {
                     )}
                     allCats={allCats}
                     activeCat={activeCat}
+                    setUpdated={setUpdated}
                     // allTodos={allTodos}
                   />
                 }

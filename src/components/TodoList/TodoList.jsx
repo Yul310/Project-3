@@ -67,7 +67,7 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
     editMode.display = "none";
   }
 
-  console.log("step 1 of delete function");
+  // console.log("step 1 of delete function");
 
   return (
     <>

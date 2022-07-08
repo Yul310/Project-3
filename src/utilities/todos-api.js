@@ -16,7 +16,7 @@ export function deleteTodo(id) {
 }
 
 export function editTodo(id,data) {
-  return sendRequest(`${BASE_URL}/editTodo/${id}`, "PUT",data);
+  return sendRequest(`${BASE_URL}/editTodo/${id}`,"PUT",data);
 }
 
 
