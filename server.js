@@ -4,8 +4,12 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
+const rowdy = require('rowdy-logger')
+
 
 const app = express();
+
+let rowdyResults = rowdy.begin(app)
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -31,6 +35,9 @@ app.use("/api/notes", require("./routes/api/notes"));
 // Todos API Routes
 app.use("/api/todos", require("./routes/api/todos"));
 
+// Appointments API Routes
+app.use("/api/appointments", require("./routes/api/appointments"));
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get("/*", function (req, res) {
@@ -42,5 +49,6 @@ app.get("/*", function (req, res) {
 const port = process.env.PORT || 3001;
 
 app.listen(port, function () {
+  rowdyResults.print()
   console.log(`Express app running on port ${port}`);
 });
