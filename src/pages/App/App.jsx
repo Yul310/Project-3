@@ -154,8 +154,9 @@ export default function App() {
     function () {
       async function getNotes() {
         const notes = await noteAPI.getAll();
-        setAllTodos(notes);
-        //   console.log(allTodos);
+        console.log(notes);
+        setAllNotes(notes);
+        console.log(allNotes);
       }
       getNotes();
     },
@@ -202,13 +203,12 @@ export default function App() {
         setCatTodos(todos);
 
         // setActiveCat === ""
-          setActiveCat(categoriesRef.current[0])
-          // setActiveCat(activeCat);
+        setActiveCat(categoriesRef.current[0]);
+        // setActiveCat(activeCat);
         // setActiveCat(todos[0].category.title);
-        console.log(setActiveCat)
+        console.log(setActiveCat);
       }
       getCatTodos();
- 
     },
     [updated]
   );
@@ -320,7 +320,7 @@ export default function App() {
                 element={
                   <ScheduleAppointment
                     user={user}
-                    // allTodos={allTodos}                   
+                    // allTodos={allTodos}
                     // setAllTodos={setAllTodos}
                     // setUpdated={setUpdated}
                     // allCats={allCats}
