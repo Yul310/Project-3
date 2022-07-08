@@ -18,7 +18,10 @@ export default function TodoIndexPage({
           {/* <h1>TodoIndexPage</h1> */}
           {allTodos ? (
             <TodoList
-              allTodos={allTodos}
+            allTodos={allTodos.filter(
+              (todo) => todo.category.title === activeCat
+            )}
+              // allTodos={allTodos}
               setAllTodos={setAllTodos}
               setUpdated={setUpdated}
               activeCat={activeCat}

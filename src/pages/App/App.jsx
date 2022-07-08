@@ -244,10 +244,10 @@ export default function App() {
                   path="/todos"
                   element={
                     <TodoIndexPage
-                      allTodos={allTodos.filter(
-                        (todo) => todo.category.title === activeCat
-                      )}
-                      // allTodos={allTodos}
+                      // allTodos={allTodos.filter(
+                      //   (todo) => todo.category.title === activeCat
+                      // )}
+                      allTodos={allTodos}
                       setAllTodos={setAllTodos}
                       activeCat={activeCat}
                     />
