@@ -75,9 +75,9 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
           <h3>Create a new to-do</h3>
         </div>
-        <form action="" onChange={handleChange} className="border-black border-[1px] rounded-md py-4 px-4 font-light"
+        <form action="" onChange={handleChange} className="border-black border-[1px] rounded-md py-4 px-4 font-light text-justify"
           id="hardshadow">
-          <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Title
           </label>
           <input
@@ -88,7 +88,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
             className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
           />
           <p>&nbsp;</p>
-          <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Date
           </label>
           <input
@@ -100,19 +100,19 @@ export default function TodoListForm({ setUpdated, allCats }) {
           <p>&nbsp;</p>
 
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
-          <label >Category</label>
-          <select name="Category">
+          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2" >Category</label>
+          <select name="Category" className="font-extralight text-2l text-left h-1/2 px-2 py-2">
             {allCats.map((cat, idx) => (<option value={cat.title}>{cat.title}</option>))}
 
             {/* <option value="A">a</option>
             <option value="B">b</option>
             <option value="C">c</option> */}
           </select>
-
-          <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <p>&nbsp;</p>
+          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Urgency
           </label>
-          <select name="urgency" value={formData.urgency}>
+          <select name="urgency" value={formData.urgency} className="font-extralight text-2l text-left h-1/2 px-2 py-2">
 
             <option value="low">Low</option>
             <option value="Medium">Medium</option>
@@ -120,7 +120,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
           </select>
 
           <p>&nbsp;</p>
-          <label className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Description
           </label>
           <input
