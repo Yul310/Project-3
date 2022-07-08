@@ -68,8 +68,19 @@ export default function TodoList({ allTodos,activeCat,setAllTodos }) {
     editMode.display = "none";
   }
 
-  // console.log("step 1 of delete function");
 
+ //Pick and Choose //filtering
+  const allTodosG = allTodos.filter((todo) => todo.category.title === activeCat)
+
+if (activeCat){
+  allTodos = allTodosG
+ }
+ else{
+  allTodos = allTodos
+ }
+
+
+ 
   return (
     <>
       {allTodos ? (
@@ -85,6 +96,10 @@ export default function TodoList({ allTodos,activeCat,setAllTodos }) {
                 className="pl-3 text-black flex-row justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
+
+                   
+
+
                 {allTodos.map((todo, idx, { setEdit }) => (
                   <>
                     <li

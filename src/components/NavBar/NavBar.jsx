@@ -17,6 +17,11 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
     setUser(null);
   }
 
+  function setCurrentCat() {
+    setActiveCat()
+    changeShow()
+  }
+
   //////////////////////////////
   //DropDown Menu
   //////////////////////////////
@@ -81,7 +86,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
                   to="/todos"
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
-                  onClick={changeShow}
+                  onClick={setCurrentCat}
                 >
                   <i className="fa-solid fa-list-check mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;To-Do Lists
