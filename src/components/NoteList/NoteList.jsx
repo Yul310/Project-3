@@ -156,9 +156,9 @@ export default function NoteList({ allNotes, setAllNotes }) {
             <h5>loading</h5>
           )}
         </div>
-        <div className="App px-4">
+        {/* <div className="App px-4">
           <InlineWidget url="https://calendly.com/earl-halasan?background_color=f7f7f2&primary_color=fb923c" />
-        </div>
+        </div> */}
       </div>
     </>
   );
