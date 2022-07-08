@@ -57,6 +57,7 @@ async function editNote(req, res) {
 }
 
 async function show(req, res) {
+  console.log("req.params.id")
   const noteList = await Note.findById(req.params.id);
   res.json(noteList);
 }

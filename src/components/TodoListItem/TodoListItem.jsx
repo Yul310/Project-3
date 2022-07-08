@@ -3,9 +3,10 @@ import * as todoAPI from "../../utilities/todos-api";
 // import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import * as katyTodo from "../../components/TodoList/TodoList";
+import TodoList from "../TodoList/TodoList";
 
 
-export default function TodoListItem({ allTodos }) {
+export default function TodoListItem({ allTodos, setAllTodos,setUpdated}) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
   // const [activeTodo, setActiveTodo] = useState([]);
@@ -80,16 +81,20 @@ console.log(todo.date)
 
   return (
     <div>
-      <h5>TodoListItem</h5>
+      <TodoList allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated}/>
 
-      <p>{todo.title}</p>
+      <p>line break here </p>
+      <h5>TodoListItem</h5>
+    <div className="border-black border-[1px] rounded-md py-4 px-4 font-light"
+          id="hardshadow">
+      <h5>{todo.title}</h5>
 
       <p>{dateRecord}</p>
 
       <p>{todo.description}</p>
 
       <p>{todo.urgency}</p>
-
+</div>
       {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
 
     <p>{props.allTodos[chosenTodo].title}</p>
