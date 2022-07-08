@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
 import { InlineWidget } from "react-calendly";
 
-export default function NoteList({ allNotes, setAllNotes }) {
+export default function NoteList({ 
+  allNotes, 
+  setAllNotes,
+  setUpdated,
+  allCats,
+  activeCat
+
+ }) {
   // const [allNotes, setAllNotes] = useState([]);
   // const [activeNote, setActiveNote] = useState([]);
   const [edit, setEdit] = useState(false);
