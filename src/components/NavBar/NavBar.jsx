@@ -109,7 +109,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
                 className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
-                <i class="fa-solid fa-calendar-days"></i>
+                <i class="fa-solid fa-calendar-days mt-1"></i>
                 &nbsp;&nbsp;&nbsp;Appointments
               </Link>
 
