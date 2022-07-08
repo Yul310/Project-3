@@ -6,8 +6,7 @@ import { useState, useEffect } from "react";
 import { findAllByTestId } from "@testing-library/react";
 import CategoryTodo from "../../components/CategoryTodo/CategoryTodo";
 
-export default function NavBar({ user, setUser,categories, setActiveCat }) {
-  
+export default function NavBar({ user, setUser, categories, setActiveCat }) {
   const [edit, setEdit] = useState(false);
 
   // Add the following function
@@ -18,24 +17,22 @@ export default function NavBar({ user, setUser,categories, setActiveCat }) {
     setUser(null);
   }
 
-
   //////////////////////////////
   //DropDown Menu
   //////////////////////////////
 
   function changeShow(evt) {
-  
     setEdit(!edit);
-// console.log(setActiveCat)
-}
+    // console.log(setActiveCat)
+  }
 
-  let viewMode = {}
-  let editMode = {}
+  let viewMode = {};
+  let editMode = {};
 
   if (edit) {
-      viewMode.display = "none"
+    viewMode.display = "none";
   } else {
-      editMode.display = "none"
+    editMode.display = "none";
   }
 
   return (
@@ -83,14 +80,18 @@ export default function NavBar({ user, setUser,categories, setActiveCat }) {
                 <Link
                   to="/todos"
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                  aria-selected="false"  onClick={changeShow}
+                  aria-selected="false"
+                  onClick={changeShow}
                 >
                   <i className="fa-solid fa-list-check mt-1.5"></i>
                   &nbsp;&nbsp;&nbsp;To-Do Lists
                 </Link>
-                
+
                 <div style={editMode}>
-                <CategoryTodo categories={categories} setActiveCat={setActiveCat} />
+                  <CategoryTodo
+                    categories={categories}
+                    setActiveCat={setActiveCat}
+                  />
                 </div>
               </div>
 
@@ -101,6 +102,15 @@ export default function NavBar({ user, setUser,categories, setActiveCat }) {
               >
                 <i className="fa-solid fa-tags mt-1.5"></i>
                 &nbsp;&nbsp;&nbsp;Categories
+              </Link>
+
+              <Link
+                to="/appointments"
+                className="pl-3 text-white flex justify-start order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                aria-selected="false"
+              >
+                <i class="fa-solid fa-calendar-days"></i>
+                &nbsp;&nbsp;&nbsp;Appointments
               </Link>
 
               <div>
