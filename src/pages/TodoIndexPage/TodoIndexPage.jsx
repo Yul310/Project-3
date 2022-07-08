@@ -5,7 +5,7 @@ import * as todoAPI from "../../utilities/todos-api";
 import { useState, useEffect } from "react";
 
 
-export default function TodoIndexPage({allTodos, setAllTodos,setUpdated}) {
+export default function TodoIndexPage({allTodos, setAllTodos,setUpdated, activeCat}) {
 
  
   return (
@@ -15,7 +15,7 @@ export default function TodoIndexPage({allTodos, setAllTodos,setUpdated}) {
         <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f]">
         {/* <h1>TodoIndexPage</h1> */}
         {allTodos?
-        <TodoList allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated}/>:"loading"
+        <TodoList allTodos={allTodos} setAllTodos={setAllTodos} setUpdated={setUpdated} activeCat={activeCat}/>:"loading"
       }
         
         {/* <TodoListForm allTodos={allTodos} setAllTodos={setAllTodos}/> */}

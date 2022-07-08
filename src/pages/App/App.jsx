@@ -146,8 +146,9 @@ export default function App() {
         return cats.includes(cat) ? cats : [...cats, cat];
       }, []);
       setAllTodos(todos);
-      setCatTodos(todos)
-      setActiveCat(todos[0].category.title);
+      setCatTodos(todos);
+      setActiveCat===''? setActiveCat(categoriesRef.current[0]): setActiveCat(activeCat);
+      // setActiveCat(todos[0].category.title);
     }
     getCatTodos();
   }, [updated]);
@@ -184,6 +185,7 @@ export default function App() {
                       allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
                       // allTodos={allTodos}
                       setAllTodos={setAllTodos}
+                      activeCat={activeCat}
                     />
                   }
                 />

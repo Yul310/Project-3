@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 // adding something to fix merge conflict
 
-export default function TodoList({ allTodos, setAllTodos }) {
+export default function TodoList({ allTodos, setAllTodos, activeCat }) {
 
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
@@ -79,9 +79,9 @@ export default function TodoList({ allTodos, setAllTodos }) {
           <div
           // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
           >
-            <h3>Todo List</h3>
+            <h3>Todo List </h3>
             {/* <TodoListItem /> */}
-
+             <h3>Category: {activeCat} </h3> 
             <div>
 
               <ul
