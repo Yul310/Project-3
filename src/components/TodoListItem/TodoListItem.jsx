@@ -8,7 +8,7 @@ import TodoList from "../TodoList/TodoList";
 export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat }) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
-  const [click, setClick] = useState(false);
+  
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -43,7 +43,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     }
     getSingleTodos(id);
     // important to have the brackets below, otherwise infinate loop
-  }, []);
+  }, [id]);
 
 
   ////////////////
