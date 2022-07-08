@@ -14,6 +14,7 @@ import { gapi } from "gapi-script";
 import * as todoAPI from "../../utilities/todos-api";
 import * as catAPI from "../../utilities/categories-api";
 import * as noteAPI from "../../utilities/notes-api";
+import ScheduleAppointment from "../ScheduleAppointment/ScheduleAppointment";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -306,6 +307,19 @@ export default function App() {
                     setUpdated={setUpdated}
                     allCats={allCats}
                     activeCat={activeCat}
+                  />
+                }
+              />
+              <Route
+                path="/appointment"
+                element={
+                  <ScheduleAppointment
+                    user={user}
+                    // allTodos={allTodos}                   
+                    // setAllTodos={setAllTodos}
+                    // setUpdated={setUpdated}
+                    // allCats={allCats}
+                    // activeCat={activeCat}
                   />
                 }
               />

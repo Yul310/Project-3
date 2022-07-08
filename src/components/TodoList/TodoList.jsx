@@ -7,7 +7,6 @@ import { useState, useEffect, useRef } from "react";
 // adding something to fix merge conflict
 
 export default function TodoList({ allTodos, setAllTodos, activeCat }) {
-
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -16,7 +15,6 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
     description: "",
     urgency: "",
   });
-
 
   //*** fucntion = creating new category ***//
   async function deleteTodo(evt) {
@@ -33,7 +31,7 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
 
     // FrontEnd updating
     const todos = allTodos.filter((todo) => todo._id === evt.target.value);
-    console.log(todos)
+    console.log(todos);
     // todos[0].title = formData.title
     // setEdit(!edit)
     // console.log(cats[0].title);
@@ -46,17 +44,13 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
     // })
   }
 
-
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { ...formData,[evt.target.name]: evt.target.value };
+    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
     // setNewTodo(evt.target.value);
   }
-
-  
-  
 
   //*** function = Edit data ***//
   function handleEditing(evt) {
@@ -64,37 +58,41 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
     setEdit(!edit);
   }
 
-  let viewMode = {}
-  let editMode = {}
+  let viewMode = {};
+  let editMode = {};
 
   if (edit) {
-    viewMode.display = "none"
+    viewMode.display = "none";
   } else {
-    editMode.display = "none"
+    editMode.display = "none";
   }
 
   console.log("step 1 of delete function");
 
   return (
     <>
-      {allTodos ?
-        <div className="flex-col px-10 flex mt-24">
+      {allTodos ? (
+        <div className="flex-row px-10 flex mt-24">
           <div
           // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
           >
             <h3>Todo List </h3>
             {/* <TodoListItem /> */}
-             <h3>Category: {activeCat} </h3> 
+            <h3>Category: {activeCat} </h3>
             <div>
-
               <ul
-                className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                className="pl-3 text-black flex-row justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
                 {allTodos.map((todo, idx, { setEdit }) => (
                   <>
-                    <li key={idx} >
-                      <Link to={`/todos/${todo._id}`} style={viewMode} >{todo.title} 
+                    <li
+                      key={idx}
+                      className="border-black border-[1px] rounded-md py-4 px-4 font-light text-justify"
+                      id="hardshadow"
+                    >
+                      <Link to={`/todos/${todo._id}`} style={viewMode}>
+                        {todo.title}
                       </Link>
                       {/* <input 
                         type="text" 
@@ -104,7 +102,7 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                         onChange={handleChange} 
                       /> */}
 
-{/* 
+                      {/* 
                       <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
                         Save
                       </button> */}
@@ -115,7 +113,7 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                         value={todo._id}
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
-                        onClick={deleteTodo} 
+                        onClick={deleteTodo}
                       >
                         delete
                       </button>
@@ -131,7 +129,6 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                 {/* {todos} */}
               </ul>
             </div>
-
           </div>
 
           {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
@@ -143,7 +140,9 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
           </Link>
         </div> */}
         </div>
-        : <h5>loading</h5>}
+      ) : (
+        <h5>loading</h5>
+      )}
     </>
   );
 }

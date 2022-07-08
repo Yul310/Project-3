@@ -35,6 +35,9 @@ app.use("/api/notes", require("./routes/api/notes"));
 // Todos API Routes
 app.use("/api/todos", require("./routes/api/todos"));
 
+// Appointments API Routes
+app.use("/api/appointments", require("./routes/api/appointments"));
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get("/*", function (req, res) {
