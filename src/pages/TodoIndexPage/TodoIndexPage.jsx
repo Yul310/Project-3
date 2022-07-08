@@ -1,6 +1,7 @@
 import TodoList from "../../components/TodoList/TodoList";
 import TodoListForm from "../../components/TodoListForm/TodoListForm";
 import { Link } from "react-router-dom";
+import TodoListItem from "../../components/TodoListItem/TodoListItem";
 // import * as todoAPI from "../../utilities/todos-api";
 // import { useState, useEffect } from "react";
 
@@ -34,6 +35,7 @@ export default function TodoIndexPage({
             Create new todo
           </button>
         </Link>
+        
       </div>
     </>
   );

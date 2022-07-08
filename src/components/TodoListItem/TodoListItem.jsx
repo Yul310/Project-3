@@ -45,6 +45,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
       setTodo(foundTodo);
     }
     getSingleTodos(id);
+    
     // important to have the brackets below, otherwise infinate loop
   }, [id]);
 
@@ -121,24 +122,6 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     console.log(formData);
    
   }
-
-  // async function editTodo(evt) {
-  //   console.log(evt.target.value);
-
-  //   // FrontEnd updating
-  //   const todos = allTodos.filter((todo) => todo._id === evt.target.value);
-  //   console.log(todos)
-  //   // todos[0].title = formData.title
-  //   // setEdit(!edit)
-  //   // console.log(cats[0].title);
-  //   // console.log(formData)
-
-  //   //Backend updating
-  //   todoAPI.editTodo(evt.target.value, formData);
-  //   // setFormData({
-  //   //   title: ""
-  //   // })
-  // }
 
 
   //*** function = Edit data ***//
@@ -267,6 +250,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
             
             Save
           </button>
+          <link rel="stylesheet" href="http://localhost:3000/todos/new" />
 
           {/* </form> */}
         </div>
