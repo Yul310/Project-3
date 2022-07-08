@@ -29,6 +29,8 @@ export default function App() {
   const CLIENT_ID =
     "272986187803-i6090pm51v34oito1cpg0le75qiq5132.apps.googleusercontent.com";
   const API_KEY = process.env.REACT_APP_API_KEY;
+  const calendarID = process.env.REACT_APP_CALENDAR_ID;
+  const accessToken = process.env.REACT_APP_GOOGLE_ACCESS_TOKEN;
   const DISCOVERY_DOC =
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
@@ -91,6 +93,55 @@ export default function App() {
         });
     });
   };
+
+  // const event = {
+  //   summary: "Hello World",
+  //   location: "",
+  //   start: {
+  //     dateTime: "2022-08-28T09:00:00-07:00",
+  //     timeZone: "America/Los_Angeles",
+  //   },
+  //   end: {
+  //     dateTime: "2022-08-28T17:00:00-07:00",
+  //     timeZone: "America/Los_Angeles",
+  //   },
+  //   recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
+  //   attendees: [],
+  //   reminders: {
+  //     useDefault: false,
+  //     overrides: [
+  //       { method: "email", minutes: 24 * 60 },
+  //       { method: "popup", minutes: 10 },
+  //     ],
+  //   },
+  // };
+
+  // const addEvent = (calendarID, event) => {
+  //   function initiate() {
+  //     gapi.client
+  //       .request({
+  //         path: `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`,
+  //         method: "POST",
+  //         body: event,
+  //         headers: {
+  //           "Content-type": "application/json",
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       })
+  //       .then(
+  //         (response) => {
+  //           return [true, response];
+  //         },
+  //         function (err) {
+  //           console.log(err);
+  //           return [false, err];
+  //         }
+  //       );
+  //   }
+  //   gapi.load("client", initiate);
+  // };
+
+  // addEvent(calendarID, event);
 
   //////////////////////////////////////////////////
   //*** function = Getting Data From Backend  ***//
@@ -163,14 +214,12 @@ export default function App() {
         <>
           <button onClick={handleClick}>Add Event</button>
           <div className="App flex flex-row">
-
             <NavBar
               user={user}
               setUser={setUser}
               setUpdated={setUpdated}
               categories={categoriesRef.current}
               setActiveCat={setActiveCat}
-
             />
             <Routes>
               {allNotes ? (
@@ -224,12 +273,13 @@ export default function App() {
               <Route
                 path="/todos/:id"
 
-                element={<TodoListItem 
-                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
-                  activeCat={activeCat}
-                  // allTodos={allTodos} 
-                  />}
 
+                element={<TodoListItem
+                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                  allCats={allCats}
+                  activeCat={activeCat}
+                // allTodos={allTodos} 
+                />}
               />
               <Route
                 path="/categories"
