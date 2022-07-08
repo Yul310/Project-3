@@ -312,7 +312,7 @@ export default function App() {
                 }
               />
               <Route
-                path="/appointment"
+                path="/appointments"
                 element={
                   <ScheduleAppointment
                     user={user}
