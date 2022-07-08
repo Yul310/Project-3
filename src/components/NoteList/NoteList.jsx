@@ -22,14 +22,14 @@ export default function NoteList({
 
   // not sure if this is needed anymore
   //*** function = Getting Data From Backend  ***//
-  useEffect(function () {
-    async function getNotes() {
-      const notes = await noteAPI.getAll();
-      setAllNotes(notes);
-      console.log(allNotes);
-    }
-    getNotes();
-  }, []);
+  // useEffect(function () {
+  //   async function getNotes() {
+  //     const notes = await noteAPI.getAll();
+  //     setAllNotes(notes);
+  //     console.log(allNotes);
+  //   }
+  //   getNotes();
+  // }, []);
 
   //*** fucntion = creating new category ***//
   async function deleteNote(evt) {
@@ -94,7 +94,7 @@ export default function NoteList({
   } else {
     editMode.display = "none";
   }
-
+  console.log(allNotes);
   return (
     <>
       <div className="flex">
