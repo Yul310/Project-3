@@ -55,6 +55,9 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
     // setNewTodo(evt.target.value);
   }
 
+  
+  
+
   //*** function = Edit data ***//
   function handleEditing(evt) {
     console.log("edit mode activated");
@@ -91,15 +94,15 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                 {allTodos.map((todo, idx, { setEdit }) => (
                   <>
                     <li key={idx} >
-                      <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
+                      <Link to={`/todos/${todo._id}`} style={viewMode} >{todo.title} 
                       </Link>
-                      <input 
+                      {/* <input 
                         type="text" 
                         className='textInput' 
                         style={editMode} 
                         placeholder={todo.title} 
                         onChange={handleChange} 
-                      />
+                      /> */}
 
 
                       <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
@@ -112,19 +115,19 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                         value={todo._id}
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
-                        onClick={deleteTodo} style={editMode}
+                        onClick={deleteTodo} 
                       >
                         delete
                       </button>
                     </li>
                   </>
                 ))}
-                <button
+                {/* <button
                   className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
                   onClick={handleEditing}
                 >
                   Edit
-                </button>
+                </button> */}
                 {/* {todos} */}
               </ul>
             </div>

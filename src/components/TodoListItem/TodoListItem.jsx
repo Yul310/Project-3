@@ -5,9 +5,18 @@ import { useState, useEffect } from "react";
 // import * as katyTodo from "../../components/TodoList/TodoList";
 import TodoList from "../TodoList/TodoList";
 
-export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
+export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat }) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
+  const [click, setClick] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    time: "",
+    description: "",
+    urgency: "",
+  });
   // const [activeTodo, setActiveTodo] = useState([]);
   // const [formData, setFormData] = useState({
   //   // add in all the other fields
@@ -27,6 +36,8 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
 
   useEffect(function () {
     async function getSingleTodos() {
+      // let foundTodo = allTodos.filter((todo) => todo._id === id)
+      // console.log(foundTodo)
       const foundTodo = await todoAPI.getById(id);
       setTodo(foundTodo);
     }
@@ -35,8 +46,10 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
   }, []);
 
 
+  ////////////////
+  // CHANGE DATE
+  ////////////////
 
-// console.log(todo.date)
   let date = new Date(todo.date)
   const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
@@ -73,6 +86,28 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
   //   // setNewTodo(evt.target.value);
   // }
 
+  function handleChange(evt) {
+    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
+    setFormData(updatedTodo);
+    console.log(formData);
+  }
+
+
+  //*** function = Edit data ***//
+  function handleEditing(evt) {
+    console.log("edit mode activated");
+    setEdit(!edit);
+  }
+
+  let viewMode = {}
+  let editMode = {}
+
+  if (edit) {
+    viewMode.display = "none"
+  } else {
+    editMode.display = "none"
+  }
+
   return (
 
     <div className="flex-col px-10 flex mt-24">
@@ -80,6 +115,8 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
         allTodos={allTodos}
         setAllTodos={setAllTodos}
         setUpdated={setUpdated}
+        activeCat={activeCat}
+       
       />
 
       <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] ">
@@ -88,16 +125,58 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
           className="border-black border-[1px] rounded-md py-4 px-4 font-light"
           id="hardshadow"
         >
-          <h5>{todo.title}</h5>
+          {/* title */}
+          <h5 style={viewMode}>{todo.title}</h5>
+          <input
+            type="text"
+            className='textInput'
+            style={editMode}
+            placeholder={todo.title}
+            onChange={handleChange}
+          />
 
-          <p>{dateRecord}</p>
+          {/* Date */}
+          <p style={viewMode}>{dateRecord}</p>
 
-          <p>{todo.description}</p>
+          {/* Description */}
+          <p style={viewMode}>{todo.description}</p>
+          <input
+            type="text"
+            className='textInput'
+            style={editMode}
+            placeholder={todo.description}
+            onChange={handleChange}
+          />
 
-          <p>{todo.urgency}</p>
-          
-          <p>{todo.category}</p>
+          {/* Urgency */}
+          <p style={viewMode}>{todo.urgency}</p>
+          <input
+            type="text"
+            className='textInput'
+            style={editMode}
+            placeholder={todo.urgency}
+            onChange={handleChange}
+          />
+
+          {/* Category */}
+          {/* <p style={viewMode}>{todo.category}</p>
+          <input
+            type="text"
+            className='textInput'
+            style={editMode}
+            placeholder={todo.category}
+            onChange={handleChange}
+          /> */}
+
+          <button
+            className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
+            onClick={handleEditing}
+          >
+            Edit
+          </button>
+
         </div>
+
         {/* /* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"> */}
       </div>
 
