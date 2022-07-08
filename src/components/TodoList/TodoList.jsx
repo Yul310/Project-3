@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 // adding something to fix merge conflict
 
-export default function TodoList({ allTodos, setAllTodos, activeCat }) {
+export default function TodoList({ allTodos,activeCat,setAllTodos }) {
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -18,10 +18,11 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
 
   //*** fucntion = creating new category ***//
   async function deleteTodo(evt) {
-    console.log(evt.target.value);
+    // console.log(evt.target.value);
     const todos = allTodos.filter((todo) => todo._id !== evt.target.value);
-    // console.log(todos);
+    console.log(todos)
     setAllTodos(todos);
+    
     await todoAPI.deleteTodo(evt.target.value);
   }
 
