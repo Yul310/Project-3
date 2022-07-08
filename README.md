@@ -1,4 +1,6 @@
-# ClearSight
+<!-- # ClearSight -->
+![ClearSight](./img/clearsight.png)
+
 
 ## Premise: 
 
