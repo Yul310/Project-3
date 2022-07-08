@@ -34,6 +34,7 @@ export default function HomePage({
               setAllNotes={setAllNotes}
               setUpdated={setUpdated}
               allCats={allCats}
+              activeCat={activeCat}
             />
           </div>
           <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2">
