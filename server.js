@@ -4,8 +4,12 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
+const rowdy = require('rowdy-logger')
+
 
 const app = express();
+
+let rowdyResults = rowdy.begin(app)
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -42,5 +46,6 @@ app.get("/*", function (req, res) {
 const port = process.env.PORT || 3001;
 
 app.listen(port, function () {
+  rowdyResults.print()
   console.log(`Express app running on port ${port}`);
 });
