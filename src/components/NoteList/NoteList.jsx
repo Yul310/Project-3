@@ -2,6 +2,7 @@ import NoteListItem from "../NoteListForm/NoteListForm";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
+import { InlineWidget } from "react-calendly";
 
 export default function NoteList({ allNotes, setAllNotes }) {
   // const [allNotes, setAllNotes] = useState([]);
@@ -90,68 +91,75 @@ export default function NoteList({ allNotes, setAllNotes }) {
 
   return (
     <>
-      {allNotes ? (
-        <div className="flex-col px-10 flex mt-24">
-          <NoteListItem />
-          <ul
-            className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-            aria-selected="false"
-          >
-            {allNotes.map((note, idx, { setEdit }) => (
-              <>
-                <li
-                  key={idx}
-                  // don't have this in todoList
-                  // onClick={() => setActiveNote(note)}
-                >
-                  <Link to={`/notes/${note._id}`} style={viewMode}>
-                    {note.title}
-                  </Link>
-                  <input
-                    type="text"
-                    className="textInput"
-                    style={editMode}
-                    placeholder={note.title}
-                    onChange={handleChange}
-                  />
-                  <button
-                    className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                    onClick={editNote}
-                    type="submit"
-                    style={editMode}
-                  >
-                    Edit
-                  </button>
+      <div className="flex">
+        <div>
+          {allNotes ? (
+            <div className="flex-col px-10 flex mt-24">
+              <NoteListItem />
+              <ul
+                className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                aria-selected="false"
+              >
+                {allNotes.map((note, idx, { setEdit }) => (
+                  <>
+                    <li
+                      key={idx}
+                      // don't have this in todoList
+                      // onClick={() => setActiveNote(note)}
+                    >
+                      <Link to={`/notes/${note._id}`} style={viewMode}>
+                        {note.title}
+                      </Link>
+                      <input
+                        type="text"
+                        className="textInput"
+                        style={editMode}
+                        placeholder={note.title}
+                        onChange={handleChange}
+                      />
+                      <button
+                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        onClick={editNote}
+                        type="submit"
+                        style={editMode}
+                      >
+                        Edit
+                      </button>
 
-                  <button
-                    className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                    type="submit"
-                    value={note._id}
-                    style={editMode}
-                    onClick={handleEditing}
-                  >
-                    Save
-                  </button>
+                      <button
+                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        type="submit"
+                        value={note._id}
+                        style={editMode}
+                        onClick={handleEditing}
+                      >
+                        Save
+                      </button>
 
-                  {/* <br></br> */}
-                  <button
-                    type="submit"
-                    value={note._id}
-                    className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                    // do we want the note to be deleted when the button is clicked? Like marking it complete... -K
-                    style={editMode}
-                    onClick={deleteNote}
-                  >
-                    delete
-                  </button>
-                </li>
-              </>
-            ))}
-          </ul>
+                      {/* <br></br> */}
+                      <button
+                        type="submit"
+                        value={note._id}
+                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        // do we want the note to be deleted when the button is clicked? Like marking it complete... -K
+                        style={editMode}
+                        onClick={deleteNote}
+                      >
+                        delete
+                      </button>
+                    </li>
+                  </>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <h5>loading</h5>
+          )}
         </div>
-      ) : (
-        <h5>loading</h5>
-      )}
+        {/* <div className="App px-4">
+          <InlineWidget url="https://calendly.com/earl-halasan?background_color=f7f7f2&primary_color=fb923c" />
+        </div> */}
+      </div>
     </>
   );
 }
