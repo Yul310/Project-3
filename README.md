@@ -1,8 +1,11 @@
-# Project 3. An Organizer by Katy, Sam, and Earl.
+# ClearSight
 
 ## Premise: 
 
-This project is modeled after GoodReads, a blog site that allows users to review books that they have read and add them to their own digital bookshelf.
+Stay organized and manage your day-to-day with ClearSight!
+This is a personal task management app, a place where you can create notes and todos that makes it easy to stay organized and manage your life. 
+
+Happy organizing!
 
 
 ## Getting started:
