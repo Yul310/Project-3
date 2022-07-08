@@ -10,6 +10,7 @@ import HomePage from "../HomePage/HomePage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
+import { gapi } from "gapi-script";
 import * as todoAPI from "../../utilities/todos-api";
 import * as catAPI from "../../utilities/categories-api";
 import * as noteAPI from "../../utilities/notes-api";
@@ -45,6 +46,8 @@ export default function App() {
         clientId: CLIENT_ID,
         discoveryDocs: [DISCOVERY_DOC],
         scope: SCOPES,
+        plugin_name: "chat",
+        ux_mode: "redirect",
       });
 
       gapi.client.load("calendar", "v3", () => console.log("bam!"));
