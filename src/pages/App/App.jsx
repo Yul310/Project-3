@@ -154,7 +154,7 @@ export default function App() {
     function () {
       async function getNotes() {
         const notes = await noteAPI.getAll();
-        console.log(notes);
+        // console.log(notes);
         setAllNotes(notes);
         console.log(allNotes);
       }
@@ -248,10 +248,10 @@ export default function App() {
                   path="/todos"
                   element={
                     <TodoIndexPage
-                      allTodos={allTodos.filter(
-                        (todo) => todo.category.title === activeCat
-                      )}
-                      // allTodos={allTodos}
+                      // allTodos={allTodos.filter(
+                      //   (todo) => todo.category.title === activeCat
+                      // )}
+                      allTodos={allTodos}
                       setAllTodos={setAllTodos}
                       activeCat={activeCat}
                     />
@@ -285,7 +285,7 @@ export default function App() {
                     allCats={allCats}
                     activeCat={activeCat}
                     setUpdated={setUpdated}
-                    // allTodos={allTodos}
+                  // allTodos={allTodos}
                   />
                 }
               />
@@ -312,6 +312,7 @@ export default function App() {
                     setUpdated={setUpdated}
                     allCats={allCats}
                     activeCat={activeCat}
+                    allNotes={allNotes}
                   />
                 }
               />
