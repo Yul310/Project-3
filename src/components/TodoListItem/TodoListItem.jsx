@@ -91,8 +91,9 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(formData)
-
-    todoAPI.editTodo(formData);
+    const id = todo._id;
+    // console.log(id)
+    todoAPI.editTodo(id,formData);
     setUpdated(!magic)
 
     setFormData({
@@ -100,7 +101,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
       date: "",
       description: "",
       urgency: "",
-      category: ""
+      // category: ""
 
     });
 
@@ -118,6 +119,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
+   
   }
 
   // async function editTodo(evt) {
@@ -210,16 +212,16 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           <p>&nbsp;</p>
 
           {/* Category */}
-          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
+          {/* <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Category
 
-          </label>
+          </label> */}
           <p style={viewMode}>{todo.title}</p>
-          <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
+          {/* <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
 
-          </select>
+          </select> */}
 
 
           <p>&nbsp;</p>

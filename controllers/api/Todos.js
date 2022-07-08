@@ -73,14 +73,13 @@ async function deleteTodo(req, res) {
 // to edit a todo
 async function editTodo(req, res) {
   const todoList = await Todo.findByIdAndUpdate(
-    req.params.id,
+    {_id:req.params.id},
     {
       title: req.body.title,
-      // date: req.body.date,
-      // // category: req.body.category,
-      // description: req.body.description,
-      // urgency: req.body.urgency,
-    }
+      date: req.body.date,
+      description: req.body.description,
+      urgency: req.body.urgency,
+    },{new:true}
   );
   console.log(todoList)
   console.log("edit starated")
