@@ -163,12 +163,14 @@ export default function App() {
         <>
           <button onClick={handleClick}>Add Event</button>
           <div className="App flex flex-row">
+
             <NavBar
               user={user}
               setUser={setUser}
               setUpdated={setUpdated}
               categories={categoriesRef.current}
               setActiveCat={setActiveCat}
+
             />
             <Routes>
               {allNotes ? (
@@ -215,19 +217,19 @@ export default function App() {
                     setAllTodos={setAllTodos}
                     setUpdated={setUpdated}
                     allCats={allCats}
+                    activeCat={activeCat}
                   />
                 }
               />
               <Route
                 path="/todos/:id"
-                element={
-                  <TodoListItem
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
-                    // allTodos={allTodos}
-                  />
-                }
+
+                element={<TodoListItem 
+                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                  activeCat={activeCat}
+                  // allTodos={allTodos} 
+                  />}
+
               />
               <Route
                 path="/categories"
