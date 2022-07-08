@@ -154,7 +154,7 @@ export default function App() {
     function () {
       async function getNotes() {
         const notes = await noteAPI.getAll();
-        console.log(notes);
+        // console.log(notes);
         setAllNotes(notes);
         console.log(allNotes);
       }
@@ -312,6 +312,7 @@ export default function App() {
                     setUpdated={setUpdated}
                     allCats={allCats}
                     activeCat={activeCat}
+                    allNotes={allNotes}
                   />
                 }
               />
@@ -320,19 +321,11 @@ export default function App() {
                 element={
                   <ScheduleAppointment
                     user={user}
-<<<<<<< HEAD
-                  // allTodos={allTodos}                   
-                  // setAllTodos={setAllTodos}
-                  // setUpdated={setUpdated}
-                  // allCats={allCats}
-                  // activeCat={activeCat}
-=======
                     // allTodos={allTodos}
                     // setAllTodos={setAllTodos}
                     // setUpdated={setUpdated}
                     // allCats={allCats}
                     // activeCat={activeCat}
->>>>>>> 6516b9e346b5b42249cc0f69140bbf0a2ef8f236
                   />
                 }
               />
