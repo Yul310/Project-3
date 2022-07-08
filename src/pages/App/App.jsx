@@ -213,7 +213,7 @@ export default function App() {
     <main>
       {user ? (
         <>
-          <button onClick={handleClick}>Add Event</button>
+          {/* <button onClick={handleClick}>Add Event</button> */}
           <div className="App flex flex-row">
             <NavBar
               user={user}
@@ -303,7 +303,7 @@ export default function App() {
                 element={
                   <HomePage
                     user={user}
-                    allTodos={allTodos}                   
+                    allTodos={allTodos}
                     setAllTodos={setAllTodos}
                     setUpdated={setUpdated}
                     allCats={allCats}

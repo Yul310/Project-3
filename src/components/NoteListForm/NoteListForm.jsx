@@ -58,7 +58,7 @@ export default function NoteListItem() {
 
   return (
     <>
-      <div className="p-2 rounded-lg font-light">
+      <div className="rounded-lg flex font-light ">
         <form
           action=""
           className="border-black border-[1px] rounded-md py-4 px-4 font-light"
@@ -73,7 +73,7 @@ export default function NoteListItem() {
             className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
           />
           <br />
-          <i class="fa-solid fa-tag"></i> &nbsp;
+          <i class="fa-solid fa-tag text-orange-500"></i> &nbsp;
           <input
             name="category"
             value={formData.category}
