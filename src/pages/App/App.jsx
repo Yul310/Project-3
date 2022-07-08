@@ -244,7 +244,17 @@ export default function App() {
                   />
                 }
               />
-              <Route path="/" element={<HomePage user={user} />} />
+              <Route path="/" element={<HomePage
+               user={user} 
+               allTodos={allTodos.filter(
+                (todo) => todo.category.title === activeCat
+              )}
+              // allTodos={allTodos}
+              setAllTodos={setAllTodos}
+              setUpdated={setUpdated}
+              allCats={allCats}
+              activeCat={activeCat}
+               />} />
               {/* redirect to Homepage if path in address bar hasn't matched a <Route> above */}
               {/* <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
