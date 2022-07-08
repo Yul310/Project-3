@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AuthPage from "../AuthPage/AuthPage";
 import NoteIndexPage from "../NoteIndexPage/NoteIndexPage";
 import TodoIndexPage from "../TodoIndexPage/TodoIndexPage";
@@ -17,17 +17,24 @@ import * as noteAPI from "../../utilities/notes-api";
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [allTodos, setAllTodos] = useState([]);
+  const [catTodos, setCatTodos] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [allCats, setAllCats] = useState([]);
+  const [activeCat, setActiveCat] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
+  const categoriesRef = useRef([]);
 
   const gapi = window.gapi;
   const CLIENT_ID =
     "272986187803-i6090pm51v34oito1cpg0le75qiq5132.apps.googleusercontent.com";
-  const API_KEY = "AIzaSyAMYQ9LO9hYPp8tOvoANAuyxB-JheNtjLk";
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const DISCOVERY_DOC =
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+
+  //////////////////////////////////////////////////
+  //*** function = Google Calendar API  ***//
+  //////////////////////////////////////////////////
 
   const handleClick = () => {
     gapi.load("client:auth2", () => {
@@ -46,8 +53,8 @@ export default function App() {
         .getAuthInstance()
         .signIn()
         .then(() => {
-          var event = {
-            summary: "Google I/O 2015",
+          const event = {
+            summary: "Google I/O 2022",
             location: "800 Howard St., San Francisco, CA 94103",
             description:
               "A chance to hear more about Google's developer products.",
@@ -56,7 +63,7 @@ export default function App() {
               timeZone: "America/Los_Angeles",
             },
             end: {
-              dateTime: "2022-07-08T17:00:00-07:00",
+              dateTime: "2015-07-09T17:00:00-07:00",
               timeZone: "America/Los_Angeles",
             },
             recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
@@ -83,7 +90,10 @@ export default function App() {
     });
   };
 
+  //////////////////////////////////////////////////
   //*** function = Getting Data From Backend  ***//
+  //////////////////////////////////////////////////
+
   // notes
   useEffect(
     function () {
@@ -97,6 +107,7 @@ export default function App() {
     [updated]
   );
 
+  // todos
   useEffect(
     function () {
       async function getTodos() {
@@ -109,6 +120,7 @@ export default function App() {
     [updated]
   );
 
+  // categories
   useEffect(
     function () {
       async function getCats() {
@@ -121,13 +133,28 @@ export default function App() {
     [updated]
   );
 
+  //categories + todos
+  useEffect(function () {
+    async function getCatTodos() {
+      const todos = await todoAPI.getAll();
+      categoriesRef.current = todos.reduce((cats, todo) => {
+        const cat = todo.category.title;
+        console.log(cat);
+        return cats.includes(cat) ? cats : [...cats, cat];
+      }, []);
+      setCatTodos(todos)
+      setActiveCat(todos[0].category.title);
+    }
+    getCatTodos();
+  }, []);
+
   return (
     <main>
       {user ? (
         <>
           <button onClick={handleClick}>Add Event</button>
           <div className="App flex flex-row">
-            <NavBar user={user} setUser={setUser} />
+            <NavBar user={user} setUser={setUser} setUpdated={setUpdated} categories={categoriesRef.current}/>
             <Routes>
               {allNotes ? (
                 <Route
@@ -177,9 +204,12 @@ export default function App() {
                 path="/categories"
                 element={
                   <CategoryIndexPage
+                    categories={categoriesRef.current}
                     allCats={allCats}
                     setAllCats={setAllCats}
                     setUpdated={setUpdated}
+                    activeCat={activeCat}
+                    setActiveCat={setActiveCat}
                   />
                 }
               />

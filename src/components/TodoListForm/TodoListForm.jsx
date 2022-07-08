@@ -10,6 +10,7 @@ export default function TodoListForm({ setUpdated, allCats }) {
     title: "",
     date: "",
     // time: "",
+    category: "",
     description: "",
     urgency: "",
   });
@@ -20,6 +21,10 @@ export default function TodoListForm({ setUpdated, allCats }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(formData)
+    
+    // const oneallCats.filter((cat) => cat.title === formData.category)
+    // conso
 
     // setAllTodos([...allTodos,formData]);
     // addTodos(formData);
@@ -34,16 +39,24 @@ export default function TodoListForm({ setUpdated, allCats }) {
       title: "",
       date: "",
       description: "",
-      urgency: ""
+      urgency: "",
+      category: ""
+
     });
 
   }
 
   //*** function = form data ***//
   function handleChange(evt) {
-    const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
-    setFormData(updatedTodo);
+    
+
+    // const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
+
+    // setFormData( evt.target.name === "category"? { ...formData, [evt.target.name]: evt.target.key }:{ ...formData, [evt.target.name]: evt.target.value } );
+    setFormData({ ...formData, [evt.target.name]: evt.target.value } );
+
     console.log(formData);
+    // console.log(allCats)
     // setNewTodo(evt.target.value);
   }
 
@@ -100,9 +113,14 @@ export default function TodoListForm({ setUpdated, allCats }) {
           <p>&nbsp;</p>
 
           {/* // temporarily commenting out category to get the to-do to work and then can incorporate in the categories back in -KM */}
+
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2" >Category</label>
-          <select name="Category" className="font-extralight text-2l text-left h-1/2 px-2 py-2">
-            {allCats.map((cat, idx) => (<option value={cat.title}>{cat.title}</option>))}
+        
+
+          <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+
+            {allCats.map((cat) => <option  value={cat._id} key={cat._id} >{cat.title}</option>)}
+
 
             {/* <option value="A">a</option>
             <option value="B">b</option>

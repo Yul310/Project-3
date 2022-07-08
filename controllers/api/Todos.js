@@ -1,4 +1,6 @@
 const Todo = require('../../models/todo');
+const Category = require("../../models/category");
+
 
 module.exports = {
   index,
@@ -12,7 +14,8 @@ module.exports = {
 // Sorting all the todos by catetory. Might want to change this later -K
 async function index(req, res) {
   try {
-  const todoList = await Todo.find({})
+    
+  const todoList = await Todo.find({}).populate('category').exec();
   // .populate('category').exec();
   // re-sort based upon the sortOrder of the categories
   // todos.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
@@ -28,6 +31,10 @@ async function index(req, res) {
 async function create(req, res) {
   // console.log(req.body) // this is the body of the request
   try {
+
+// const one = Category.findOne({title:req.body.category})
+// console.log(one)
+
   const newTodo = await Todo.create(req.body);
   const todoList = await Todo.find({});
   todoList.push(newTodo)

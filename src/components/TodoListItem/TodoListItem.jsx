@@ -34,8 +34,10 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
     // important to have the brackets below, otherwise infinate loop
   }, []);
 
-  console.log(todo.date);
-  let date = new Date(todo.date);
+
+
+// console.log(todo.date)
+  let date = new Date(todo.date)
   const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
   // function clickedTodo(todo) {
@@ -72,6 +74,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
   // }
 
   return (
+
     <div className="flex-col px-10 flex mt-24">
       <TodoList
         allTodos={allTodos}
@@ -92,9 +95,12 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
           <p>{todo.description}</p>
 
           <p>{todo.urgency}</p>
+          
+          <p>{todo.category}</p>
         </div>
         {/* /* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"> */}
       </div>
+
     </div>
   );
 }
