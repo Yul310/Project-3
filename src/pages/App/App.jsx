@@ -202,13 +202,13 @@ export default function App() {
         setCatTodos(todos);
 
         // setActiveCat === ""
-          setActiveCat(categoriesRef.current[0])
-          // setActiveCat(activeCat);
+        setActiveCat(categoriesRef.current[0])
+        // setActiveCat(activeCat);
         // setActiveCat(todos[0].category.title);
         console.log(setActiveCat)
       }
       getCatTodos();
- 
+
     },
     [updated]
   );
@@ -248,10 +248,10 @@ export default function App() {
                   path="/todos"
                   element={
                     <TodoIndexPage
-                      allTodos={allTodos.filter(
-                        (todo) => todo.category.title === activeCat
-                      )}
-                      // allTodos={allTodos}
+                      // allTodos={allTodos.filter(
+                      //   (todo) => todo.category.title === activeCat
+                      // )}
+                      allTodos={allTodos}
                       setAllTodos={setAllTodos}
                       activeCat={activeCat}
                     />
@@ -285,7 +285,7 @@ export default function App() {
                     allCats={allCats}
                     activeCat={activeCat}
                     setUpdated={setUpdated}
-                    // allTodos={allTodos}
+                  // allTodos={allTodos}
                   />
                 }
               />
@@ -320,11 +320,11 @@ export default function App() {
                 element={
                   <ScheduleAppointment
                     user={user}
-                    // allTodos={allTodos}                   
-                    // setAllTodos={setAllTodos}
-                    // setUpdated={setUpdated}
-                    // allCats={allCats}
-                    // activeCat={activeCat}
+                  // allTodos={allTodos}                   
+                  // setAllTodos={setAllTodos}
+                  // setUpdated={setUpdated}
+                  // allCats={allCats}
+                  // activeCat={activeCat}
                   />
                 }
               />
