@@ -224,11 +224,12 @@ export default function App() {
               <Route
                 path="/todos/:id"
 
-                element={<TodoListItem 
+                element={<TodoListItem
                   allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                  allCats={allCats}
                   activeCat={activeCat}
-                  // allTodos={allTodos} 
-                  />}
+                // allTodos={allTodos} 
+                />}
 
               />
               <Route
