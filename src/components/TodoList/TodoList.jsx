@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 // import { todos } from "../../data";
 // adding something to fix merge conflict
 
-export default function TodoList({ allTodos, setAllTodos }) {
+export default function TodoList({ allTodos, setAllTodos, activeCat }) {
 
   const [edit, setEdit] = useState(false);
   const [formData, setFormData] = useState({
@@ -55,6 +55,9 @@ export default function TodoList({ allTodos, setAllTodos }) {
     // setNewTodo(evt.target.value);
   }
 
+  
+  
+
   //*** function = Edit data ***//
   function handleEditing(evt) {
     console.log("edit mode activated");
@@ -79,9 +82,9 @@ export default function TodoList({ allTodos, setAllTodos }) {
           <div
           // className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"
           >
-            <h3>Todo List</h3>
+            <h3>Todo List </h3>
             {/* <TodoListItem /> */}
-
+             <h3>Category: {activeCat} </h3> 
             <div>
 
               <ul
@@ -91,15 +94,15 @@ export default function TodoList({ allTodos, setAllTodos }) {
                 {allTodos.map((todo, idx, { setEdit }) => (
                   <>
                     <li key={idx} >
-                      <Link to={`/todos/${todo._id}`} style={viewMode}>{todo.title}
+                      <Link to={`/todos/${todo._id}`} style={viewMode} >{todo.title} 
                       </Link>
-                      <input 
+                      {/* <input 
                         type="text" 
                         className='textInput' 
                         style={editMode} 
                         placeholder={todo.title} 
                         onChange={handleChange} 
-                      />
+                      /> */}
 
 
                       <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
@@ -112,19 +115,19 @@ export default function TodoList({ allTodos, setAllTodos }) {
                         value={todo._id}
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
-                        onClick={deleteTodo} style={editMode}
+                        onClick={deleteTodo} 
                       >
                         delete
                       </button>
                     </li>
                   </>
                 ))}
-                <button
+                {/* <button
                   className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
                   onClick={handleEditing}
                 >
                   Edit
-                </button>
+                </button> */}
                 {/* {todos} */}
               </ul>
             </div>
