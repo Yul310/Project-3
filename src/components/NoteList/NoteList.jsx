@@ -1,17 +1,16 @@
-import NoteListItem from "../NoteListForm/NoteListForm";
+import NoteListForm from "../NoteListForm/NoteListForm";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
 import { InlineWidget } from "react-calendly";
 
-export default function NoteList({ 
-  allNotes, 
+export default function NoteList({
+  allNotes,
   setAllNotes,
   setUpdated,
   allCats,
-  activeCat
-
- }) {
+  activeCat,
+}) {
   // const [allNotes, setAllNotes] = useState([]);
   // const [activeNote, setActiveNote] = useState([]);
   const [edit, setEdit] = useState(false);
@@ -99,23 +98,30 @@ export default function NoteList({
   return (
     <>
       <div className="flex">
-        <div>
+        <div className="h-screen overflow-y-auto">
           {allNotes ? (
-            <div className="flex-col px-10 flex mt-24">
-              <NoteListItem />
-              <ul
-                className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+            <div className="flex flex-col px-10 py-4">
+              <div
+                className="text-black flex flex-col-reverse justify-items-start order-last border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] font-extralight"
                 aria-selected="false"
               >
                 {allNotes.map((note, idx, { setEdit }) => (
                   <>
-                    <li
+                    <div
+                      className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 text-left"
+                      id="hardshadow"
                       key={idx}
                       // don't have this in todoList
                       // onClick={() => setActiveNote(note)}
                     >
                       <Link to={`/notes/${note._id}`} style={viewMode}>
-                        {note.title}
+                        <p className="border-black border-b-[1px] text-lg">
+                          {note.title}
+                        </p>
+                        <i class="fa-solid fa-tag mt-1.5 pl-1.5 text-orange-500"></i>{" "}
+                        &nbsp;{" "}
+                        <a className="text-sm ml-[-3px]">{note.category}</a>
+                        <p className="pt-2">{note.body}</p>
                       </Link>
                       <input
                         type="text"
@@ -154,18 +160,15 @@ export default function NoteList({
                       >
                         delete
                       </button>
-                    </li>
+                    </div>
                   </>
                 ))}
-              </ul>
+              </div>
             </div>
           ) : (
             <h5>loading</h5>
           )}
         </div>
-        {/* <div className="App px-4">
-          <InlineWidget url="https://calendly.com/earl-halasan?background_color=f7f7f2&primary_color=fb923c" />
-        </div> */}
       </div>
     </>
   );
