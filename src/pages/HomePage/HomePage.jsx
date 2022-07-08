@@ -4,6 +4,7 @@ import TodoList from "../.././components/TodoList/TodoList";
 import * as todoAPI from "../../utilities/todos-api";
 import * as catAPI from "../../utilities/categories-api";
 import * as noteAPI from "../../utilities/notes-api";
+import TodoListItem from "../../components/TodoListItem/TodoListItem";
 
 export default function HomePage({
   user,
