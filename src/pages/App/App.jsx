@@ -15,6 +15,7 @@ import * as todoAPI from "../../utilities/todos-api";
 import * as catAPI from "../../utilities/categories-api";
 import * as noteAPI from "../../utilities/notes-api";
 import ScheduleAppointment from "../ScheduleAppointment/ScheduleAppointment";
+import { set } from "mongoose";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -199,12 +200,15 @@ export default function App() {
         }, []);
         setAllTodos(todos);
         setCatTodos(todos);
-        setActiveCat === ""
-          ? setActiveCat(categoriesRef.current[0])
-          : setActiveCat(activeCat);
+
+        // setActiveCat === ""
+          setActiveCat(categoriesRef.current[0])
+          // setActiveCat(activeCat);
         // setActiveCat(todos[0].category.title);
+        console.log(setActiveCat)
       }
       getCatTodos();
+ 
     },
     [updated]
   );
@@ -244,10 +248,10 @@ export default function App() {
                   path="/todos"
                   element={
                     <TodoIndexPage
-                      // allTodos={allTodos.filter(
-                      //   (todo) => todo.category.title === activeCat
-                      // )}
-                      allTodos={allTodos}
+                      allTodos={allTodos.filter(
+                        (todo) => todo.category.title === activeCat
+                      )}
+                      // allTodos={allTodos}
                       setAllTodos={setAllTodos}
                       activeCat={activeCat}
                     />
