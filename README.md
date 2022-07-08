@@ -12,6 +12,7 @@ Happy organizing!
 
 ## Getting started:
 [ClearSight Link](https://great-reads-project.herokuapp.com)
+
 [Trello Board Link](https://trello.com/invite/b/LqfJ94a2/8a2a0c57a5bff3e1d0ffb2942ebff9af/group-project)
 
 
@@ -25,31 +26,39 @@ Happy organizing!
 ## Wireframes:
  
 ![Proposed Homepage](./img/proposed-homepage.png)
+
 Concept idea for the homepage.
 
 ![Proposed Notes Pages](./img/proposed-notes-pages.png)
+
 Concept ideas for the notes index and new pages.
 
 ![Proposed Todos Pages](./img/proposed-todo-list-pages.png)
+
 Concept ideas for the todos index and new pages.
 
 ![Finished Homepage](./img/)
+
 Finished homepage.
 
 ![Finished Notes Pages](./img/)
+
 Finished notes index and new pages.
 
 ![Finished Todos Pages](./img/)
+
 Finished todos index and new pages.
 
 ## The ERD: 
 
 ![ERD](./img/ERD.png)
+
 The proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
  ![Route Table](./img/routes.png)
+ 
 List of the routes used.
 
 ## Technologies Used:
