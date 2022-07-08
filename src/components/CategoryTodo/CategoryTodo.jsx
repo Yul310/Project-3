@@ -8,8 +8,8 @@ export default function CategoryTodo({ categories, activeCat, setActiveCat }) {
     const cats = categories.map((cat) =>
         <ul>
             <li
-                key={cat}
-                className={cat === activeCat ? 'active' : ''}
+                key={cat._id}
+                // className={cat === activeCat ? 'active' : ''}
                 onClick={() => setActiveCat(cat)}
             >
                 {cat}
@@ -21,7 +21,7 @@ export default function CategoryTodo({ categories, activeCat, setActiveCat }) {
     return (
         <div>
 
-
+            <h3>|| To-Do Categories ||</h3>
 
             {cats}
 

@@ -21,7 +21,7 @@ export default function App() {
   const [catTodos, setCatTodos] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [allCats, setAllCats] = useState([]);
-  const [activeCat, setActiveCat] = useState([]);
+  const [activeCat, setActiveCat] = useState('');
   const [allNotes, setAllNotes] = useState([]);
   const categoriesRef = useRef([]);
 
@@ -110,18 +110,18 @@ export default function App() {
     [updated]
   );
 
-  // todos
-  useEffect(
-    function () {
-      async function getTodos() {
-        const todos = await todoAPI.getAll();
-        setAllTodos(todos);
-        //   console.log(allTodos);
-      }
-      getTodos();
-    },
-    [updated]
-  );
+  // // todos
+  // useEffect(
+  //   function () {
+  //     async function getTodos() {
+  //       const todos = await todoAPI.getAll();
+  //       setAllTodos(todos);
+  //       //   console.log(allTodos);
+  //     }
+  //     getTodos();
+  //   },
+  //   [updated]
+  // );
 
   // categories
   useEffect(
@@ -145,11 +145,12 @@ export default function App() {
         console.log(cat);
         return cats.includes(cat) ? cats : [...cats, cat];
       }, []);
+      setAllTodos(todos);
       setCatTodos(todos)
       setActiveCat(todos[0].category.title);
     }
     getCatTodos();
-  }, []);
+  }, [updated]);
 
   return (
     <main>
@@ -157,7 +158,7 @@ export default function App() {
         <>
           <button onClick={handleClick}>Add Event</button>
           <div className="App flex flex-row">
-            <NavBar user={user} setUser={setUser} setUpdated={setUpdated} categories={categoriesRef.current}/>
+            <NavBar user={user} setUser={setUser} setUpdated={setUpdated} categories={categoriesRef.current} setActiveCat={setActiveCat} />
             <Routes>
               {allNotes ? (
                 <Route
@@ -180,7 +181,8 @@ export default function App() {
                   path="/todos"
                   element={
                     <TodoIndexPage
-                      allTodos={allTodos}
+                      allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                      // allTodos={allTodos}
                       setAllTodos={setAllTodos}
                     />
                   }
@@ -192,7 +194,8 @@ export default function App() {
                 path="/todos/new"
                 element={
                   <TodoNewPage
-                    allTodos={allTodos}
+                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                    // allTodos={allTodos}
                     setAllTodos={setAllTodos}
                     setUpdated={setUpdated}
                     allCats={allCats}
@@ -201,7 +204,10 @@ export default function App() {
               />
               <Route
                 path="/todos/:id"
-                element={<TodoListItem allTodos={allTodos} />}
+                element={<TodoListItem 
+                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                  // allTodos={allTodos} 
+                  />}
               />
               <Route
                 path="/categories"
