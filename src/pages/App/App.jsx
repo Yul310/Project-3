@@ -272,15 +272,14 @@ export default function App() {
               />
               <Route
                 path="/todos/:id"
-                element={
-                  <TodoListItem
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
-                    activeCat={activeCat}
-                    // allTodos={allTodos}
-                  />
-                }
+
+
+                element={<TodoListItem
+                  allTodos={allTodos.filter(todo => todo.category.title === activeCat)}
+                  allCats={allCats}
+                  activeCat={activeCat}
+                // allTodos={allTodos} 
+                />}
               />
               <Route
                 path="/categories"

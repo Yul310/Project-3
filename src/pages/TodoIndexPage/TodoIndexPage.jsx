@@ -1,8 +1,8 @@
 import TodoList from "../../components/TodoList/TodoList";
 import TodoListForm from "../../components/TodoListForm/TodoListForm";
 import { Link } from "react-router-dom";
-import * as todoAPI from "../../utilities/todos-api";
-import { useState, useEffect } from "react";
+// import * as todoAPI from "../../utilities/todos-api";
+// import { useState, useEffect } from "react";
 
 
 export default function TodoIndexPage({allTodos, setAllTodos,setUpdated, activeCat}) {

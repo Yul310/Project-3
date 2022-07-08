@@ -104,10 +104,10 @@ export default function TodoList({ allTodos, setAllTodos, activeCat }) {
                         onChange={handleChange} 
                       /> */}
 
-
+{/* 
                       <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
                         Save
-                      </button>
+                      </button> */}
 
                       {/* <br></br> */}
                       <button
