@@ -63,8 +63,7 @@ const Category = require('./models/category');
         },
         {
             title: 'Tennis Match',
-            date: '2022-07-013T00:00:00.000Z',
-            // time: '12:00',
+            date: '2022-07-14T00:00:00.000Z',
             sortOrder: 0,
             description: "don't be late",
             urgency: 'high',
@@ -72,8 +71,7 @@ const Category = require('./models/category');
         },
         {
             title: 'Tennis Class',
-            date: '2022-07-017T00:00:00.000Z',
-            // time: '12:00',
+            date: '2022-07-14T00:00:00.000Z',
             sortOrder: 0,
             description: "dont forget to bring your shoes",
             urgency: 'high',
@@ -82,7 +80,7 @@ const Category = require('./models/category');
         ,
         {
             title: 'Personal training',
-            date: '2022-07-012T00:00:00.000Z',
+            date: '2022-07-14T00:00:00.000Z',
             // time: '12:00',
             sortOrder: 0,
             description: "summer is comming.....",
@@ -92,7 +90,7 @@ const Category = require('./models/category');
         ,
         {
             title: 'trader joes',
-            date: '2022-07-011T00:00:00.000Z',
+            date: '2022-07-14T00:00:00.000Z',
             // time: '12:00',
             sortOrder: 0,
             description: "milk, eggs, bread, butter",
@@ -102,7 +100,7 @@ const Category = require('./models/category');
         ,
         {
             title: 'New Glasses',
-            date: '2022-07-013T00:00:00.000Z',
+            date: '2022-07-14T00:00:00.000Z',
             // time: '12:00',
             sortOrder: 0,
             description: "clear glasses!",
@@ -112,7 +110,7 @@ const Category = require('./models/category');
         ,
         {
             title: 'training shorts',
-            date: '2022-07-013T00:00:00.000Z',
+            date: '2022-07-14T00:00:00.000Z',
             // time: '12:00',
             sortOrder: 0,
             description: "inner shorts in blue!",
