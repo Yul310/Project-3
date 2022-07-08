@@ -3,9 +3,9 @@ import * as todoAPI from "../../utilities/todos-api";
 // import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import * as katyTodo from "../../components/TodoList/TodoList";
+import TodoList from "../TodoList/TodoList";
 
-
-export default function TodoListItem({ allTodos }) {
+export default function TodoListItem({ allTodos, setAllTodos, setUpdated }) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
   // const [activeTodo, setActiveTodo] = useState([]);
@@ -35,10 +35,10 @@ export default function TodoListItem({ allTodos }) {
   }, []);
 
 
+
 // console.log(todo.date)
   let date = new Date(todo.date)
   const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-
 
   // function clickedTodo(todo) {
   //   let selectedTodo = 0;
@@ -54,7 +54,6 @@ export default function TodoListItem({ allTodos }) {
   // }
 
   // const chosenTodo = clickedTodo(todoName);
-
 
   // //*** function = creating new category ***//
   // async function handleSubmit(evt) {
@@ -74,34 +73,34 @@ export default function TodoListItem({ allTodos }) {
   //   // setNewTodo(evt.target.value);
   // }
 
-
-
-
-
   return (
-    <div>
-      <h5>TodoListItem</h5>
 
-      <p>{todo.title}</p>
+    <div className="flex-col px-10 flex mt-24">
+      <TodoList
+        allTodos={allTodos}
+        setAllTodos={setAllTodos}
+        setUpdated={setUpdated}
+      />
 
-      <p>{dateRecord}</p>
+      <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] ">
+        <h5>TodoListItem</h5>
+        <div
+          className="border-black border-[1px] rounded-md py-4 px-4 font-light"
+          id="hardshadow"
+        >
+          <h5>{todo.title}</h5>
 
-      <p>{todo.description}</p>
+          <p>{dateRecord}</p>
 
-      <p>{todo.urgency}</p>
+          <p>{todo.description}</p>
 
-      <p>{todo.category}</p>
+          <p>{todo.urgency}</p>
+          
+          <p>{todo.category}</p>
+        </div>
+        {/* /* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"> */}
+      </div>
 
-      {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
-
-    <p>{props.allTodos[chosenTodo].title}</p>
-    <p>{props.allTodos[chosenTodo].date}</p> */}
-      {/* <p>{formData.urgency}</p> */}
-      {/* <p>{props.allTodos[chosenTodo].urgency}</p>
-    <p>{props.allTodos[chosenTodo].description}</p>
-
-
-      </div> */}
     </div>
   );
 }

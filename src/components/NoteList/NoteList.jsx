@@ -91,7 +91,7 @@ export default function NoteList({allNotes, setAllNotes}) {
   return (
     <>
     {allNotes ?
-      <div>
+      <div className="flex-col px-10 flex mt-24">
         <NoteListItem />
         <ul
          className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
@@ -102,6 +102,7 @@ export default function NoteList({allNotes, setAllNotes}) {
             <li key={idx} 
             // don't have this in todoList 
             // onClick={() => setActiveNote(note)}
+            
             >
               <Link to={`/notes/${note._id}`} style={viewMode}>
                 {note.title}
@@ -116,6 +117,8 @@ export default function NoteList({allNotes, setAllNotes}) {
               <button
                 className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                 onClick={editNote}
+                type="submit"
+                style={editMode}
               >
                 Edit
               </button>
