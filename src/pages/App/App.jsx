@@ -203,7 +203,7 @@ export default function App() {
         setCatTodos(todos);
 
         // setActiveCat === ""
-        setActiveCat(categoriesRef.current[0]);
+        setActiveCat(activeCat);
         // setActiveCat(activeCat);
         // setActiveCat(todos[0].category.title);
         console.log(setActiveCat);
