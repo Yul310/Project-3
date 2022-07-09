@@ -58,7 +58,7 @@ export default function NoteListItem() {
 
   return (
     <>
-      <div className="rounded-lg flex font-light ">
+      <div className="rounded-lg font-light w-96 text-left">
         <form
           action=""
           className="border-black border-[1px] rounded-md py-4 px-4 font-light"
@@ -70,7 +70,7 @@ export default function NoteListItem() {
             type="text"
             placeholder="Title"
             onChange={handleChange}
-            className="bg-[#f7f7f2] text-lg border-b-[1px] border-black outline-0"
+            className="bg-[#f7f7f2] text-lg border-b-[1px] w-[21rem] border-black outline-0"
           />
           <br />
           <i class="fa-solid fa-tag text-orange-500"></i> &nbsp;
