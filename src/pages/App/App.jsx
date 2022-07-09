@@ -269,6 +269,7 @@ export default function App() {
                     // )}
                     allTodos={allTodos}
                     setAllTodos={setAllTodos}
+                    updated ={updated}
                     setUpdated={setUpdated}
                     allCats={allCats}
                     activeCat={activeCat}
@@ -285,6 +286,7 @@ export default function App() {
                     allTodos={allTodos}
                     allCats={allCats}
                     activeCat={activeCat}
+                    updated ={updated}
                     setUpdated={setUpdated}
                     setAllTodos={setAllTodos}
                     setActiveCat={setActiveCat}
