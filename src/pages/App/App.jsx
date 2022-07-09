@@ -264,10 +264,10 @@ export default function App() {
                 path="/todos/new"
                 element={
                   <TodoNewPage
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
-                    // allTodos={allTodos}
+                    // allTodos={allTodos.filter(
+                    //   (todo) => todo.category.title === activeCat
+                    // )}
+                    allTodos={allTodos}
                     setAllTodos={setAllTodos}
                     setUpdated={setUpdated}
                     allCats={allCats}
@@ -279,12 +279,15 @@ export default function App() {
                 path="/todos/:id"
                 element={
                   <TodoListItem
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
+                    // allTodos={allTodos.filter(
+                    //   (todo) => todo.category.title === activeCat
+                    // )}
+                    allTodos={allTodos}
                     allCats={allCats}
                     activeCat={activeCat}
                     setUpdated={setUpdated}
+                    setAllTodos={setAllTodos}
+                    setActiveCat={setActiveCat}
                   // allTodos={allTodos}
                   />
                 }
