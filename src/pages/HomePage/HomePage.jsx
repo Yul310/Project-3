@@ -29,7 +29,7 @@ export default function HomePage({
         </h1>
         <div className=" h-[85%] ">
           <div className="font-light text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
-            <h1 className="text-2xl">Notes</h1>
+            <h1 className="text-2xl font-extralight">Notes</h1>
             {/* <NoteList
               allNotes={allNotes}
               setAllNotes={setAllNotes}

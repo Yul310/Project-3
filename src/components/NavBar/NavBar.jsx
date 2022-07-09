@@ -64,7 +64,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
               <div>
                 <Link
                   to="/"
-                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight active"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight active"
                   aria-selected="true"
                 >
                   <i className="fa-solid fa-house mt-1 text-orange-400"></i>
@@ -74,7 +74,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
               <div>
                 <Link
                   to="/notes"
-                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                 >
                   <i className="fa-solid fa-pen-to-square mt-1.5 text-orange-400"></i>
@@ -84,7 +84,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
               <div>
                 <Link
                   to="/todos"
-                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                   onClick={setCurrentCat}
                 >
@@ -102,7 +102,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
 
               <Link
                 to="/categories"
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
                 <i className="fa-solid fa-tags mt-1.5 text-orange-400"></i>
@@ -111,7 +111,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
 
               <Link
                 to="/appointments"
-                className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
               >
                 <i class="fa-solid fa-calendar-days mt-1 text-orange-400"></i>
@@ -122,7 +122,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
                 <Link
                   to=""
                   onClick={handleLogOut}
-                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#f7f7f2] active: transition-colors duration-300 text-lg font-extralight"
+                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] active: transition-colors duration-300 text-lg font-extralight"
                   aria-selected="false"
                 >
                   <i className="fa-solid fa-arrow-right-from-bracket mt-1.5 text-orange-400"></i>
