@@ -144,11 +144,14 @@ setActiveCat(activeCat)
   return (
     <>
       <Link to="/todos"  >
-        <button className="border-1 border-round border-black bg-[#7b7e63]">Go To List Page</button>
+        <button className="border-1 rounded px-1 my-10 mx-2 text-white border-black bg-[#1f1f1f]">Go To List Page</button>
       </Link>
 
       <Link to="/todos/new"  >
-        <button className="border-1 border-round border-black bg-[#7b7e63]">Create New List</button>
+        <button className="
+         border-1 border-black bg-[#1f1f1f]   rounded mx-2 text-white text-sm px-1 my-10
+        
+        ">Create New List</button>
       </Link>
 
       <div className="flex-col px-10 flex mt-24">
