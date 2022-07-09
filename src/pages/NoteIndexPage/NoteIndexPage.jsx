@@ -5,7 +5,6 @@ import * as noteAPI from "../../utilities/notes-api";
 import { useState, useEffect } from "react";
 
 export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
- 
   return (
     <>
       <div className="pt-6 flex h-fit">
@@ -16,8 +15,8 @@ export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
             </h1>
           </div>
 
-          <div className="flex">
-            <div>
+          <div className="flex w-[80vw]">
+            <div className="">
               {allNotes ? (
                 <NoteList
                   allNotes={allNotes}

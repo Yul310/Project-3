@@ -30,7 +30,7 @@ export default function NoteList({
   //   }
   //   getNotes();
   // }, []);
-  console.log(allNotes)
+  console.log(allNotes);
   //*** fucntion = creating new category ***//
   async function deleteNote(evt) {
     console.log(evt.target.value);

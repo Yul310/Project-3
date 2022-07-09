@@ -18,13 +18,13 @@ export default function AuthPage({ setUser }) {
     <>
       <main className="flex flex-col h-screen">
         <div
-          className="bg-[#7b7e63] px-24 flex mt-44 mb-[-235px] z-0 "
+          className="bg-orange-400 px-24 flex mt-44 mb-[-235px] z-0 "
           id="diagonal"
         >
           <p>&nbsp;</p>
         </div>
         <div className="">
-          <div className="bg-[#1f1f1f] px-10 flex mt-10" id="diagonal">
+          <div className="bg-stone-800 px-10 flex mt-10" id="diagonal">
             <div className="text-[8.5rem] mb-[-29px]" id="revdiagonal">
               <Logo />
               {/* <div className="bg-[#7b7e63] px-10"></div>{" "} */}
