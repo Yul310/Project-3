@@ -123,7 +123,7 @@ export default function NoteList({
                         <a className="text-sm ml-[-3px]">{note.category}</a>
                         <p className="pt-2">{note.body}</p>
                         <button 
-                        value={note._id}className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        value={note._id}className="border-1 border-black  bg-[#1f1f1f]   rounded text-white text-sm px-1 mx-2"
                         // style={editMode}
                         onClick={deleteNote}>
                           Delete

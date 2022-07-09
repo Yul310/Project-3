@@ -128,7 +128,7 @@ if (activeCat){
                       <button
                         type="submit"
                         value={todo._id}
-                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+                        className="border-1 border-black bg-[#1f1f1f]  rounded text-white text-sm px-1 mx-2"
                         // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
                         onClick={deleteTodo}
                       >
