@@ -114,7 +114,7 @@ export default function NoteList({
                       // don't have this in todoList
                       // onClick={() => setActiveNote(note)}
                     >
-                      <Link to={`/notes/${note._id}`} style={viewMode}>
+                      {/* <Link to={`/notes/${note._id}`} style={viewMode}> */}
                         <p className="border-black border-b-[1px] text-lg">
                           {note.title}
                         </p>
@@ -122,7 +122,7 @@ export default function NoteList({
                         &nbsp;{" "}
                         <a className="text-sm ml-[-3px]">{note.category}</a>
                         <p className="pt-2">{note.body}</p>
-                      </Link>
+                      {/* </Link> */}
                       <input
                         type="text"
                         className="textInput"

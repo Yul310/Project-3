@@ -93,7 +93,8 @@ if (activeCat){
             <h3>Category: {activeCat} </h3>
             <div>
               <ul
-                className="pl-3 text-black flex-row justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                // className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
+                className="pt-2 pb-4 px-4 font-light my-3 text-left"
                 aria-selected="false"
               >
 
@@ -104,7 +105,7 @@ if (activeCat){
                   <>
                     <li
                       key={idx}
-                      className="border-black border-[1px] rounded-md py-4 px-4 font-light text-justify"
+                      className="border-black border-[1px] rounded-md pt-4 pb-4 px-4 font-ligh my-3 text-left"
                       id="hardshadow"
                     >
                       <Link to={`/todos/${todo._id}`} style={viewMode}>
