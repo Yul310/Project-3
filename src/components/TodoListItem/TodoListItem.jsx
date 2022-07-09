@@ -4,6 +4,7 @@ import * as todoAPI from "../../utilities/todos-api";
 import { useState, useEffect } from "react";
 // import * as katyTodo from "../../components/TodoList/TodoList";
 import TodoList from "../TodoList/TodoList";
+import { Link } from "react-router-dom";
 
 export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat, allCats }) {
   // todo here is the state that we - this is the state
@@ -14,7 +15,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     title: "",
     date: "",
     // time: "",
-    category: "",
+    // category: "",
     description: "",
     urgency: ""
   });
@@ -45,7 +46,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
       setTodo(foundTodo);
     }
     getSingleTodos(id);
-    
+
     // important to have the brackets below, otherwise infinate loop
   }, [id]);
 
@@ -93,8 +94,8 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     evt.preventDefault();
     console.log(formData)
     const id = todo._id;
-    // console.log(id)
-    todoAPI.editTodo(id,formData);
+    console.log(id)
+    todoAPI.editTodo(id, formData);
     setUpdated(!magic)
 
     setFormData({
@@ -120,7 +121,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
-   
+
   }
 
 
@@ -144,6 +145,14 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
 
   return (
     <>
+      <Link to="/todos"  >
+        <button className="border-1 border-round border-black bg-[#7b7e63]">Go To List Page</button>
+      </Link>
+
+      <Link to="/todos/new"  >
+        <button className="border-1 border-round border-black bg-[#7b7e63]">Create New List</button>
+      </Link>
+
       <div className="flex-col px-10 flex mt-24">
         <TodoList
           allTodos={allTodos}
@@ -175,7 +184,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
             style={editMode}
             placeholder={todo.title}
             default
-          onChange={handleChange}
+            onChange={handleChange}
           />
 
           <p>&nbsp;</p>
@@ -195,7 +204,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           <p>&nbsp;</p>
 
           {/* Category */}
-          <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
+          {/* <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Category
 
           </label>
@@ -207,7 +216,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           </select>
 
 
-          <p>&nbsp;</p>
+          <p>&nbsp;</p> */}
 
 
           {/* Description */}
@@ -247,7 +256,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
             Edit
           </button>
           <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleSubmit}>
-            
+
             Save
           </button>
           <link rel="stylesheet" href="http://localhost:3000/todos/new" />
