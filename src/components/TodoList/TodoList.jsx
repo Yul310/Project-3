@@ -87,7 +87,7 @@ export default function TodoList({
 
   return (
     <>
-      <div className="h-screen overflow-y-auto">
+      <div className="mb-20 h-screen overflow-y-auto">
         {allTodos ? (
           <div className="flex-row px-10 flex mt-2">
             <div
