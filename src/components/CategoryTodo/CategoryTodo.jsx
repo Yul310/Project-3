@@ -1,9 +1,8 @@
-import * as catAPI from "../../utilities/categories-api";
-import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
 
-export default function CategoryTodo({ categories, activeCat, setActiveCat }) {
-  // const cats = categories.map((cat) => <ul> <li>{cat}</li> </ul>)
+
+export default function CategoryTodo({ categories,setActiveCat }) {
+  
+
   const cats = categories.map((cat) => (
     <ul>
       <li

@@ -4,8 +4,9 @@ import * as todoAPI from "../../utilities/todos-api";
 import { useState, useEffect } from "react";
 // import * as katyTodo from "../../components/TodoList/TodoList";
 import TodoList from "../TodoList/TodoList";
+import { Link } from "react-router-dom";
 
-export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat, allCats }) {
+export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat, setActiveCat }) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
 
@@ -14,10 +15,15 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     title: "",
     date: "",
     // time: "",
-    category: "",
+    // category: "",
     description: "",
     urgency: ""
   });
+
+
+  console.log(activeCat)
+
+
 
   const magic = setUpdated()
   // const [activeTodo, setActiveTodo] = useState([]);
@@ -45,7 +51,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
       setTodo(foundTodo);
     }
     getSingleTodos(id);
-    
+setActiveCat(activeCat)
     // important to have the brackets below, otherwise infinate loop
   }, [id]);
 
@@ -91,19 +97,14 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
   // }
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(formData)
+    // console.log(formData)
     const id = todo._id;
     // console.log(id)
-    todoAPI.editTodo(id,formData);
+    todoAPI.editTodo(id, formData);
     setUpdated(!magic)
 
     setFormData({
-      title: "",
-      date: "",
-      description: "",
-      urgency: "",
-      // category: ""
-
+  
     });
 
   }
@@ -120,7 +121,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
-   
+
   }
 
 
@@ -140,10 +141,19 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
   }
 
 
-
-
   return (
     <>
+      <Link to="/todos"  >
+        <button className="border-1 rounded px-1 my-10 mx-2 text-white border-black bg-[#1f1f1f]">Go To List Page</button>
+      </Link>
+
+      <Link to="/todos/new"  >
+        <button className="
+         border-1 border-black bg-[#1f1f1f]   rounded mx-2 text-white text-sm px-1 my-10
+        
+        ">Create New List</button>
+      </Link>
+
       <div className="flex-col px-10 flex mt-24">
         <TodoList
           allTodos={allTodos}
@@ -175,7 +185,7 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
             style={editMode}
             placeholder={todo.title}
             default
-          onChange={handleChange}
+            onChange={handleChange}
           />
 
           <p>&nbsp;</p>
@@ -195,19 +205,19 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
           <p>&nbsp;</p>
 
           {/* Category */}
-          {/* <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
+          <label style={viewMode} className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Category
 
-          </label> */}
-          <p style={viewMode}>{todo.title}</p>
+          </label>
+          <p style={viewMode}>{activeCat}</p>
           {/* <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
 
-          </select> */}
+          </select>
 
 
-          <p>&nbsp;</p>
+          <p>&nbsp;</p> */}
 
 
           {/* Description */}
@@ -242,12 +252,18 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
 
           <button
             className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
-            onClick={handleEditing}
+            onClick={handleEditing} style={viewMode} 
           >
             Edit
           </button>
+          <button
+            className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
+            onClick={handleEditing} style={editMode} 
+          >
+            Close Edit
+          </button>
           <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleSubmit}>
-            
+
             Save
           </button>
           <link rel="stylesheet" href="http://localhost:3000/todos/new" />

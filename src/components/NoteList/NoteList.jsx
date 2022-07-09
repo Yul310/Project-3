@@ -30,7 +30,9 @@ export default function NoteList({
   //   }
   //   getNotes();
   // }, []);
-  console.log(allNotes);
+  // console.log(allNotes);
+
+
   //*** fucntion = creating new category ***//
   async function deleteNote(evt) {
     console.log(evt.target.value);
@@ -114,7 +116,7 @@ export default function NoteList({
                       // don't have this in todoList
                       // onClick={() => setActiveNote(note)}
                     >
-                      <Link to={`/notes/${note._id}`} style={viewMode}>
+                      {/* <Link to={`/notes/${note._id}`} style={viewMode}> */}
                         <p className="border-black border-b-[1px] text-lg">
                           {note.title}
                         </p>
@@ -122,7 +124,14 @@ export default function NoteList({
                         &nbsp;{" "}
                         <a className="text-sm ml-[-3px]">{note.category}</a>
                         <p className="pt-2">{note.body}</p>
-                      </Link>
+                        <button 
+                        value={note._id}className="border-1 border-black  bg-[#1f1f1f]   rounded text-white text-sm px-1 mx-2"
+                        // style={editMode}
+                        onClick={deleteNote}>
+                          Delete
+                        </button>
+                    
+                      {/* </Link> */}
                       <input
                         type="text"
                         className="textInput"
@@ -130,16 +139,16 @@ export default function NoteList({
                         placeholder={note.title}
                         onChange={handleChange}
                       />
-                      <button
+                      {/* <button
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         onClick={editNote}
                         type="submit"
                         style={editMode}
                       >
                         Edit
-                      </button>
+                      </button> */}
 
-                      <button
+                      {/* <button
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         type="submit"
                         value={note._id}
@@ -147,19 +156,9 @@ export default function NoteList({
                         onClick={handleEditing}
                       >
                         Save
-                      </button>
+                      </button> */}
 
                       {/* <br></br> */}
-                      <button
-                        type="submit"
-                        value={note._id}
-                        className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
-                        // do we want the note to be deleted when the button is clicked? Like marking it complete... -K
-                        style={editMode}
-                        onClick={deleteNote}
-                      >
-                        delete
-                      </button>
                     </div>
                   </>
                 ))}

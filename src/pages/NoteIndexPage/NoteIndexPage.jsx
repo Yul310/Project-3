@@ -29,7 +29,11 @@ export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
             </div>
 
             <div className="px-10 py-7">
-              <NoteListForm />
+              <NoteListForm 
+                allNotes={allNotes}
+                setAllNotes={setAllNotes}
+                setUpdated={setUpdated}
+              />
             </div>
           </div>
         </div>
