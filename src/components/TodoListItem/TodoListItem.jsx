@@ -249,9 +249,15 @@ setActiveCat(activeCat)
 
           <button
             className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
-            onClick={handleEditing}
+            onClick={handleEditing} style={viewMode} 
           >
             Edit
+          </button>
+          <button
+            className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
+            onClick={handleEditing} style={editMode} 
+          >
+            Close Edit
           </button>
           <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleSubmit}>
 
