@@ -33,11 +33,13 @@ async function create(req, res) {
   try {
 
     // const one = Category.findOne({title:req.body.category})
-    // console.log(one)
+    // console.log(req.body)
 
     const newTodo = await Todo.create(req.body);
+    // console.log(newTodo)
     const todoList = await Todo.find({});
     todoList.push(newTodo)
+    console.log(todoList)
     //.then((todoList) => {console.log(todoList)})
     await todoList.save();
     console.log(todoList);
@@ -53,6 +55,7 @@ async function create(req, res) {
 async function findAllTodos(userId) {
   return await this.find({ user: userId });
 }
+
 
 // to delete a todo
 async function deleteTodo(req, res) {
@@ -81,7 +84,8 @@ async function editTodo(req, res) {
       urgency: req.body.urgency,
     },{new:true}
   );
-  console.log(todoList)
+
+  
   console.log("edit starated")
 }
 

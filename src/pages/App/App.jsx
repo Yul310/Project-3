@@ -203,7 +203,7 @@ export default function App() {
         setCatTodos(todos);
 
         // setActiveCat === ""
-        setActiveCat(categoriesRef.current[0]);
+        setActiveCat(activeCat);
         // setActiveCat(activeCat);
         // setActiveCat(todos[0].category.title);
         console.log(setActiveCat);
@@ -264,11 +264,12 @@ export default function App() {
                 path="/todos/new"
                 element={
                   <TodoNewPage
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
-                    // allTodos={allTodos}
+                    // allTodos={allTodos.filter(
+                    //   (todo) => todo.category.title === activeCat
+                    // )}
+                    allTodos={allTodos}
                     setAllTodos={setAllTodos}
+                    updated ={updated}
                     setUpdated={setUpdated}
                     allCats={allCats}
                     activeCat={activeCat}
@@ -279,12 +280,16 @@ export default function App() {
                 path="/todos/:id"
                 element={
                   <TodoListItem
-                    allTodos={allTodos.filter(
-                      (todo) => todo.category.title === activeCat
-                    )}
+                    // allTodos={allTodos.filter(
+                    //   (todo) => todo.category.title === activeCat
+                    // )}
+                    allTodos={allTodos}
                     allCats={allCats}
                     activeCat={activeCat}
+                    updated ={updated}
                     setUpdated={setUpdated}
+                    setAllTodos={setAllTodos}
+                    setActiveCat={setActiveCat}
                   // allTodos={allTodos}
                   />
                 }
