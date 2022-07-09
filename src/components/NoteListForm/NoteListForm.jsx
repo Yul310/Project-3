@@ -2,36 +2,36 @@ import * as noteAPI from "../../utilities/notes-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function NoteListItem() {
-  const [allNotes, setAllNotes] = useState([]);
+export default function NoteListForm({allNotes,setAllNotes,setUpdated}) {
+  // const [allNotes, setAllNotes] = useState([]);
   const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
     body: "",
   });
-
-  useEffect(function () {
-    async function getNotes() {
-      const notes = await noteAPI.getAll();
-      setAllNotes(notes);
-      //   console.log(allCats);
-    }
-    getNotes();
-  }, []);
+let a = setUpdated
+  // useEffect(function () {
+  //   async function getNotes() {
+  //     const notes = await noteAPI.getAll();
+  //     setAllNotes(notes);
+      
+  //   }
+  //   getNotes();
+  // }, []);
 
   //*** fucntion = creating new category ***//
-  async function deleteNote(evt) {
-    console.log(evt.target.value);
-    //sending new data to backend
+  // async function deleteNote(evt) {
+  //   console.log(evt.target.value);
+  //   //sending new data to backend
 
-    // get data again from the backend
-    // const cats = await catAPI.getAll();
-    const notes = allNotes.filter((note) => note._id !== evt.target.value);
-    console.log(notes);
-    setAllNotes(notes);
-    const addNote = await noteAPI.deleteNote(evt.target.value);
-  }
+  //   // get data again from the backend
+  //   // const cats = await catAPI.getAll();
+  //   const notes = allNotes.filter((note) => note._id !== evt.target.value);
+  //   console.log(notes);
+  //   setAllNotes(notes);
+  //   const addNote = await noteAPI.deleteNote(evt.target.value);
+  // }
 
   //*** fucntion = creating new note ***//
   async function handleSubmit(evt) {
@@ -40,7 +40,7 @@ export default function NoteListItem() {
     setAllNotes([...allNotes, formData]);
 
     noteAPI.newNote(formData);
-
+    setUpdated(!a);
     console.log(allNotes);
     setFormData({
       title: "",
