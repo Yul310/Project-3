@@ -106,12 +106,11 @@ export default function TodoList({
                     <a className="">
                       <i class="fa-solid fa-triangle-exclamation mt-1.5 text-orange-500"></i>
                       &nbsp;
-                      <a className="pt-1 pb-2 text-sm">
+                      <a className="pt-1 pb-1 text-sm">
                         <a className="font-semibold">Urgency:</a> {todo.urgency}
                       </a>
                     </a>
 
-                    <p className="pt-3 pb-4"> {todo.description}</p>
                     {/* <input 
                         type="text" 
                         className='textInput' 
@@ -129,7 +128,7 @@ export default function TodoList({
                     <button
                       type="submit"
                       value={todo._id}
-                      className="bg-[#1f1f1f] flex items-end font-light text-sm text-white py-1.5 px-3 rounded-lg hover:ring hover:ring-orange-400"
+                      className="bg-[#1f1f1f] flex items-end font-light text-sm text-white mt-1 py-1 px-3 rounded-lg hover:ring hover:ring-orange-400 float-right"
                       // do we want the todo to be deleted when the button is clicked? Like marking it complete... -K
                       onClick={deleteTodo}
                     >
