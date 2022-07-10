@@ -13,18 +13,17 @@ export default function TodoIndexPage({
 }) {
   return (
     <>
-      <div className="pt-6 flex h-fit">
-        <div className="justify-start">
+      <div className="pt-6 flex">
+        <div className="flex flex-col justify-start overflow-y-hidden">
           <div className="px-8 justify-start">
-            <div className="flex-col">
-              <Link to={`/todos/new`}>
-                <button className="border-1 border-black bg-black border-t-[1px] rounded text-white text-large px-1 mx-2">
-                  Create new todo
-                </button>
-              </Link>
-            </div>
+            <h1 className=" font-semibold px-2 text-3xl text-left text-2xl bg-[#f7f7f2] text-lg border-b-[1px] border-black pb-1">
+              <i className="fa-solid fa-list-check mt-1.5 text-orange-400"></i>
+              &nbsp; To-Do's
+            </h1>
+          </div>
 
-            <div className="flex w-[80vw] flex-col">
+          <div className="flex h-96 w-[80vw]">
+            <div className="">
               {/* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] flex w-[80vw]"> */}
               {/* <h1>TodoIndexPage</h1> */}
               {allTodos ? (
@@ -40,11 +39,18 @@ export default function TodoIndexPage({
               ) : (
                 "loading"
               )}
-
               {/* <TodoListForm allTodos={allTodos} setAllTodos={setAllTodos}/> */}
             </div>
-            {/* // create new todo */}
+
+            <div className="px-5 py-7">
+              <Link to={`/todos/new`}>
+                <button className="border-1 border-black bg-black border-t-[1px] rounded text-white text-large px-1 mx-2">
+                  Create new todo
+                </button>
+              </Link>
+            </div>
           </div>
+          {/* // create new todo */}
         </div>
       </div>
     </>

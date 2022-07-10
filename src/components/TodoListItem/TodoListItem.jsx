@@ -6,7 +6,13 @@ import { useState, useEffect } from "react";
 import TodoList from "../TodoList/TodoList";
 import { Link } from "react-router-dom";
 
-export default function TodoListItem({ allTodos, setAllTodos, setUpdated, activeCat, setActiveCat }) {
+export default function TodoListItem({
+  allTodos,
+  setAllTodos,
+  setUpdated,
+  activeCat,
+  setActiveCat,
+}) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
 
@@ -17,15 +23,12 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
     // time: "",
     // category: "",
     description: "",
-    urgency: ""
+    urgency: "",
   });
 
+  console.log(activeCat);
 
-  console.log(activeCat)
-
-
-
-  const magic = setUpdated()
+  const magic = setUpdated();
   // const [activeTodo, setActiveTodo] = useState([]);
   // const [formData, setFormData] = useState({
   //   // add in all the other fields
@@ -43,24 +46,26 @@ export default function TodoListItem({ allTodos, setAllTodos, setUpdated, active
 
   let { id } = useParams();
 
-  useEffect(function () {
-    async function getSingleTodos() {
-      // let foundTodo = allTodos.filter((todo) => todo._id === id)
-      // console.log(foundTodo)
-      const foundTodo = await todoAPI.getById(id);
-      setTodo(foundTodo);
-    }
-    getSingleTodos(id);
-setActiveCat(activeCat)
-    // important to have the brackets below, otherwise infinate loop
-  }, [id]);
-
+  useEffect(
+    function () {
+      async function getSingleTodos() {
+        // let foundTodo = allTodos.filter((todo) => todo._id === id)
+        // console.log(foundTodo)
+        const foundTodo = await todoAPI.getById(id);
+        setTodo(foundTodo);
+      }
+      getSingleTodos(id);
+      setActiveCat(activeCat);
+      // important to have the brackets below, otherwise infinate loop
+    },
+    [id]
+  );
 
   ////////////////
   // CHANGE DATE
   ////////////////
 
-  let date = new Date(todo.date)
+  let date = new Date(todo.date);
   const dateRecord = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
   // function clickedTodo(todo) {
@@ -101,12 +106,9 @@ setActiveCat(activeCat)
     const id = todo._id;
     // console.log(id)
     todoAPI.editTodo(id, formData);
-    setUpdated(!magic)
+    setUpdated(!magic);
 
-    setFormData({
-  
-    });
-
+    setFormData({});
   }
 
   // async function deleteTodo(evt) {
@@ -121,37 +123,39 @@ setActiveCat(activeCat)
     const updatedTodo = { ...formData, [evt.target.name]: evt.target.value };
     setFormData(updatedTodo);
     console.log(formData);
-
   }
-
 
   //*** function = Edit data ***//
   function handleEditing(evt) {
-
     setEdit(!edit);
   }
 
-  let viewMode = {}
-  let editMode = {}
+  let viewMode = {};
+  let editMode = {};
 
   if (edit) {
-    viewMode.display = "none"
+    viewMode.display = "none";
   } else {
-    editMode.display = "none"
+    editMode.display = "none";
   }
-
 
   return (
     <>
-      <Link to="/todos"  >
-        <button className="border-1 rounded px-1 my-10 mx-2 text-white border-black bg-[#1f1f1f]">Go To List Page</button>
+      <Link to="/todos">
+        <button className="border-1 rounded px-1 my-10 mx-2 text-white border-black bg-[#1f1f1f]">
+          Go To List Page
+        </button>
       </Link>
 
-      <Link to="/todos/new"  >
-        <button className="
+      <Link to="/todos/new">
+        <button
+          className="
          border-1 border-black bg-[#1f1f1f]   rounded mx-2 text-white text-sm px-1 my-10
         
-        ">Create New List</button>
+        "
+        >
+          Create New List
+        </button>
       </Link>
 
       <div className="flex-col px-10 flex mt-24">
@@ -164,7 +168,6 @@ setActiveCat(activeCat)
       </div>
 
       <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] ">
-
         <h5>TodoListItem</h5>
 
         <div
@@ -180,7 +183,6 @@ setActiveCat(activeCat)
           <input
             type="text"
             name="title"
-
             value={formData.title}
             style={editMode}
             placeholder={todo.title}
@@ -205,9 +207,11 @@ setActiveCat(activeCat)
           <p>&nbsp;</p>
 
           {/* Category */}
-          <label style={viewMode} className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
+          <label
+            style={viewMode}
+            className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2"
+          >
             Category
-
           </label>
           <p style={viewMode}>{activeCat}</p>
           {/* <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
@@ -219,7 +223,6 @@ setActiveCat(activeCat)
 
           <p>&nbsp;</p> */}
 
-
           {/* Description */}
           <label className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2">
             Description
@@ -228,7 +231,7 @@ setActiveCat(activeCat)
           <input
             type="text"
             name="description"
-            className='textInput'
+            className="textInput"
             style={editMode}
             placeholder={todo.description}
             value={formData.description}
@@ -241,29 +244,41 @@ setActiveCat(activeCat)
             Urgency
           </label>
           <p style={viewMode}>{todo.urgency}</p>
-          <select name="urgency" value={formData.urgency} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
+          <select
+            name="urgency"
+            value={formData.urgency}
+            className="font-extralight text-2l text-left h-1/2 px-2 py-2"
+            style={editMode}
+            onChange={handleChange}
+          >
             <option value="low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
 
-
           <p>&nbsp;</p>
 
           <button
             className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
-            onClick={handleEditing} style={viewMode} 
+            onClick={handleEditing}
+            style={viewMode}
           >
             Edit
           </button>
           <button
             className="border-1 border-black bg-black  rounded text-white text-sm px-1 mx-2"
-            onClick={handleEditing} style={editMode} 
+            onClick={handleEditing}
+            style={editMode}
           >
             Close Edit
           </button>
-          <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={handleSubmit}>
-
+          <button
+            className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
+            type="submit"
+            value={todo._id}
+            style={editMode}
+            onClick={handleSubmit}
+          >
             Save
           </button>
           <link rel="stylesheet" href="http://localhost:3000/todos/new" />
@@ -273,7 +288,6 @@ setActiveCat(activeCat)
 
         {/* /* <div className="font-extralight text-2xl text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]"> */}
       </div>
-
     </>
   );
 }
