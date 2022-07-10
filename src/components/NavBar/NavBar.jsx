@@ -23,6 +23,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
   }
   function zeroActiveCat() {
     setActiveCat();
+    setEdit(false);
   }
 
   //////////////////////////////
@@ -32,6 +33,9 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
   function changeShow(evt) {
     setEdit(!edit);
     // console.log(setActiveCat)
+  }
+  function closeShow(evt){
+    setEdit(false);
   }
 
   let viewMode = {};
@@ -79,7 +83,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
                 <Link
                   to="/notes"
                   className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                  aria-selected="false"
+                  aria-selected="false" onClick={closeShow}
                 >
                   <i className="fa-solid fa-pen-to-square mt-1.5 text-orange-400"></i>
                   &nbsp;&nbsp;&nbsp;Notes
@@ -107,7 +111,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
               <Link
                 to="/categories"
                 className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                aria-selected="false"
+                aria-selected="false" onClick={closeShow}
               >
                 <i className="fa-solid fa-tags mt-1.5 text-orange-400"></i>
                 &nbsp;&nbsp;&nbsp;Categories
@@ -116,7 +120,7 @@ export default function NavBar({ user, setUser, categories, setActiveCat }) {
               <Link
                 to="/appointments"
                 className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
-                aria-selected="false"
+                aria-selected="false" onClick={closeShow}
               >
                 <i class="fa-solid fa-calendar-days mt-1 text-orange-400"></i>
                 &nbsp;&nbsp;&nbsp;Appointments
