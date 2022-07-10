@@ -1,6 +1,6 @@
 import * as noteAPI from "../../utilities/notes-api";
 import { Link } from "react-router-dom";
-import { useState} from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCats }) {
   // const [activeNote, setActiveNote] = useState([]);
@@ -9,7 +9,7 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
     category: "",
     body: "",
   });
-  let a = setUpdated()
+  let a = setUpdated
   // useEffect(function () {
   //   async function getNotes() {
   //     const notes = await noteAPI.getAll();
@@ -37,8 +37,9 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
     evt.preventDefault();
     console.log(allNotes);
     // setAllNotes([...allNotes, formData]);
+    setUpdated(!a);
+   
    noteAPI.newNote(formData);
-   setUpdated(!a);
    console.log(allNotes)
   
     setFormData({
