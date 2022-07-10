@@ -90,6 +90,11 @@ export default function TodoList({
       <div className="flex h-screen overflow-y-auto">
         {allTodos ? (
           <div className="flex flex-col px-10 py-4">
+            <div className="text-left text-xl font-medium ">
+              <i className="fa-solid fa-tag mt-2 pl-1.5 text-orange-500"></i>
+              &nbsp;&nbsp;
+              {activeCat}
+            </div>
             <div className="text-black flex flex-col-reverse justify-items-start order-last border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] font-extralight">
               {allTodos.map((todo, idx, { setEdit }) => (
                 <>
