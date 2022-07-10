@@ -294,6 +294,7 @@ export default function App() {
                     setUpdated={setUpdated}
                     setAllTodos={setAllTodos}
                     setActiveCat={setActiveCat}
+                    setAllCats={setAllCats}
                   // allTodos={allTodos}
                   />
                 }
