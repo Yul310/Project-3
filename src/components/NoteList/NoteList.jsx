@@ -109,7 +109,7 @@ export default function NoteList({
                 {allNotes.map((note, idx, { setEdit }) => (
                   <>
                     <div
-                      className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 text-left"
+                      className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[24.5rem] text-left"
                       id="hardshadow"
                       key={idx}
                       // don't have this in todoList

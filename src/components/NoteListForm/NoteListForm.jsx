@@ -2,7 +2,7 @@ import * as noteAPI from "../../utilities/notes-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
-export default function NoteListForm({allNotes,setAllNotes,setUpdated}) {
+export default function NoteListForm({ allNotes, setAllNotes, setUpdated }) {
   // const [allNotes, setAllNotes] = useState([]);
   const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
@@ -10,12 +10,12 @@ export default function NoteListForm({allNotes,setAllNotes,setUpdated}) {
     category: "",
     body: "",
   });
-let a = setUpdated
+  let a = setUpdated;
   // useEffect(function () {
   //   async function getNotes() {
   //     const notes = await noteAPI.getAll();
   //     setAllNotes(notes);
-      
+
   //   }
   //   getNotes();
   // }, []);
