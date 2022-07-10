@@ -127,9 +127,11 @@ export default function TodoListItem({
   }
 
  
+
   function catFinder(a){
     // if(activeCat=== undefined || activeCat=== null || activeCat=== ""){
     // let r = allCats.filter((cat) => cat._id === a)
+
     // console.log(r)
     // return r[0].title 
   // }
@@ -223,10 +225,11 @@ export default function TodoListItem({
             style={viewMode}
             className="font-extralight text-xl text-2l text-left h-1/2 px-2 py-2"
           >
-            Category
+           {{activeCat}?" Category":""}
           </label>
           <p style={viewMode}>{activeCat}</p>
-          <p style={viewMode}>{catFinder(todo.category)}</p>
+          {/* <p style={viewMode}>{catFinder(todo.category)}</p> */}
+
           {/* <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
