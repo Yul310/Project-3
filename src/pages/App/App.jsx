@@ -197,7 +197,7 @@ export default function App() {
         const todos = await todoAPI.getAll();
         categoriesRef.current = todos.reduce((cats, todo) => {
           const cat = todo.category.title;
-          console.log(cat);
+          // console.log(cat);
           return cats.includes(cat) ? cats : [...cats, cat];
         }, []);
         setAllTodos(todos);

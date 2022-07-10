@@ -14,7 +14,7 @@ export default function NoteListForm({
     category: "",
     body: "",
   });
-  let a = setUpdated;
+  let a = setUpdated();
   // useEffect(function () {
   //   async function getNotes() {
   //     const notes = await noteAPI.getAll();
@@ -41,7 +41,7 @@ export default function NoteListForm({
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(allNotes);
-    setAllNotes([...allNotes, formData]);
+    // setAllNotes([...allNotes, formData]);
 
     noteAPI.newNote(formData);
     setUpdated(!a);

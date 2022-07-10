@@ -97,11 +97,13 @@ export default function NoteList({
     editMode.display = "none";
   }
 
-// function catFinder(a){
-//   let r = allCats.filter((cat) => cat._id === a)
-//   console.log(r[0].title)
-//   return r[0].title
-// }
+function catFinder(a){
+  let r = allCats.filter((cat) => cat._id === a)
+  console.log(allNotes)
+  console.log(r)
+  console.log(r[0].title)
+  return r[0].title
+}
 //  let b = allNotes[0].category._id
 //   console.log(allCats[7]._id);
 //   console.log(allNotes[0].category._id);
@@ -134,7 +136,7 @@ export default function NoteList({
                         <i class="fa-solid fa-tag mt-1.5 pl-1.5 text-orange-500"></i>{" "}
                         &nbsp;{" "}
                          
-                        {/* <a className="text-sm ml-[-3px]">{catFinder(note.category._id)}</a> */}
+                        <a className="text-sm ml-[-3px]">{catFinder(note.category._id)}</a>
 
                         <p className="pt-2">{note.body}</p>
                         <button 
