@@ -2,6 +2,7 @@ import * as noteAPI from "../../utilities/notes-api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
+
 export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCats }) {
   const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
@@ -76,6 +77,7 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
 
 
 
+
           <select name="category" value={formData.category }  onChange={handleChange}className="font-extralight text-2l text-left h-1/2 px-2 py-2">
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
@@ -89,7 +91,7 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
             placeholder="Category"
             onChange={handleChange}
             className="bg-[#f7f7f2] text-sm outline-0"
-          /> */}
+          />
           <br />
           <br />
           <input
