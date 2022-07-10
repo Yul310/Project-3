@@ -12,6 +12,7 @@ export default function TodoListItem({
   setUpdated,
   activeCat,
   setActiveCat,
+  allCats
 }) {
   // todo here is the state that we - this is the state
   const [todo, setTodo] = useState([]);
@@ -26,7 +27,7 @@ export default function TodoListItem({
     urgency: "",
   });
 
-  console.log(activeCat);
+  
 
   const magic = setUpdated();
   // const [activeTodo, setActiveTodo] = useState([]);
@@ -125,6 +126,16 @@ export default function TodoListItem({
     console.log(formData);
   }
 
+ 
+  function catFinder(a){
+    // if(activeCat=== undefined || activeCat=== null || activeCat=== ""){
+    // let r = allCats.filter((cat) => cat._id === a)
+    // console.log(r)
+    // return r[0].title 
+  // }
+  }
+
+
   //*** function = Edit data ***//
   function handleEditing(evt) {
     setEdit(!edit);
@@ -139,6 +150,7 @@ export default function TodoListItem({
     editMode.display = "none";
   }
 
+ 
   return (
     <>
       <Link to="/todos">
@@ -214,6 +226,7 @@ export default function TodoListItem({
             Category
           </label>
           <p style={viewMode}>{activeCat}</p>
+          <p style={viewMode}>{catFinder(todo.category)}</p>
           {/* <select name="category" value={formData.category} className="font-extralight text-2l text-left h-1/2 px-2 py-2" style={editMode} onChange={handleChange}>
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
