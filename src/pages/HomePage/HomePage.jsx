@@ -24,8 +24,9 @@ export default function HomePage({
   return (
     <>
       <div className="w-screen px-8">
-        <h1 className="font-semibold text-3xl text-left px-2 pt-6 pb-2 border-[#1f1f1f] border-b-[1px]">
-          Hello, {user.name}!
+        <h1 className="font-medium text-3xl text-left px-2 pt-6 pb-2 border-[#1f1f1f] border-b-[1px]">
+          <i className="fa-solid fa-house text-orange-400"></i>&nbsp; Hello,{" "}
+          {user.name}!
         </h1>
         <div className=" h-[85%] ">
           <div className="font-light text-left h-1/2 px-2 py-2 border-[#1f1f1f] border-b-[1px]">
