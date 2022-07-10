@@ -32,6 +32,7 @@ export default function NoteList({
   // }, []);
   // console.log(allNotes);
 
+
   //*** fucntion = creating new category ***//
   async function deleteNote(evt) {
     console.log(evt.target.value);
@@ -96,14 +97,11 @@ export default function NoteList({
     editMode.display = "none";
   }
 
-function catFinder(a){
-  console.log(allNotes)
-  // console.log(allCats)
-
-  let r = allCats.filter((cat) => cat._id === a)
-  console.log(r[0].title)
-  return r[0].title
-}
+// function catFinder(a){
+//   let r = allCats.filter((cat) => cat._id === a)
+//   console.log(r[0].title)
+//   return r[0].title
+// }
 //  let b = allNotes[0].category._id
 //   console.log(allCats[7]._id);
 //   console.log(allNotes[0].category._id);
@@ -130,21 +128,22 @@ function catFinder(a){
                       // onClick={() => setActiveNote(note)}
                     >
                       {/* <Link to={`/notes/${note._id}`} style={viewMode}> */}
-                      <p className="border-black border-b-[1px] text-lg">
-                        {note.title}
-                      </p>
-                      <i class="fa-solid fa-tag mt-1.5 pl-1.5 text-orange-500"></i>{" "}
-                      &nbsp;{" "}
-                      <a className="text-sm ml-[-3px]">{note.category}</a>
-                      <p className="py-2">{note.body}</p>
-                      <button
-                        value={note._id}
-                        className="border-1 border-black bg-[#1f1f1f] rounded text-white text-sm mt-1 px-2 py-1 hover:ring hover:ring-orange-400"
+                        <p className="border-black border-b-[1px] text-lg">
+                          {note.title}
+                        </p>
+                        <i class="fa-solid fa-tag mt-1.5 pl-1.5 text-orange-500"></i>{" "}
+                        &nbsp;{" "}
+                         
+                        {/* <a className="text-sm ml-[-3px]">{catFinder(note.category._id)}</a> */}
+
+                        <p className="pt-2">{note.body}</p>
+                        <button 
+                        value={note._id}className="border-1 border-black  bg-[#1f1f1f]   rounded text-white text-sm px-1 mx-2"
                         // style={editMode}
-                        onClick={deleteNote}
-                      >
-                        Delete
-                      </button>
+                        onClick={deleteNote}>
+                          Delete
+                        </button>
+                    
                       {/* </Link> */}
                       <input
                         type="text"
@@ -161,6 +160,7 @@ function catFinder(a){
                       >
                         Edit
                       </button> */}
+
                       {/* <button
                         className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2"
                         type="submit"
@@ -170,6 +170,7 @@ function catFinder(a){
                       >
                         Save
                       </button> */}
+
                       {/* <br></br> */}
                     </div>
                   </>
