@@ -118,11 +118,14 @@ export default function TodoList({
 
                     {/* <input 
                         type="text" 
+                      
                         className='textInput' 
                         style={editMode} 
                         placeholder={todo.title} 
                         onChange={handleChange} 
-                      /> */}
+                      /> 
+                       <p>test</p>
+                      */}
 
                     {/* 
                       <button className="border-1 border-black bg-[#7b7e63]  rounded text-white text-sm px-1 mx-2" type="submit" value={todo._id} style={editMode} onClick={editTodo}>
