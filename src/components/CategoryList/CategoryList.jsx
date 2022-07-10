@@ -98,7 +98,10 @@ export default function CategoryList({ allCats, setAllCats, setUpdated }) {
     }
     //
     return (
-        <div>
+
+       
+        <div className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[24.5rem] text-left"
+        id="hardshadow">
             <ul
                 className="pl-3 text-black flex-col justify-items-start  order-last p-2 border-[#7b7e63] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#e4e6c3] focus:border-[#f7f7f2] transition-colors duration-300 text-lg font-extralight"
                 aria-selected="false"
@@ -120,7 +123,7 @@ export default function CategoryList({ allCats, setAllCats, setUpdated }) {
                 ))}
                 {/* {cats} */}
             </ul>
-            <form action="">
+            <form className="" action="">
                 <input
                     name="title"
                     value={formData.title}

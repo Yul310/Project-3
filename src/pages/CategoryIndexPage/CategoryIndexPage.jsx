@@ -8,8 +8,9 @@ export default function NoteIndexPage({ allCats, setAllCats, setUpdated, categor
 
   return (
     <>
+  
 
-      <div>
+      <div className="flex-col  px-10 flex m-9">
      
         {/* <CategoryTodo categories={categories} setActiveCat={setActiveCat}/> */}
 
