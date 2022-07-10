@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import * as noteAPI from "../../utilities/notes-api";
 import { useState, useEffect } from "react";
 
-export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
+export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated, allCats,updated }) {
   return (
     <>
       <div className="pt-6 flex">
@@ -23,6 +23,7 @@ export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
                   allNotes={allNotes}
                   setAllNotes={setAllNotes}
                   setUpdated={setUpdated}
+                  allCats={allCats}
                 />
               ) : (
                 "loading"
@@ -34,6 +35,8 @@ export default function NoteIndexPage({ allNotes, setAllNotes, setUpdated }) {
                 allNotes={allNotes}
                 setAllNotes={setAllNotes}
                 setUpdated={setUpdated}
+                updated={updated}
+                allCats={allCats}
               />
             </div>
           </div>
