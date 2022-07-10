@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
 export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCats }) {
-  // const [activeNote, setActiveNote] = useState([]);
+  const [activeNote, setActiveNote] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -36,12 +36,11 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(allNotes);
-    // setAllNotes([...allNotes, formData]);
+    setAllNotes([...allNotes, formData]);
+
+    noteAPI.newNote(formData);
     setUpdated(!a);
-   
-   noteAPI.newNote(formData);
-   console.log(allNotes)
-  
+    console.log(allNotes);
     setFormData({
       title: "",
       category: "",
@@ -77,7 +76,7 @@ export default function NoteListForm({ allNotes, setAllNotes, setUpdated, allCat
 
 
 
-          <select name="category" value={formData.category }  onChange={handleChange} className="font-extralight text-2l text-left h-1/2 px-2 py-2">
+          <select name="category" value={formData.category }  onChange={handleChange}className="font-extralight text-2l text-left h-1/2 px-2 py-2">
 
             {allCats.map((cat) => <option value={cat._id} key={cat._id} >{cat.title}</option>)}
 
