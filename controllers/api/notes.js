@@ -1,4 +1,5 @@
 const Note = require("../../models/note");
+const Category = require("../../models/category");
 
 module.exports = {
   index,
@@ -10,8 +11,7 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    console.log("reaching backend");
-    const noteList = await Note.find({});
+    const noteList = await Note.find({}).populate('category').exec();
     res.json(noteList);
   } catch {
     res.status(400).json("Bad Serverside");

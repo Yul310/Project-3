@@ -156,6 +156,7 @@ export default function App() {
         const notes = await noteAPI.getAll();
         // console.log(notes);
         setAllNotes(notes);
+        
         console.log(allNotes);
       }
       getNotes();
@@ -213,6 +214,8 @@ export default function App() {
     [updated]
   );
 
+  
+
   return (
     <main>
       {user ? (
@@ -234,6 +237,7 @@ export default function App() {
                     <NoteIndexPage
                       allNotes={allNotes}
                       setAllNotes={setAllNotes}
+                      updated={updated}
                       setUpdated={setUpdated}
                       allCats={allCats}
                     />

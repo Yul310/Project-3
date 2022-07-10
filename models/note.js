@@ -11,8 +11,7 @@ const noteSchema = new Schema(
       required: true,
     },
     //reference to the category model
-    category: String,
-    // [{ type: Schema.Types.ObjectId, ref: "Category" }],
+    category:{ type: Schema.Types.ObjectId, ref: "Category" },
 
     body: {
       type: String,
