@@ -95,7 +95,21 @@ export default function NoteList({
   } else {
     editMode.display = "none";
   }
-  console.log(allNotes);
+
+function catFinder(a){
+  console.log(allNotes)
+  // console.log(allCats)
+
+  let r = allCats.filter((cat) => cat._id === a)
+  console.log(r[0].title)
+  return r[0].title
+}
+//  let b = allNotes[0].category._id
+//   console.log(allCats[7]._id);
+//   console.log(allNotes[0].category._id);
+//   catFinder(b)
+
+
   return (
     <>
       <div className="flex">

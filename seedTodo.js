@@ -15,7 +15,12 @@ const Category = require('./models/category');
         { title: 'Workout', sortOrder: 0 },
         { title: 'Tennis', sortOrder: 0 },
         { title: 'Shopping', sortOrder: 0 },
-        { title: 'Grocery', sortOrder: 0 }
+        { title: 'Grocery', sortOrder: 0 },
+        { title: 'Movies', sortOrder: 0 },
+        { title: 'Conspiracy Theories', sortOrder: 0 },
+        { title: 'Styling', sortOrder: 0 },
+        { title: 'Schrute Farms', sortOrder: 0 },
+
     ]);
 
 
@@ -126,22 +131,22 @@ const Category = require('./models/category');
     const notes = await Note.create([
       {
         title: "Flat Earth",
-        category: "Conspiracy Theories",
+        category: categories[7],
         body: "It's not a conspiracy theory. It's a flat earth theory.",
       },
       {
         title: "9/11 was an outside job.",
-        category: "Conspiracy Theories",
+        category: categories[7],
         body: "Gardening.",
       },
       {
         title: "Beets",
-        category: "Schrute Farms",
+        category: categories[9],
         body: "Buy more.",
       },
       {
         title: "Coke",
-        category: "Soda",
+        category: categories[9],
         body: "Yum.",
       },
     ]);
